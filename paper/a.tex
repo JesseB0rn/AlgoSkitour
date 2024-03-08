@@ -1,0 +1,123 @@
+% !TeX program = xelatex
+\documentclass[a4paper]{scrarticle}
+
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage[left=2.25cm, right=2.25cm, top=3.00cm, bottom=3.50cm]{geometry}
+\usepackage[headsepline, footsepline]{scrlayer-scrpage}
+\renewcommand*{\headfont}{\normalfont}
+\usepackage[backend=biber,style=apa]{biblatex} 
+	\addbibresource{bibliography.bib}
+	\bibliography{bibliography}
+\usepackage{csquotes}
+
+\usepackage{graphicx}
+\usepackage[figurename=Fig.]{caption}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage{tabto}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{blindtext, showframe}
+\usepackage{fontspec}
+\usepackage{lipsum} % for dummy text
+
+\definecolor{AKSAcolor}{rgb}{0.64,0.44,0.32}
+\newfontfamily\AKAfont{AKA}
+
+% Redefine sectioning commands to set font
+\makeatletter
+\renewcommand\section{\@startsection {section}{1}{\z@}%
+                                   {-3.5ex \@plus -1ex \@minus -.2ex}%
+                                   {2.3ex \@plus.2ex}%
+                                   {\Huge\AKAfont}}
+\renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
+                                     {-3.25ex\@plus -1ex \@minus -.2ex}%
+                                     {1.5ex \@plus .2ex}%
+                                     {\Large\AKAfont}}
+\renewcommand{\maketitle}{%
+																		 \begin{titlepage}
+																			 \null\vfill % Add space at the top
+																			 \begin{center}
+																				 {\huge\@title\par}%
+																				 \vspace{0.5cm} % Adjust spacing between title and author
+																				 {\large\@subtitle\par} % Add the subtitle
+																				 \vspace{1.5cm} % Adjust spacing between author and subtitle
+																				 {\Large\@author\par}
+																				 \vspace{0.5cm} % Adjust spacing between subtitle and date
+																				 {\large\@date\par} % Add the date
+																			 \end{center}
+																			 \vfill % Fill remaining space at the bottom
+																			 \begin{center}
+																				Eingereicht bei Michael Kappeler
+																			 \end{center}
+																			 \@thanks % If you have any thanks or notes, they will be printed here
+																		 \end{titlepage}%
+																	 }
+
+\makeatother
+
+\usepackage{hyperref}
+\hypersetup{colorlinks=false, pdfborder={0 0 0}, pdftitle=}
+
+
+
+\begin{document}
+
+\title{\AKAfont\Huge\textcolor{AKSAcolor}{Algorithmische Skitourenplanung}}
+\subtitle{Vom Bildschirm an den Berg – und zurück}
+\author{Jesse Born, G21D}
+\date{September 2024}
+
+\pagenumbering{gobble} % Suppress page numbering
+\ihead{Algorithmische Skitourenplanung}
+\ifoot{\\Jesse Born, 2024}
+
+\maketitle
+\clearpage
+
+
+\addcontentsline{toc}{section}{Inhaltsverzeichnis}
+\tableofcontents
+\newpage
+\begin{abstract}
+	\section*{Abstract}
+	\addcontentsline{toc}{section}{Abstract}
+	\lipsum[6-8]
+\end{abstract}
+\section*{Vorwort}
+\addcontentsline{toc}{section}{Vorwort}
+\lipsum[6-8]
+\clearpage
+\pagenumbering{arabic}
+
+\section{Einleitung}
+\subsection{Theoretische Grundlagen}
+\lipsum[6-10]
+\subsection{Methodik}
+\lipsum[6-10]
+\clearpage
+\section{Hauptteil}
+\subsection{Resultat}
+\lipsum[6-10]
+\subsection{Produktevaluation}
+\lipsum[6-10]
+\subsection{(Methodische Reflexion)}
+\lipsum[6-10]
+\clearpage
+\section{Schlusswort, Fazit und Diskussion}
+\lipsum[6-10]
+\clearpage
+\section{Literaturverzeichnis}
+\lipsum[6-10]
+\clearpage
+\section{Abbildungsverzeichnis}
+\lipsum[6-10]
+\clearpage
+
+
+\end{document}
