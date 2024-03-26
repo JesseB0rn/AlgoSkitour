@@ -1,0 +1,3 @@
+[submodule "source/viz/fonts.pbf"]
+	path = source/viz/fonts.pbf
+	url = https://github.com/korywka/fonts.pbf.git

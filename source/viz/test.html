@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>AlgoSkitour Visualisation</title>
+    <meta property="og:description" content="" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.1.1/dist/maplibre-gl.css" />
+    <script src="https://unpkg.com/maplibre-gl@4.1.1/dist/maplibre-gl.js"></script>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body,
+      #map {
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+      // #254cb6 2
+      // hsl(3, 73%, 44%) 3
+      // #1c1c1c 4
+      const partialLayerPropsForPisteOutline = (color, type) => {
+        return {
+          paint: {
+            "line-opacity": {
+              base: 1,
+              stops: [
+                [11, 0],
+                [11.1, 0.6],
+              ],
+            },
+            "line-color": color,
+            "line-gap-width": {
+              base: 1.7,
+              stops: [
+                [11, 1.2],
+                [18, 6],
+              ],
+            },
+            "line-width": 1.5,
+          },
+          filter: ["==", "piste_type", type],
+        };
+      };
+      const partialLayerPropsForPiste = (color, type) => {
+        return {
+          paint: {
+            // "line-color": "#ff0000",
+            // "line-width": 4,
+            "line-color": color,
+            "line-opacity": {
+              base: 1,
+              stops: [
+                [11, 0],
+                [11.1, 1],
+              ],
+            },
+            "line-width": {
+              base: 1.7,
+              stops: [
+                [11, 1],
+                [18, 6],
+              ],
+            },
+          },
+          filter: ["==", "piste_type", type],
+        };
+      };
+
+      const map = (window.map = new maplibregl.Map({
+        container: "map",
+        zoom: 12,
+        center: [11.39085, 47.27574],
+        pitch: 52,
+        hash: true,
+        style: {
+          version: 8,
+          glyphs: "fonts.pbf/{fontstack}/{range}.pbf",
+          sources: {
+            osm: {
+              type: "raster",
+              tiles: ["https://tiles.platform.fatmap.com/winter-imagery/{z}/{x}/{y}.jpg"],
+              tileSize: 256,
+              maxzoom: 19,
+            },
+            // Use a different source for terrain and hillshade layers, to improve render quality
+            terrainSource: {
+              type: "raster-dem",
+              url: "https://demotiles.maplibre.org/terrain-tiles/tiles.json",
+              tileSize: 256,
+            },
+            fatmaplocs: {
+              type: "vector",
+              tiles: ["https://tiles.platform.fatmap.com/fatmap/{z}/{x}/{y}.pbf?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4M29iazA2Z2gycXA4N2pmbDZmangifQ.-g_vE53SD2WrJ6tFX7QHmA"],
+            },
+            fatmapoutdoorss: {
+              minzoom: 13,
+              type: "vector",
+              tiles: ["https://tiles.platform.fatmap.com/fatmap-outdoors/{z}/{x}/{y}.pbf"],
+            },
+            mapboxstreet: {
+              minzoom: 13,
+              type: "vector",
+              tiles: ["https://api.mapbox.com/v4/mapbox.mapbox-streets-v8/{z}/{x}/{y}.vector.pbf?access_token=pk.eyJ1IjoiY2VyaWxld2lzIiwiYSI6ImNqOXo3cDlvOThsbXgzM3Q0ZWNsOG50dTAifQ.qgHw7AhNgKvEsfP1XgptPg"],
+            },
+          },
+          layers: [
+            {
+              id: "osm",
+              type: "raster",
+              source: "osm",
+            },
+          ],
+          terrain: {
+            source: "terrainSource",
+            exaggeration: 1.25,
+          },
+        },
+        maxZoom: 18,
+        maxPitch: 85,
+      }));
+
+      map.addControl(
+        new maplibregl.NavigationControl({
+          visualizePitch: true,
+          showZoom: true,
+          showCompass: true,
+        })
+      );
+
+      map.addControl(
+        new maplibregl.TerrainControl({
+          source: "terrainSource",
+          exaggeration: 3,
+        })
+      );
+
+      map.on("load", async () => {
+        map.addImage(
+          "POI_Peak",
+          (
+            await map.loadImage(
+              "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAACv0lEQVR4nO2YX0hTYRjGVwbdBlEbazvb9DQTu5BKq6GFiXgRSV2EQUHBMgjBCi/Mi6IgMiiyiAohCvuDVLgiuoooMCZ2YXQT3Ui3URRmVlJBX8938D18pdPpzvYivD948MadPb/3fPu+s/l8giAIgiAIgiAIgiAIgiAIBSAUCq0Ae/E3GQwGLe4+BSUcDjdAfBRRE/mGYWzh7lUQILtSCxvylLFIJBLj7pdviiCaJum1m9Y7MYbwHP+zkLtk3sAy7yDZSCyqLr+6qy4N9SorGjGH0MrdMy9YllUOuXESPdjVrh6Ov3Syv/OIOYDvGFScu6/XLMLGN0SS1VtrVd/YgDuAvq9ptaG+xhxCP16zgLu0Z0C+jeRidrHqfpNy5Sn646A/FsYQkty9PUGf8XqHJ7GWi0cnyVOSp1rNAXz2+/3LufvnDO7+I5KqqkuolLH0/8/9kReqIrHOHQJe28PdPycgscOVsSx1YfB2RnlK55NucxX8wQpKcHvMCdu2F0NgmGR2dzTPKE9pPNBkDmHANx83RBRvJ4l4+Sp15/3TrAdwffixipXE3CHgWNzJ7TMr9OaF4l9IoO3ayazlKftOtJir4J1eUdxeWYM7doXKV9Zu/OfMzza9H56p0tVl5io4zO2VFXjiK0bhX1Rcb2qzlaccunrMXAWfotHoEm6/GUHRm1R68/b6Ocvr6CNzTXWlOYSz3H7TgiOrFCV/U+Fz/TdyGoDO8VSXOYCfeDYo4fbMCMrdo7INexpzltd58GNQ1WyrM4dwi9szE0X0yItBOF9zvRiAzvl0j3PNiQGM6vfilp0ENqgA3SW7LO583dXP/V5EX0tfk66v34vbd0pQ7vUUP3V5nbfcnhnBWV2Bgh/zKD+CVHF7TguGsBSf1ybkNMqe8SL6WsiuQCCwjNtPEARBEARBEARBEARBEIT5zV9URaR/ScprHwAAAABJRU5ErkJggg=="
+            )
+          ).data
+        );
+        map.addImage(
+          "POI_Hut",
+          (
+            await map.loadImage(
+              "data:image/png;base64,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"
+            )
+          ).data
+        );
+        map.addLayer({
+          id: "piste-blue",
+          type: "line",
+          source: "fatmaplocs",
+          "source-layer": "fatmap_pistes",
+          ...partialLayerPropsForPiste("#254cb6", 2),
+        });
+        map.addLayer({
+          id: "piste-blue-outline",
+          type: "line",
+          source: "fatmaplocs",
+          "source-layer": "fatmap_pistes",
+          ...partialLayerPropsForPisteOutline("hsl(0, 100%, 100%)", 2),
+        });
+        map.addLayer({
+          id: "piste-red",
+          type: "line",
+          source: "fatmaplocs",
+          "source-layer": "fatmap_pistes",
+          ...partialLayerPropsForPiste("hsl(3, 73%, 44%)", 3),
+        });
+        map.addLayer({
+          id: "piste-red-outline",
+          type: "line",
+          source: "fatmaplocs",
+          "source-layer": "fatmap_pistes",
+          ...partialLayerPropsForPisteOutline("hsl(0, 100%, 100%)", 3),
+        });
+        map.addLayer({
+          id: "piste-black",
+          type: "line",
+          source: "fatmaplocs",
+          "source-layer": "fatmap_pistes",
+          ...partialLayerPropsForPiste("#1c1c1c", 4),
+        });
+        map.addLayer({
+          id: "piste-black-outline",
+          type: "line",
+          source: "fatmaplocs",
+          "source-layer": "fatmap_pistes",
+          ...partialLayerPropsForPisteOutline("hsl(0, 100%, 100%)", 4),
+        });
+        map.addLayer({
+          id: "lifts2",
+          type: "line",
+          source: "fatmaplocs",
+          "source-layer": "fatmap_lifts",
+          id: "lifts",
+          layout: { "line-cap": "round" },
+          paint: {
+            "line-color": "#eaf1f5",
+            "line-width": {
+              base: 1.5,
+              stops: [
+                [11, 1],
+                [18, 2],
+              ],
+            },
+            "line-opacity": {
+              base: 1,
+              stops: [
+                [11, 0],
+                [11.1, 1],
+              ],
+            },
+          },
+        });
+        map.addLayer({
+          id: "poi-peak",
+          type: "symbol",
+          source: "mapboxstreet",
+          "source-layer": "natural_label",
+          layout: {
+            "text-optional": false,
+            "text-line-height": 1.1,
+            "text-size": {
+              base: 1,
+              stops: [
+                [14, 11],
+                [18, 13],
+              ],
+            },
+            "icon-offset": [0, 0],
+            "icon-image": "POI_Peak",
+            "text-font": ["Roboto Medium"],
+            "text-offset": [0, -0.75],
+            "icon-size": {
+              base: 1,
+              stops: [
+                [12, 0.5],
+                [18, 0.7],
+              ],
+            },
+            "text-anchor": "bottom",
+            "text-field": ["format", ["get", "name"], "\n", ["get", "elevation_m"], " m.ü.M."],
+            "text-letter-spacing": 0.04,
+            "text-max-width": 8,
+          },
+          filter: ["all", ["==", ["get", "class"], "landform"], ["to-boolean", ["get", "elevation_m"]]],
+          paint: { "text-color": "hsl(141, 82%, 83%)", "text-halo-color": "#1c1c1c", "text-halo-width": 1 },
+        });
+        map.addLayer({
+          id: "poi-glacier",
+          type: "symbol",
+          source: "mapboxstreet",
+          "source-layer": "natural_label",
+          layout: {
+            "text-line-height": 1.1,
+            "text-size": {
+              base: 1,
+              stops: [
+                [14, 11],
+                [18, 13],
+              ],
+            },
+            "text-font": ["Roboto Medium"],
+            "text-offset": [0, 0],
+            "icon-size": {
+              base: 1,
+              stops: [
+                [11, 0.7],
+                [14, 0.9],
+              ],
+            },
+            "text-field": ["get", "name"],
+            "text-letter-spacing": 0.04,
+            "text-max-width": 8,
+          },
+          filter: ["==", ["get", "class"], "glacier"],
+          paint: { "text-color": "#b1f1ff", "text-halo-color": "#1c1c1c", "text-halo-width": 1 },
+        });
+
+        map.addLayer({
+          id: "poi-alpine-hut",
+          type: "symbol",
+          source: "fatmapoutdoorss",
+          "source-layer": "osm_poi_huts_point",
+          layout: {
+            "text-optional": !0,
+            "text-size": 11,
+            "icon-offset": [0, -15],
+            "icon-image": "POI_Hut",
+            "text-font": ["Roboto Medium"],
+            "text-justify": "left",
+            "text-offset": [1.5, -1.6],
+            "text-rotation-alignment": "viewport",
+            "icon-size": {
+              base: 0.6,
+              stops: [
+                [11, 0],
+                [11.1, 0.6],
+              ],
+            },
+            "text-anchor": "left",
+            "text-field": ["get", "name"],
+            "text-letter-spacing": 0.04,
+            "text-max-width": 12,
+          },
+          paint: {
+            "text-color": "hsl(0, 0%, 100%)",
+            "text-halo-color": "hsl(0, 0%, 11%)",
+            "text-opacity": {
+              base: 1,
+              stops: [
+                [11, 0],
+                [11.1, 1],
+              ],
+            },
+            "icon-opacity": {
+              base: 1,
+              stops: [
+                [11, 0],
+                [11.1, 1],
+              ],
+            },
+            "text-halo-width": 1,
+          },
+          filter: ["in", ["get", "subclass"], ["literal", ["alpine_hut", "hotel", "basic_hut", "wilderness_hut"]]],
+        });
+      });
+    </script>
+  </body>
+</html>
