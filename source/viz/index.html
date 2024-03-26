@@ -46,7 +46,7 @@
             },
             "line-width": 1.5,
           },
-          filter: ["==", "piste_type", type],
+          filter: ["in", ["get", "piste_type"], ["literal", type]],
         };
       };
       const partialLayerPropsForPiste = (color, type) => {
@@ -70,7 +70,7 @@
               ],
             },
           },
-          filter: ["==", "piste_type", type],
+          filter: ["in", ["get", "piste_type"], ["literal", type]],
         };
       };
 
@@ -164,42 +164,56 @@
           type: "line",
           source: "fatmaplocs",
           "source-layer": "fatmap_pistes",
-          ...partialLayerPropsForPiste("#254cb6", 2),
+          ...partialLayerPropsForPiste("#254cb6", [1, 2, 7, 8]),
         });
         map.addLayer({
           id: "piste-blue-outline",
           type: "line",
           source: "fatmaplocs",
           "source-layer": "fatmap_pistes",
-          ...partialLayerPropsForPisteOutline("hsl(0, 100%, 100%)", 2),
+          ...partialLayerPropsForPisteOutline("hsl(0, 100%, 100%)", [1, 2, 7, 8]),
         });
         map.addLayer({
           id: "piste-red",
           type: "line",
           source: "fatmaplocs",
           "source-layer": "fatmap_pistes",
-          ...partialLayerPropsForPiste("hsl(3, 73%, 44%)", 3),
+          ...partialLayerPropsForPiste("hsl(3, 73%, 44%)", [3, 9]),
         });
         map.addLayer({
           id: "piste-red-outline",
           type: "line",
           source: "fatmaplocs",
           "source-layer": "fatmap_pistes",
-          ...partialLayerPropsForPisteOutline("hsl(0, 100%, 100%)", 3),
+          ...partialLayerPropsForPisteOutline("hsl(0, 100%, 100%)", [3, 9]),
         });
         map.addLayer({
           id: "piste-black",
           type: "line",
           source: "fatmaplocs",
           "source-layer": "fatmap_pistes",
-          ...partialLayerPropsForPiste("#1c1c1c", 4),
+          ...partialLayerPropsForPiste("#1c1c1c", [4, 10]),
         });
         map.addLayer({
           id: "piste-black-outline",
           type: "line",
           source: "fatmaplocs",
           "source-layer": "fatmap_pistes",
-          ...partialLayerPropsForPisteOutline("hsl(0, 100%, 100%)", 4),
+          ...partialLayerPropsForPisteOutline("hsl(0, 100%, 100%)", [4, 10]),
+        });
+        map.addLayer({
+          id: "piste-itin",
+          type: "line",
+          source: "fatmaplocs",
+          "source-layer": "fatmap_pistes",
+          ...partialLayerPropsForPiste("hsl(42, 100%, 47%)", [5, 16]),
+        });
+        map.addLayer({
+          id: "piste-itin-outline",
+          type: "line",
+          source: "fatmaplocs",
+          "source-layer": "fatmap_pistes",
+          ...partialLayerPropsForPisteOutline("hsl(0, 100%, 100%)", [5, 16]),
         });
         map.addLayer({
           id: "lifts2",
@@ -257,7 +271,7 @@
             "text-letter-spacing": 0.04,
             "text-max-width": 8,
           },
-          filter: ["all", ["==", ["get", "class"], "landform"], ["to-boolean", ["get", "elevation_m"]]],
+          filter: ["all", ["==", ["get", "class"], "landform"], ["to-boolean", ["get", "elevation_m"]], ["to-boolean", ["get", "name"]]],
           paint: { "text-color": "hsl(141, 82%, 83%)", "text-halo-color": "#1c1c1c", "text-halo-width": 1 },
         });
         map.addLayer({
