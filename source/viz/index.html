@@ -23,9 +23,6 @@
   <body>
     <div id="map"></div>
     <script>
-      // #254cb6 2
-      // hsl(3, 73%, 44%) 3
-      // #1c1c1c 4
       const partialLayerPropsForPisteOutline = (color, type) => {
         return {
           paint: {
@@ -352,6 +349,52 @@
             "text-halo-width": 1,
           },
           filter: ["in", ["get", "subclass"], ["literal", ["alpine_hut", "hotel", "basic_hut", "wilderness_hut"]]],
+        });
+        map.addLayer({
+          id: "place-city-sm",
+          type: "symbol",
+          source: "mapboxstreet",
+          "source-layer": "place_label",
+          maxzoom: 16,
+          layout: {
+            "text-line-height": 1.1,
+            "text-size": {
+              base: 1,
+              stops: [
+                [10, 11],
+                [18, 13],
+              ],
+            },
+            "icon-image": "Map_Mob_Dual_City_Large",
+            "text-font": ["Roboto Medium"],
+            "text-offset": [0, -0.4],
+            "text-anchor": "bottom",
+            "text-field": ["get", "name"],
+            "text-letter-spacing": 0.04,
+            "text-max-width": 8,
+          },
+          paint: {
+            "text-color": "#fafafa",
+            "text-halo-color": "#1c1c1c",
+            "text-halo-width": 1,
+            "icon-opacity": {
+              base: 1,
+              stops: [
+                [5, 0],
+                [5.1, 1],
+                [8.99, 1],
+                [9, 0],
+              ],
+            },
+            "text-opacity": {
+              base: 1,
+              stops: [
+                [5, 0],
+                [5.1, 1],
+                [11.37, 1],
+              ],
+            },
+          },
         });
       });
     </script>
