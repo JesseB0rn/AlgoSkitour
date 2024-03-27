@@ -98,12 +98,12 @@
               tiles: ["https://tiles.platform.fatmap.com/fatmap/{z}/{x}/{y}.pbf?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4M29iazA2Z2gycXA4N2pmbDZmangifQ.-g_vE53SD2WrJ6tFX7QHmA"],
             },
             fatmapoutdoorss: {
-              minzoom: 13,
+              minzoom: 10,
               type: "vector",
               tiles: ["https://tiles.platform.fatmap.com/fatmap-outdoors/{z}/{x}/{y}.pbf"],
             },
             mapboxstreet: {
-              minzoom: 13,
+              minzoom: 10,
               type: "vector",
               tiles: ["https://api.mapbox.com/v4/mapbox.mapbox-streets-v8/{z}/{x}/{y}.vector.pbf?access_token=pk.eyJ1IjoiY2VyaWxld2lzIiwiYSI6ImNqOXo3cDlvOThsbXgzM3Q0ZWNsOG50dTAifQ.qgHw7AhNgKvEsfP1XgptPg"],
             },
@@ -533,6 +533,28 @@
                 [5, 0],
                 [5.1, 1],
                 [11.37, 1],
+              ],
+            },
+          },
+        });
+
+        map.addSource("bulletin", {
+          type: "geojson",
+          data: await (await fetch("https://aws.slf.ch/api/bulletin/caaml/de/geojson")).json(),
+        });
+        map.addLayer({
+          minzoom: 1,
+          maxzoom: 10,
+          id: "bulletin",
+          source: "bulletin",
+          type: "fill",
+          paint: {
+            "fill-color": ["get", "fill"],
+            "fill-opacity": {
+              base: 0.35,
+              stops: [
+                [9, 0.35],
+                [9.9, 0.0],
               ],
             },
           },
