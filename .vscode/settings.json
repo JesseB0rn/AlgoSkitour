@@ -1,3 +1,11 @@
 {
-  "latex-workshop.latex.build.forceRecipeUsage": false
+  "latex-workshop.latex.build.forceRecipeUsage": false,
+  // The following will hide the js and map files in the editor
+  "files.exclude": {
+    "**/*.aux": true,
+    "**/*.bcf": true,
+    "**/*.log": true,
+    "**/*.out": true,
+    "**/*.fls": true
+  }
 }
