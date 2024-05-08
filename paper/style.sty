@@ -17,14 +17,14 @@
 \usepackage[left=2.25cm, right=2.25cm, top=3.00cm, bottom=3.50cm]{geometry}
 \usepackage[headsepline, footsepline]{scrlayer-scrpage}
 \renewcommand*{\headfont}{\normalfont}
-\usepackage[backend=biber,style=apa]{biblatex} 
-	\addbibresource{bibliography.bib}
-	\bibliography{bibliography}
 \usepackage{csquotes}
+
+\usepackage[style=iso-numeric]{biblatex} 
+\addbibresource{biblio.bib}
 
 \usepackage{graphicx}
 \graphicspath{ {./illustrationen/} }
-\usepackage[figurename=Fig.]{caption}
+\usepackage[figurename=Abb.]{caption}
 
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -72,7 +72,8 @@
 																			 \end{center}
 																			 \vfill % Fill remaining space at the bottom
 																			 \begin{center}
-																				Eingereicht bei Michael Kappeler
+																				Eingereicht bei Michael Kappeler\\
+                                        Alte Kantonsschule Aarau
 																			 \end{center}
 																			 \@thanks % If you have any thanks or notes, they will be printed here
 																		 \end{titlepage}%
@@ -82,3 +83,9 @@
 
 \usepackage{hyperref}
 \hypersetup{colorlinks=false, pdfborder={0 0 0}, pdftitle=}
+\usepackage{multicol}
+
+
+\newenvironment{Figure}
+  {\par\medskip\noindent\minipage{\linewidth}}
+  {\endminipage\par\medskip}

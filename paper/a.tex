@@ -27,7 +27,6 @@
 
 \maketitle
 
-
 \addcontentsline{toc}{section}{Inhaltsverzeichnis}
 \tableofcontents
 
@@ -36,19 +35,19 @@
 \include{sections/vorwort}
 
 \pagenumbering{arabic}
-
+\begin{multicols}{2}
 \include{sections/einleitung}
 \include{sections/hauptteil}
-
 \section{Schlusswort, Fazit und Diskussion}
 \lipsum[6-10]
 \clearpage
-\section{Literaturverzeichnis}
-\lipsum[6-10]
+
+\addcontentsline{toc}{section}{Literatur}
+\printbibliography
 \clearpage
 \section{Abbildungsverzeichnis}
 \lipsum[6-10]
 \clearpage
-
+\end{multicols}
 
 \end{document}
