@@ -14,7 +14,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 
-\usepackage[left=2.25cm, right=2.25cm, top=3.00cm, bottom=3.50cm]{geometry}
+% \usepackage[left=2.25cm, right=2.25cm, top=3.00cm, bottom=3.50cm]{geometry}
+\usepackage[left=2.5cm, right=2.5cm, top=3.00cm, bottom=3.50cm]{geometry}
 \usepackage[headsepline, footsepline]{scrlayer-scrpage}
 \renewcommand*{\headfont}{\normalfont}
 \usepackage{csquotes}
@@ -30,7 +31,8 @@
 \usepackage{amssymb}
 
 \usepackage{tabto}
-\usepackage{xcolor}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{xargs} 
 \usepackage{enumitem}
 % \usepackage{blindtext, showframe}
 \usepackage{fontspec}
@@ -85,6 +87,13 @@
 \hypersetup{colorlinks=false, pdfborder={0 0 0}, pdftitle=}
 \usepackage{multicol}
 
+\usepackage[colorinlistoftodos,prependcaption,textsize=tiny]{todonotes}
+
+\newcommand\unsure[1]{\todo[linecolor=red,backgroundcolor=red!25,bordercolor=red]{#1}}
+\newcommand\change[1]{\todo[linecolor=blue,backgroundcolor=blue!25,bordercolor=blue]{#1}}
+\newcommand\info[1]{\todo[linecolor=OliveGreen,backgroundcolor=OliveGreen!25,bordercolor=OliveGreen]{#1}}
+\newcommand\improvement[1]{\todo[linecolor=Plum,backgroundcolor=Plum!25,bordercolor=Plum]{#1}}
+\newcommand\thiswillnotshow[1]{\todo[disable]{#1}}
 
 \newenvironment{Figure}
   {\par\medskip\noindent\minipage{\linewidth}}

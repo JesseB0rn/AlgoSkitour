@@ -6,6 +6,13 @@
     "**/*.bcf": true,
     "**/*.log": true,
     "**/*.out": true,
+    "**/*.bbl": true,
+    "paper/*.xml": true,
+    "paper/*.toc": true,
+    "paper/*.gz": true,
+    "paper/*.blg": true,
     "**/*.fls": true
-  }
+  },
+  "editor.wrappingIndent": "deepIndent",
+  "editor.wordWrap": "on"
 }
