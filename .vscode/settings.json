@@ -2,16 +2,16 @@
   "latex-workshop.latex.build.forceRecipeUsage": false,
   // The following will hide the js and map files in the editor
   "files.exclude": {
-    "**/*.aux": true,
-    "**/*.bcf": true,
-    "**/*.log": true,
-    "**/*.out": true,
-    "**/*.bbl": true,
+    "paper/*.aux": true,
+    "paper/*.bcf": true,
+    "paper/*.log": true,
+    "paper/*.out": true,
+    "paper/*.bbl": true,
     "paper/*.xml": true,
     "paper/*.toc": true,
     "paper/*.gz": true,
     "paper/*.blg": true,
-    "**/*.fls": true
+    "paper/*.fls": true
   },
   "editor.wrappingIndent": "deepIndent",
   "editor.wordWrap": "on"

@@ -1,0 +1,4 @@
+#! /bin/zsh
+
+xcrun -sdk macosx metal -o sim.ir  -c map_prep.metal
+xcrun -sdk macosx metal -o sim.ir  -c simulation2.metal
