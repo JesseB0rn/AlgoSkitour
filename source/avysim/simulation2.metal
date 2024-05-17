@@ -34,11 +34,11 @@ float xi(float R) {
 }
 
 float2 frictionTermsRKE(float R, float H, float U, float4 grav_accels) {
-    return float2((muh(R) * grav_accels.z + grav_accels.x * U) / xi(R), (muh(R) * grav_accels.z + grav_accels.y * U) / xi(R));
+    return float2((muh(R) * grav_accels.z  * H + grav_accels.x * U * U) / xi(R), (muh(R) * grav_accels.z * H + grav_accels.y * U * U) / xi(R));
 }
 
 float2 frictionTermsVS(float H, float U, float4 grav_accels) {
-    return float2((MUH_ZERO * grav_accels.z + grav_accels.x * U) / XI_ZERO, (MUH_ZERO * grav_accels.z + grav_accels.y * U) / XI_ZERO);
+    return float2((MUH_ZERO * grav_accels.z * H + grav_accels.x * U * U) / XI_ZERO, (MUH_ZERO * grav_accels.z * H + grav_accels.y * U * U) / XI_ZERO);
 }
 
 float energyBalance(float U, float HR, float2 friction) {
@@ -72,7 +72,8 @@ float4 sourceterm(float4 state, float speedU, device float &snowHeight, float4 g
     source.x = mass_entrainement_Q(state, snowHeight, speedU);
     
     float2 S_f = frictionTermsRKE(R, state.x, speedU, grav_accels);
-    source.yz = effectiveAccel(snowHeight, grav_accels) - S_f;
+    // float2 S_f = frictionTermsVS(state.x, speedU, grav_accels);
+    source.yz = effectiveAccel(state.x, grav_accels) - S_f;
     source.w = energyBalance(speedU, state.w, S_f);
 
     return source;
@@ -162,9 +163,7 @@ kernel void secondPass(const device float4* grav_accelerations [[buffer(0)]], co
     grav_accels_neighbor = {grav_accelerations[idx(xy.x+1, xy.y, SIZE)], grav_accelerations[idx(xy.x, xy.y+1, SIZE)], grav_accelerations[idx(xy.x-1, xy.y, SIZE)], grav_accelerations[idx(xy.x, xy.y-1, SIZE)]};
     
     float4 V_n_twostar = state + (dt/cell_area) * numerical_flux(state, neighborStates, grav_accelerations[id], grav_accels_neighbor);
-    
     outState[id] = 0.5 * (orgstate + V_n_twostar) + sourceterm(state, speedU, snowHeights[id], grav_accelerations[id]) * dt/cell_area;
-    outState[id] = state ;
 }
 
 kernel void firstPass(const device float4* grav_accelerations [[buffer(0)]], const device float4* inputState [[buffer(1)]], device float4* outState [[buffer(2)]], uint id [[ thread_position_in_grid ]]) {
