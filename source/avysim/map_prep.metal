@@ -24,7 +24,7 @@ kernel void prepareMap(const device float* inputBuffer [[buffer(0)]], device flo
     float4 gaccel = float4(0.0, 0.0, 0.0, 0.0);
     int2 imgCoord = imgcoord(id, SIZE);
 
-    if (0 == imgCoord.x || SIZE-1 == imgCoord.x || 0 == imgCoord.y || SIZE-1 == imgCoord.y) {
+    if (1 >= imgCoord.x || SIZE-2 <= imgCoord.x || 1 >= imgCoord.y || SIZE-2 <= imgCoord.y) {
         out[id] = gaccel;
         return;
     }

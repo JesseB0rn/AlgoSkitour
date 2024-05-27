@@ -1,0 +1,40 @@
+
+% !TeX program = xelatex
+\documentclass[a4paper]{scrarticle}
+
+\usepackage{style}
+\geometry{left=2.5cm, right=2.5cm, top=4.0cm, bottom=4.00cm}
+
+\ihead{Mistake in eq. 26 of <<RAMMS:\@ Numerical simulation of dense snow avalanches in three-dimensional terrain>>}
+\ifoot{\\Jesse Born, 2024}
+
+\begin{document}
+
+I'd expect eq. 26 to be:
+
+\begin{equation}
+F^{(HLL)}_{ij}=
+\begin{cases}
+  F\left(V_L^{(n)}\right) & 0 \leq S_L\\
+  \frac{S_R F\left(V_L^{(n)}\right) - S_L F\left(V_R^{(n)}\right) + S_R S_L (F\left(V_R^{(n)}\right) - F\left(V_L^{(n)}\right))}{S_R - S_L} & S_L \leq 0 \leq S_R\\
+  F\left(V_R^{(n)}\right) & S_R \leq 0\\
+\end{cases}
+\tag{26}
+\end{equation}
+
+Instead of:
+
+\begin{equation}
+F^{(HLL)}_{ij}=
+\begin{cases}
+  F\left(V_L^{(n)}\right) & 0 \leq S_L\\
+  \frac{S_R F\left(V_L^{(n)}\right) - S_L F\left(V_R^{(n)}\right) + S_R S_L (V_R^{(n)} - V_L^{(n)})
+  }{S_R - S_L} & S_L \leq 0 \leq S_R\\
+  F\left(V_R^{(n)}\right) & S_R \leq 0\\
+\end{cases}
+\tag{26 original}
+\end{equation}
+
+This is founded in an subtraction of a vector from a $4 \times 2$ Matrix.
+
+\end{document}

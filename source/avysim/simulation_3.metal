@@ -33,7 +33,7 @@ float xi(float R) {
 }
 
 float2 frictionTermsRKE(float R, float H, float U, float4 grav_accels, float2 n) {
-    return float2(n.x * (muh(R) * grav_accels.z  * H + (grav_accels.x * pow(U, 2) / xi(R)), n.y * (muh(R) * grav_accels.z * H + (grav_accels.y * pow(U, 2)) / xi(R)));
+    return float2(n.x * (muh(R) * grav_accels.z  * H + (grav_accels.x * U * U) / xi(R)), n.y * (muh(R) * grav_accels.z * H + (grav_accels.y * U * U) / xi(R)));
 }
 
 float2 frictionTermsVS(float H, float U, float4 grav_accels) {
