@@ -14,5 +14,6 @@
     "paper/*.fls": true
   },
   "editor.wrappingIndent": "deepIndent",
-  "editor.wordWrap": "on"
+  "editor.wordWrap": "on",
+  "liveServer.settings.port": 5501
 }

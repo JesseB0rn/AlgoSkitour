@@ -1,0 +1,6 @@
+*.tif
+dem_tiled/
+dem_tiled_disabled/
+tilesets/
+tiles_swissalps/
+cantons/

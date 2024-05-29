@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.1.1/dist/maplibre-gl.css" />
-    <script src="https://unpkg.com/maplibre-gl@4.1.1/dist/maplibre-gl.js"></script>
+    <script src="vendor/maplibre-gl.js"></script>
     <style>
       body {
         margin: 0;
@@ -74,7 +74,7 @@
       const map = (window.map = new maplibregl.Map({
         container: "map",
         zoom: 12,
-        center: [11.39085, 47.27574],
+        center: [8.40523, 46.70214],
         pitch: 52,
         hash: true,
         style: {
@@ -89,11 +89,13 @@
             },
             terrainSource: {
               type: "raster-dem",
-              url: "https://demotiles.maplibre.org/terrain-tiles/tiles.json",
+              // url: "https://demotiles.maplibre.org/terrain-tiles/tiles.json",
+              // url: "http://0.0.0.0:8000/services/ag",
+              url: "http://0.0.0.0:8000/services/swissalps",
               tileSize: 256,
             },
             fatmaplocs: {
-              minzoom: 11,
+              minzoom: 9,
               type: "vector",
               tiles: ["https://tiles.platform.fatmap.com/fatmap/{z}/{x}/{y}.pbf?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4M29iazA2Z2gycXA4N2pmbDZmangifQ.-g_vE53SD2WrJ6tFX7QHmA"],
             },
@@ -117,11 +119,11 @@
           ],
           terrain: {
             source: "terrainSource",
-            exaggeration: 1.25,
+            // exaggeration: 1.25,
           },
         },
         maxZoom: 18,
-        maxPitch: 85,
+        maxPitch: 70,
       }));
 
       map.addControl(
