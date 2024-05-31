@@ -1,7 +1,9 @@
 <script setup lang="ts">
-import HelloWorld from "./components/HelloWorld.vue";
+import Navbar from "./components/Navbar.vue";
+import Map from "./components/Map.vue";
 </script>
 
 <template>
-  <h1 class="text-3xl font-bold">Hello world!</h1>
+  <Navbar></Navbar>
+  <Map></Map>
 </template>
