@@ -3,7 +3,7 @@ import "maplibre-gl/dist/maplibre-gl.css";
 import { Map, NavigationControl, TerrainControl } from "maplibre-gl";
 import { onMounted } from "vue";
 
-const partialLayerPropsForPisteOutline = (color, type) => {
+const partialLayerPropsForPisteOutline = (color: string, type: number[]) => {
   return {
     paint: {
       "line-opacity": {
@@ -26,7 +26,7 @@ const partialLayerPropsForPisteOutline = (color, type) => {
     filter: ["in", ["get", "piste_type"], ["literal", type]],
   };
 };
-const partialLayerPropsForPiste = (color, type) => {
+const partialLayerPropsForPiste = (color: string, type: number[]) => {
   return {
     paint: {
       // "line-color": "#ff0000",
@@ -160,62 +160,61 @@ onMounted(() => {
       source: "fatmaplocs",
       "source-layer": "fatmap_pistes",
       ...partialLayerPropsForPiste("#254cb6", [1, 2, 7, 8]),
-    });
+    } as any);
     map.addLayer({
       id: "piste-blue-outline",
       type: "line",
       source: "fatmaplocs",
       "source-layer": "fatmap_pistes",
       ...partialLayerPropsForPisteOutline("hsl(0, 100%, 100%)", [1, 2, 7, 8]),
-    });
+    } as any);
     map.addLayer({
       id: "piste-red",
       type: "line",
       source: "fatmaplocs",
       "source-layer": "fatmap_pistes",
       ...partialLayerPropsForPiste("hsl(3, 73%, 44%)", [3, 9]),
-    });
+    } as any);
     map.addLayer({
       id: "piste-red-outline",
       type: "line",
       source: "fatmaplocs",
       "source-layer": "fatmap_pistes",
       ...partialLayerPropsForPisteOutline("hsl(0, 100%, 100%)", [3, 9]),
-    });
+    } as any);
     map.addLayer({
       id: "piste-black",
       type: "line",
       source: "fatmaplocs",
       "source-layer": "fatmap_pistes",
       ...partialLayerPropsForPiste("#1c1c1c", [4, 10]),
-    });
+    } as any);
     map.addLayer({
       id: "piste-black-outline",
       type: "line",
       source: "fatmaplocs",
       "source-layer": "fatmap_pistes",
       ...partialLayerPropsForPisteOutline("hsl(0, 100%, 100%)", [4, 10]),
-    });
+    } as any);
     map.addLayer({
       id: "piste-itin",
       type: "line",
       source: "fatmaplocs",
       "source-layer": "fatmap_pistes",
       ...partialLayerPropsForPiste("hsl(42, 100%, 47%)", [5, 16]),
-    });
+    } as any);
     map.addLayer({
       id: "piste-itin-outline",
       type: "line",
       source: "fatmaplocs",
       "source-layer": "fatmap_pistes",
       ...partialLayerPropsForPisteOutline("hsl(0, 100%, 100%)", [5, 16]),
-    });
+    } as any);
     map.addLayer({
       id: "lifts",
       type: "line",
       source: "fatmaplocs",
       "source-layer": "fatmap_lifts",
-      id: "lifts",
       layout: { "line-cap": "round" },
       paint: {
         "line-color": "#eaf1f5",
@@ -234,7 +233,7 @@ onMounted(() => {
           ],
         },
       },
-    });
+    } as any);
     map.addLayer({
       id: "lifts-outline",
       type: "line",
@@ -258,7 +257,7 @@ onMounted(() => {
         },
         "line-width": 1.5,
       },
-    });
+    } as any);
     map.addLayer({
       id: "lifts-icon",
       type: "symbol",
@@ -313,7 +312,7 @@ onMounted(() => {
         },
         "text-translate": [0, 0],
       },
-    });
+    } as any);
     map.addLayer({
       id: "poi-transit-stop",
       type: "symbol",
@@ -359,7 +358,7 @@ onMounted(() => {
           ],
         },
       },
-    });
+    } as any);
     map.addLayer({
       id: "poi-peak",
       type: "symbol",
@@ -393,7 +392,7 @@ onMounted(() => {
       },
       filter: ["all", ["==", ["get", "class"], "landform"], ["to-boolean", ["get", "elevation_m"]], ["to-boolean", ["get", "name"]]],
       paint: { "text-color": "hsl(141, 82%, 83%)", "text-halo-color": "#1c1c1c", "text-halo-width": 1 },
-    });
+    } as any);
     map.addLayer({
       id: "poi-glacier",
       type: "symbol",
@@ -423,7 +422,7 @@ onMounted(() => {
       },
       filter: ["==", ["get", "class"], "glacier"],
       paint: { "text-color": "#b1f1ff", "text-halo-color": "#1c1c1c", "text-halo-width": 1 },
-    });
+    } as any);
 
     map.addLayer({
       id: "poi-alpine-hut",
@@ -472,7 +471,7 @@ onMounted(() => {
         "text-halo-width": 1,
       },
       filter: ["in", ["get", "subclass"], ["literal", ["alpine_hut", "hotel", "basic_hut", "wilderness_hut"]]],
-    });
+    } as any);
     map.addLayer({
       id: "place-city-sm",
       type: "symbol",
@@ -518,7 +517,7 @@ onMounted(() => {
           ],
         },
       },
-    });
+    } as any);
 
     map.addSource("bulletin", {
       type: "geojson",
@@ -540,7 +539,7 @@ onMounted(() => {
           ],
         },
       },
-    });
+    } as any);
   });
 });
 </script>
