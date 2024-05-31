@@ -89,17 +89,15 @@
             },
             terrainSource: {
               type: "raster-dem",
-              // url: "https://demotiles.maplibre.org/terrain-tiles/tiles.json",
-              // url: "http://0.0.0.0:8000/services/ag",
-              // url: "http://0.0.0.0:8000/services/swissalps",
-              // url: "http://localhost:8080/services/tiles_swissalps.json",
               url: "https://shop.robofactory.ch/services/tiles_swissalps.json",
+              attribution: "SwissAlti3D © Swisstopo",
               tileSize: 256,
             },
             fatmaplocs: {
               minzoom: 9,
               type: "vector",
               tiles: ["https://tiles.platform.fatmap.com/fatmap/{z}/{x}/{y}.pbf?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4M29iazA2Z2gycXA4N2pmbDZmangifQ.-g_vE53SD2WrJ6tFX7QHmA"],
+              attribution: "Outdoorlocations © Fatmap",
             },
             fatmapoutdoorss: {
               minzoom: 9,
@@ -110,6 +108,7 @@
               minzoom: 9,
               type: "vector",
               tiles: ["https://api.mapbox.com/v4/mapbox.mapbox-streets-v8/{z}/{x}/{y}.vector.pbf?access_token=pk.eyJ1IjoiY2VyaWxld2lzIiwiYSI6ImNqOXo3cDlvOThsbXgzM3Q0ZWNsOG50dTAifQ.qgHw7AhNgKvEsfP1XgptPg"],
+              attribution: "Locationnames © OSM",
             },
           },
           layers: [
