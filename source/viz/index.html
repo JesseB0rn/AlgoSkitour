@@ -91,7 +91,9 @@
               type: "raster-dem",
               // url: "https://demotiles.maplibre.org/terrain-tiles/tiles.json",
               // url: "http://0.0.0.0:8000/services/ag",
-              url: "http://0.0.0.0:8000/services/swissalps",
+              // url: "http://0.0.0.0:8000/services/swissalps",
+              // url: "http://localhost:8080/services/tiles_swissalps.json",
+              url: "https://shop.robofactory.ch/services/tiles_swissalps.json",
               tileSize: 256,
             },
             fatmaplocs: {
@@ -119,11 +121,11 @@
           ],
           terrain: {
             source: "terrainSource",
-            // exaggeration: 1.25,
+            exaggeration: 1.0,
           },
         },
         maxZoom: 18,
-        maxPitch: 70,
+        maxPitch: 80,
       }));
 
       map.addControl(
