@@ -3,7 +3,7 @@ import { GearIcon, PersonIcon } from "@radix-icons/vue";
 </script>
 
 <template>
-  <div class="min-w-full bg-gray-950 min-h-20 border-b-4 border-orange-500 flex items-center justify-start shadow-orange-500 shadow-2xl xs:min-h-18">
+  <div class="min-w-full bg-gray-950 min-h-20 border-b-4 border-orange-500 flex items-center justify-start shadow-orange-500 shadow-2xl xs:min-h-16">
     <div class="flex items-center justify-center mx-8">
       <h1 class="sm:text-3xl font-bold text-white text-xl">AutoAlpineAtlas</h1>
     </div>

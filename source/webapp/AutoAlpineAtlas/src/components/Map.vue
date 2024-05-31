@@ -117,7 +117,7 @@ onMounted(() => {
   map.addControl(
     new TerrainControl({
       source: "terrainSource",
-      exaggeration: 3,
+      exaggeration: 1,
     })
   );
 
@@ -550,6 +550,7 @@ onMounted(() => {
 
 <style scoped>
 #map {
-  height: 100vh;
+  width: 100%;
+  height: calc(100vh - 5rem);
 }
 </style>
