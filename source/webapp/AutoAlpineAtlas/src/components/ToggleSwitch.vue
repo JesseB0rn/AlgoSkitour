@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { DoubleArrowDown, ArrowTopRightIcon, Component1Icon } from "@radix-icons/vue";
+import { DoubleArrowDownIcon, ArrowTopRightIcon, Component1Icon } from "@radix-icons/vue";
+import type { FunctionalComponent, HTMLAttributes, VNodeProps } from "vue";
 </script>
 
 <template>
@@ -19,7 +20,14 @@ import { DoubleArrowDown, ArrowTopRightIcon, Component1Icon } from "@radix-icons
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { DoubleArrowDownIcon, ArrowTopRightIcon } from "@radix-icons/vue";
+
+interface ToggleSwitchData {
+  options: string[];
+  colors: string[];
+  active: string;
+  activeIndex: number;
+  iconMapping: { [id: string]: FunctionalComponent<HTMLAttributes & VNodeProps> };
+}
 
 export default defineComponent({
   data() {
@@ -33,7 +41,7 @@ export default defineComponent({
         Tour: ArrowTopRightIcon,
         Varianten: Component1Icon, // Replace with the correct icon for Varianten if needed
       },
-    };
+    } as ToggleSwitchData;
   },
   computed: {
     bgStyle() {
@@ -47,7 +55,7 @@ export default defineComponent({
     },
   },
   methods: {
-    setActive(option, index) {
+    setActive(option: string, index: number) {
       this.active = option;
       this.activeIndex = index;
     },

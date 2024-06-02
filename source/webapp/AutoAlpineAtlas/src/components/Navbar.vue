@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { GearIcon, PersonIcon, FilePlusIcon } from "@radix-icons/vue";
-import IUINavState from "../interfaces/IUINavState.ts";
 
 const showSettings = defineModel("settings");
 const showUser = defineModel("user");
@@ -20,7 +19,7 @@ const showUser = defineModel("user");
       <span class="tooltip">Einstellungen</span>
       <GearIcon class="h-6 w-6 text-green-400 m-2" />
     </button>
-    <button class="flex items-center justify-center mr-8 hover:bg-gray-700 rounded-full has-tooltip transition-all duration-100">
+    <button class="flex items-center justify-center mr-8 hover:bg-gray-700 rounded-full has-tooltip transition-all duration-100" @click="showUser = !showUser">
       <span class="tooltip">Eigene Routen</span>
       <PersonIcon class="h-6 w-6 text-green-400 m-2" />
     </button>
