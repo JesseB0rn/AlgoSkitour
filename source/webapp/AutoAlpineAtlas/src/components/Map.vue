@@ -55,8 +55,10 @@ onMounted(() => {
   const map = new Map({
     container: "map",
     zoom: 12,
-    center: [8.40523, 46.70214],
-    pitch: 52,
+    // center: [8.40523, 46.70214],
+    center: [7.57353, 46.40102],
+    pitch: 55,
+    bearing: -40,
     hash: true,
     style: {
       version: 8,
