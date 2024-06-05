@@ -60,52 +60,7 @@ onMounted(() => {
     pitch: 55,
     bearing: -40,
     hash: true,
-    style: {
-      version: 8,
-      glyphs: "fonts.pbf/{fontstack}/{range}.pbf",
-      sources: {
-        osm: {
-          type: "raster",
-          tiles: ["https://tiles.platform.fatmap.com/winter-imagery/{z}/{x}/{y}.jpg"],
-          tileSize: 256,
-          maxzoom: 19,
-        },
-        terrainSource: {
-          type: "raster-dem",
-          url: "https://shop.robofactory.ch/services/tiles_swissalps.json",
-          attribution: "SwissAlti3D © Swisstopo",
-          tileSize: 256,
-        },
-        fatmaplocs: {
-          minzoom: 9,
-          type: "vector",
-          tiles: ["https://tiles.platform.fatmap.com/fatmap/{z}/{x}/{y}.pbf?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4M29iazA2Z2gycXA4N2pmbDZmangifQ.-g_vE53SD2WrJ6tFX7QHmA"],
-          attribution: "Outdoorlocations © Fatmap",
-        },
-        fatmapoutdoorss: {
-          minzoom: 9,
-          type: "vector",
-          tiles: ["https://tiles.platform.fatmap.com/fatmap-outdoors/{z}/{x}/{y}.pbf"],
-        },
-        mapboxstreet: {
-          minzoom: 9,
-          type: "vector",
-          tiles: ["https://api.mapbox.com/v4/mapbox.mapbox-streets-v8/{z}/{x}/{y}.vector.pbf?access_token=pk.eyJ1IjoiY2VyaWxld2lzIiwiYSI6ImNqOXo3cDlvOThsbXgzM3Q0ZWNsOG50dTAifQ.qgHw7AhNgKvEsfP1XgptPg"],
-          attribution: "Locationnames © OSM",
-        },
-      },
-      layers: [
-        {
-          id: "osm",
-          type: "raster",
-          source: "osm",
-        },
-      ],
-      terrain: {
-        source: "terrainSource",
-        exaggeration: 1.0,
-      },
-    },
+    style: "https://vectortiles.geo.admin.ch/styles/ch.swisstopo.basemap.vt/style.json",
     maxZoom: 18,
     maxPitch: 80,
   });
@@ -124,6 +79,22 @@ onMounted(() => {
   );
 
   map.on("load", async () => {
+    map.addSource("terrainSource", {
+      type: "raster-dem",
+      url: "https://shop.robofactory.ch/services/tiles_swissalps.json",
+      attribution: "SwissAlti3D © Swisstopo",
+      tileSize: 256,
+    });
+    map.addSource("fatmaplocs", {
+      minzoom: 9,
+      type: "vector",
+      tiles: ["https://tiles.platform.fatmap.com/fatmap/{z}/{x}/{y}.pbf?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4M29iazA2Z2gycXA4N2pmbDZmangifQ.-g_vE53SD2WrJ6tFX7QHmA"],
+      attribution: "Outdoorlocations © Fatmap",
+    });
+
+    map.setTerrain({
+      source: "terrainSource",
+    });
     map.addImage(
       "POI_Peak",
       (
@@ -277,7 +248,7 @@ onMounted(() => {
         "icon-rotation-alignment": "viewport",
         "icon-keep-upright": !0,
         "symbol-spacing": 500,
-        "text-font": ["Roboto Bold"],
+        "text-font": ["Frutiger Neue Bold"],
         "text-justify": "left",
         "text-offset": [1.5, -0.05],
         "icon-size": {
@@ -313,211 +284,6 @@ onMounted(() => {
           ],
         },
         "text-translate": [0, 0],
-      },
-    } as any);
-    map.addLayer({
-      id: "poi-transit-stop",
-      type: "symbol",
-      source: "mapboxstreet",
-      "source-layer": "transit_stop_label",
-      layout: {
-        "text-optional": !0,
-        "text-line-height": 1.1,
-        "text-size": 11,
-        "icon-offset": [0, -15],
-        "icon-image": "POI_Transit",
-        "text-font": ["Roboto Bold"],
-        "text-justify": "left",
-        "text-offset": [1.5, -0.25],
-        "icon-size": {
-          base: 0.35,
-          stops: [
-            [15, 0],
-            [15.1, 0.35],
-          ],
-        },
-        "text-anchor": "left",
-        "text-field": ["get", "name"],
-        "text-letter-spacing": 0.04,
-        "text-max-width": 12,
-      },
-      paint: {
-        "text-color": "#ffffff",
-        "text-opacity": {
-          base: 1,
-          stops: [
-            [16, 0],
-            [16.1, 1],
-          ],
-        },
-        "text-halo-color": "#1c1c1c",
-        "text-halo-width": 1,
-        "icon-opacity": {
-          base: 1,
-          stops: [
-            [14, 0],
-            [14.1, 1],
-          ],
-        },
-      },
-    } as any);
-    map.addLayer({
-      id: "poi-peak",
-      type: "symbol",
-      source: "mapboxstreet",
-      "source-layer": "natural_label",
-      layout: {
-        "text-optional": false,
-        "text-line-height": 1.1,
-        "text-size": {
-          base: 1,
-          stops: [
-            [14, 11],
-            [18, 13],
-          ],
-        },
-        "icon-offset": [0, 0],
-        "icon-image": "POI_Peak",
-        "text-font": ["Roboto Medium Italic"],
-        "text-offset": [0, -0.75],
-        "icon-size": {
-          base: 1,
-          stops: [
-            [12, 0.5],
-            [18, 0.7],
-          ],
-        },
-        "text-anchor": "bottom",
-        "text-field": ["format", ["get", "name"], ",\n", ["get", "elevation_m"], "m"],
-        "text-letter-spacing": 0.04,
-        "text-max-width": 8,
-      },
-      filter: ["all", ["==", ["get", "class"], "landform"], ["to-boolean", ["get", "elevation_m"]], ["to-boolean", ["get", "name"]]],
-      paint: { "text-color": "hsl(141, 82%, 83%)", "text-halo-color": "#1c1c1c", "text-halo-width": 1 },
-    } as any);
-    map.addLayer({
-      id: "poi-glacier",
-      type: "symbol",
-      source: "mapboxstreet",
-      "source-layer": "natural_label",
-      layout: {
-        "text-line-height": 1.1,
-        "text-size": {
-          base: 1,
-          stops: [
-            [14, 11],
-            [18, 13],
-          ],
-        },
-        "text-font": ["Roboto Medium"],
-        "text-offset": [0, 0],
-        "icon-size": {
-          base: 1,
-          stops: [
-            [11, 0.7],
-            [14, 0.9],
-          ],
-        },
-        "text-field": ["get", "name"],
-        "text-letter-spacing": 0.04,
-        "text-max-width": 8,
-      },
-      filter: ["==", ["get", "class"], "glacier"],
-      paint: { "text-color": "#b1f1ff", "text-halo-color": "#1c1c1c", "text-halo-width": 1 },
-    } as any);
-
-    map.addLayer({
-      id: "poi-alpine-hut",
-      type: "symbol",
-      source: "fatmapoutdoorss",
-      "source-layer": "osm_poi_huts_point",
-      minzoom: 9,
-      layout: {
-        "text-optional": !0,
-        "text-size": 11,
-        "icon-offset": [-8, -26],
-        "icon-image": "POI_Hut",
-        "text-font": ["Roboto Medium"],
-        "text-justify": "left",
-        "text-offset": [1.5, -1.6],
-        "text-rotation-alignment": "viewport",
-        "icon-size": {
-          base: 0.6,
-          stops: [
-            [11, 0],
-            [11.1, 0.6],
-          ],
-        },
-        "text-anchor": "left",
-        "text-field": ["get", "name"],
-        "text-letter-spacing": 0.04,
-        "text-max-width": 12,
-      },
-      paint: {
-        "text-color": "hsl(0, 0%, 100%)",
-        "text-halo-color": "hsl(0, 0%, 11%)",
-        "text-opacity": {
-          base: 1,
-          stops: [
-            [11, 0],
-            [11.1, 1],
-          ],
-        },
-        "icon-opacity": {
-          base: 1,
-          stops: [
-            [11, 0],
-            [11.1, 1],
-          ],
-        },
-        "text-halo-width": 1,
-      },
-      filter: ["in", ["get", "subclass"], ["literal", ["alpine_hut", "hotel", "basic_hut", "wilderness_hut"]]],
-    } as any);
-    map.addLayer({
-      id: "place-city-sm",
-      type: "symbol",
-      source: "mapboxstreet",
-      "source-layer": "place_label",
-      maxzoom: 16,
-      layout: {
-        "text-line-height": 1.1,
-        "text-size": {
-          base: 1,
-          stops: [
-            [10, 11],
-            [18, 13],
-          ],
-        },
-        "icon-image": "Map_Mob_Dual_City_Large",
-        "text-font": ["Roboto Medium"],
-        "text-offset": [0, -0.4],
-        "text-anchor": "bottom",
-        "text-field": ["get", "name"],
-        "text-letter-spacing": 0.04,
-        "text-max-width": 8,
-      },
-      paint: {
-        "text-color": "#fafafa",
-        "text-halo-color": "#1c1c1c",
-        "text-halo-width": 1,
-        "icon-opacity": {
-          base: 1,
-          stops: [
-            [5, 0],
-            [5.1, 1],
-            [8.99, 1],
-            [9, 0],
-          ],
-        },
-        "text-opacity": {
-          base: 1,
-          stops: [
-            [5, 0],
-            [5.1, 1],
-            [11.37, 1],
-          ],
-        },
       },
     } as any);
 
