@@ -1,0 +1,5 @@
+{'driver': 'VRT', 'dtype': 'float32', 'nodata': -9999.0, 'width': 143000, 'height': 83000, 'count': 1, 'crs': CRS.from_epsg(2056), 'transform': Affine(2.0, 0.0, 2548000.0,
+       0.0, -2.0, 1244000.0), 'blockxsize': 128, 'blockysize': 128, 'tiled': True}
+143000 83000
+-1 -1 2050 2050
+(2049, 2049)
