@@ -11,5 +11,8 @@ gdal2tiles --zoom=9-15 --processes=8 --resampling=near cantons/swissalps_rgb.tif
 mb-util --image_format=png --scheme=tms ./tiles_swissalps/ ./tilesets/swissalps.mbtiles
 
 
+gdalwarp -overwrite -t_srs EPSG:3857 -dstnodata 0.0 -r bilinear -of GTiff /Users/jesseb0rn/Documents/repos/Maturaarbeit-AlgoSkitour/source/tiledownloader/swissalps.vrt /Users/jesseb0rn/Documents/repos/Maturaarbeit-AlgoSkitour/source/tiledownloader/cantons/swissalps_reproj.tif
 
-gdaldem slope /Users/jesseb0rn/Documents/repos/Maturaarbeit-AlgoSkitour/source/tiledownloader/swissalps.vrt /Users/jesseb0rn/Documents/repos/Maturaarbeit-AlgoSkitour/source/tiledownloader/slope.tif -of GTiff -b 1 -s 1.0
+gdalwarp -overwrite -tr 10.0 10.0 -r bilinear -of GTiff /Users/jesseb0rn/Documents/repos/Maturaarbeit-AlgoSkitour/source/tiledownloader/swissalps.vrt /Users/jesseb0rn/Documents/repos/Maturaarbeit-AlgoSkitour/source/tiledownloader/resampled.tif
+
+gdaldem slope /Users/jesseb0rn/Documents/repos/Maturaarbeit-AlgoSkitour/source/tiledownloader/resampled.tif /Users/jesseb0rn/Documents/repos/Maturaarbeit-AlgoSkitour/source/tiledownloader/slope.tif -of GTiff -b 1 -s 1.0
