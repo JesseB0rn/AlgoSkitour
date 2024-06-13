@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import "maplibre-gl/dist/maplibre-gl.css";
 import { Map, NavigationControl, TerrainControl } from "maplibre-gl";
-import { onMounted } from "vue";
+import { ModelRef, onMounted, watch } from "vue";
+
+const navigateTo: ModelRef<any> = defineModel("navigateto");
+const searchText = defineModel("searchText");
 
 const partialLayerPropsForPisteOutline = (color: string, type: number[]) => {
   return {
@@ -308,6 +311,30 @@ onMounted(() => {
         },
       },
     } as any);
+  });
+
+  watch(navigateTo, (v) => {
+    // map.setCenter(v);
+    // map.setZoom(12);
+
+    const regex = /BOX\(([-\d.]+) ([-\d.]+),([-\d.]+) ([-\d.]+)\)/;
+
+    // Match the input string with the regex
+    const match = v.box.match(regex);
+
+    if (match) {
+      // Parse the captured groups into numbers
+      const x1 = parseFloat(match[1]);
+      const y1 = parseFloat(match[2]);
+      const x2 = parseFloat(match[3]);
+      const y2 = parseFloat(match[4]);
+
+      map.fitBounds([
+        [x1, y1],
+        [x2, y2],
+      ]);
+      searchText.value = "";
+    }
   });
 });
 </script>
