@@ -3,6 +3,8 @@ import "maplibre-gl/dist/maplibre-gl.css";
 import { Map, NavigationControl, TerrainControl } from "maplibre-gl";
 import { ModelRef, onMounted, watch } from "vue";
 
+const emit = defineEmits(["map-click"]);
+
 const navigateTo: ModelRef<any> = defineModel("navigateto");
 const searchText = defineModel("searchText");
 
@@ -54,8 +56,17 @@ const partialLayerPropsForPiste = (color: string, type: number[]) => {
   };
 };
 
+var map: maplibregl.Map;
+
+const updateCalculatedRoute = (geojson: GeoJSON.FeatureCollection) => {
+  (map.getSource("algotour-tour") as unknown as any).setData(geojson);
+};
+defineExpose({
+  updateCalculatedRoute: updateCalculatedRoute,
+});
+
 onMounted(() => {
-  const map = new Map({
+  map = new Map({
     container: "map",
     zoom: 12,
     // center: [8.40523, 46.70214],
@@ -82,6 +93,39 @@ onMounted(() => {
   );
 
   map.on("load", async () => {
+    map.addSource("algotour-tour", {
+      type: "geojson",
+      data: {
+        type: "Feature",
+        geometry: {
+          type: "Point",
+        },
+      } as GeoJSON.Feature,
+    });
+    map.addLayer({
+      id: "algotour-tours-layer",
+      type: "line",
+      source: "algotour-tour",
+      paint: {
+        // "line-color": "#ff0000",
+        // "line-width": 4,
+        "line-color": "hsl(300, 100%, 47%)",
+        "line-opacity": {
+          base: 1,
+          stops: [
+            [11, 0],
+            [11.1, 1],
+          ],
+        },
+        "line-width": {
+          base: 2,
+          stops: [
+            [11, 2],
+            [18, 9],
+          ],
+        },
+      },
+    } as any);
     map.addSource("terrainSource", {
       type: "raster-dem",
       url: "https://shop.robofactory.ch/services/tiles_swissalps.json",
@@ -311,6 +355,10 @@ onMounted(() => {
         },
       },
     } as any);
+  });
+
+  map.on("click", (e) => {
+    emit("map-click", e.lngLat);
   });
 
   watch(navigateTo, (v) => {

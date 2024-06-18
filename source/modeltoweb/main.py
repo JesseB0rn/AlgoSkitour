@@ -26,8 +26,12 @@ def calculate_path(startpoint: GeoPoint, endpoint: GeoPoint):
 # Function to process new document
 def process_new_document(doc_data, ref):
     print("Processing new document:")
+    ref.update({
+          'state': 'processing'
+      })
     print(doc_data)
     outpath = calculate_path(doc_data['startpoint'], doc_data['endpoint'])
+
     # o = json.load(open(outpath))
     # print(o)
     with open(outpath) as o:
