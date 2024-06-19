@@ -15,9 +15,21 @@ cred = credentials.Certificate(FB_PRIVATE_KEY)
 firebase_admin.initialize_app(cred)
 db = firestore.client()
 
+class EModel:
+    NAIVE = 0
+    LAKES = 1
+    ALL = 2
+
+
+
+
 
 def calculate_path(startpoint: GeoPoint, endpoint: GeoPoint):
-  cmd=f"{QGS_PRC_PATH} run model:GRMLeastCostModel_lakes_wgs84 --distance_units=meters --area_units=m2 --ellipsoid=EPSG:7004 --startp='{startpoint.longitude},{startpoint.latitude} [EPSG:4326]' --endp='{endpoint.longitude},{endpoint.latitude} [EPSG:4326]' --pufferradius_m=2500 --risikokarte=/Users/jesseb0rn/Documents/repos/Maturaarbeit-AlgoSkitour/source/riskprocessor/riskmap.tif --swisstlm_gewsser_stehend='/Users/jesseb0rn/Downloads/SWISSTLM3D_2024_LV95_LN02.gpkg|layername=tlm_gewaesser_stehendes_gewaesser' --outputpath=/Users/jesseb0rn/Desktop/routes/out_$(uuidgen).geojson --json"
+  
+
+  cmd=f"{QGS_PRC_PATH} run model:LeastCostCorridor --distance_units=meters --area_units=m2 --ellipsoid=EPSG:7004 --startp='{startpoint.longitude},{startpoint.latitude} [EPSG:4326]' --endp='{endpoint.longitude},{endpoint.latitude} [EPSG:4326]' --pufferradius_m=2500 --risikokarte=/Users/jesseb0rn/AlgoTour/Riskmap_Burned_All.tif --outputpath=/Users/jesseb0rn/Desktop/routes/out_$(uuidgen).geojson --json"
+
+  # cmd=f"{QGS_PRC_PATH} run model:GRMLeastCostModel_lakes_wgs84 --distance_units=meters --area_units=m2 --ellipsoid=EPSG:7004 --startp='{startpoint.longitude},{startpoint.latitude} [EPSG:4326]' --endp='{endpoint.longitude},{endpoint.latitude} [EPSG:4326]' --pufferradius_m=2500 --risikokarte=/Users/jesseb0rn/Documents/repos/Maturaarbeit-AlgoSkitour/source/riskprocessor/riskmap.tif --swisstlm_gewsser_stehend='/Users/jesseb0rn/Downloads/SWISSTLM3D_2024_LV95_LN02.gpkg|layername=tlm_gewaesser_stehendes_gewaesser' --outputpath=/Users/jesseb0rn/Desktop/routes/out_$(uuidgen).geojson --json"
   result = subprocess.check_output(cmd, shell=True)
   print(outpath := json.loads(result)['results']['outputpath'])
   
