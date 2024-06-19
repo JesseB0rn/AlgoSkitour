@@ -76,7 +76,7 @@ const reset = () => {
 
 <template>
   <div class="max-h-screen w-screen bg-stone-500">
-    <Navbar v-model:settings="showSettings" v-model:planning="showPlanning" v-model:user="showUser" v-model:searchText="searchText"></Navbar>
+    <Navbar v-model:settings="showSettings" v-model:planning="showPlanning" v-model:user="showUser" v-model:searchText="searchText" v-model:is-picking="picking"></Navbar>
     <Configsidebar v-model:show="showSettings"></Configsidebar>
     <PlanningSidebar
       v-model:show="showPlanning"
