@@ -74,7 +74,7 @@ onMounted(() => {
     pitch: 55,
     bearing: -40,
     hash: true,
-    style: "https://vectortiles.geo.admin.ch/styles/ch.swisstopo.basemap.vt/style.json",
+    style: "/style_light.json",
     maxZoom: 18,
     maxPitch: 80,
   });
@@ -96,11 +96,9 @@ onMounted(() => {
     map.addSource("algotour-tour", {
       type: "geojson",
       data: {
-        type: "Feature",
-        geometry: {
-          type: "Point",
-        },
-      } as GeoJSON.Feature,
+        type: "FeatureCollection",
+        features: [],
+      } as GeoJSON.FeatureCollection,
     });
     map.addLayer({
       id: "algotour-tours-layer",
