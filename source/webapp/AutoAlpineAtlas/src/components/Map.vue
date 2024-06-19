@@ -105,8 +105,6 @@ onMounted(() => {
       type: "line",
       source: "algotour-tour",
       paint: {
-        // "line-color": "#ff0000",
-        // "line-width": 4,
         "line-color": "hsl(300, 100%, 47%)",
         "line-opacity": {
           base: 1,
@@ -122,6 +120,29 @@ onMounted(() => {
             [18, 9],
           ],
         },
+      },
+    } as any);
+    map.addLayer({
+      id: "algotour-tours-layer-outline",
+      type: "line",
+      source: "algotour-tour",
+      paint: {
+        "line-opacity": {
+          base: 1,
+          stops: [
+            [11, 0],
+            [11.1, 0.6],
+          ],
+        },
+        "line-color": "hsl(0, 100%, 100%)",
+        "line-gap-width": {
+          base: 1.7,
+          stops: [
+            [11, 3.2],
+            [18, 9.5],
+          ],
+        },
+        "line-width": 2.5,
       },
     } as any);
     map.addSource("terrainSource", {
