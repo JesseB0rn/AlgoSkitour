@@ -24,12 +24,18 @@ class EModel:
 
 
 
-def calculate_path(startpoint: GeoPoint, endpoint: GeoPoint):
+def calculate_path(startpoint: GeoPoint, endpoint: GeoPoint, model = EModel.ALL):
+  cmd = ""
+  match model:
+    case EModel.LAKES:
+      cmd=f"{QGS_PRC_PATH} run model:LeastCostCorridor --distance_units=meters --area_units=m2 --ellipsoid=EPSG:7004 --startp='{startpoint.longitude},{startpoint.latitude} [EPSG:4326]' --endp='{endpoint.longitude},{endpoint.latitude} [EPSG:4326]' --pufferradius_m=2500 --risikokarte=/Users/jesseb0rn/AlgoTour/Riskmap_Burned_Lakes.tif --outputpath=/Users/jesseb0rn/AlgoTour/routes/out_$(uuidgen).geojson --json"
+    case EModel.NAIVE:
+      cmd=f"{QGS_PRC_PATH} run model:LeastCostCorridor --distance_units=meters --area_units=m2 --ellipsoid=EPSG:7004 --startp='{startpoint.longitude},{startpoint.latitude} [EPSG:4326]' --endp='{endpoint.longitude},{endpoint.latitude} [EPSG:4326]' --pufferradius_m=2500 --risikokarte=/Users/jesseb0rn/AlgoTour/riskmap.tif --outputpath=/Users/jesseb0rn/AlgoTour/routes/out_$(uuidgen).geojson --json"
+    case _:
+      cmd=f"{QGS_PRC_PATH} run model:LeastCostCorridor --distance_units=meters --area_units=m2 --ellipsoid=EPSG:7004 --startp='{startpoint.longitude},{startpoint.latitude} [EPSG:4326]' --endp='{endpoint.longitude},{endpoint.latitude} [EPSG:4326]' --pufferradius_m=2500 --risikokarte=/Users/jesseb0rn/AlgoTour/Riskmap_Burned_All.tif --outputpath=/Users/jesseb0rn/AlgoTour/routes/out_$(uuidgen).geojson --json"
   
+  print("running:", cmd)
 
-  cmd=f"{QGS_PRC_PATH} run model:LeastCostCorridor --distance_units=meters --area_units=m2 --ellipsoid=EPSG:7004 --startp='{startpoint.longitude},{startpoint.latitude} [EPSG:4326]' --endp='{endpoint.longitude},{endpoint.latitude} [EPSG:4326]' --pufferradius_m=2500 --risikokarte=/Users/jesseb0rn/AlgoTour/Riskmap_Burned_All.tif --outputpath=/Users/jesseb0rn/Desktop/routes/out_$(uuidgen).geojson --json"
-
-  # cmd=f"{QGS_PRC_PATH} run model:GRMLeastCostModel_lakes_wgs84 --distance_units=meters --area_units=m2 --ellipsoid=EPSG:7004 --startp='{startpoint.longitude},{startpoint.latitude} [EPSG:4326]' --endp='{endpoint.longitude},{endpoint.latitude} [EPSG:4326]' --pufferradius_m=2500 --risikokarte=/Users/jesseb0rn/Documents/repos/Maturaarbeit-AlgoSkitour/source/riskprocessor/riskmap.tif --swisstlm_gewsser_stehend='/Users/jesseb0rn/Downloads/SWISSTLM3D_2024_LV95_LN02.gpkg|layername=tlm_gewaesser_stehendes_gewaesser' --outputpath=/Users/jesseb0rn/Desktop/routes/out_$(uuidgen).geojson --json"
   result = subprocess.check_output(cmd, shell=True)
   print(outpath := json.loads(result)['results']['outputpath'])
   
@@ -42,7 +48,11 @@ def process_new_document(doc_data, ref):
           'state': 'processing'
       })
     print(doc_data)
-    outpath = calculate_path(doc_data['startpoint'], doc_data['endpoint'])
+    model = EModel.NAIVE 
+    model = EModel.ALL if doc_data['modelversion'] == "lake+street" else model
+    model = EModel.LAKES if doc_data['modelversion'] == "lake" else model
+    print(model)
+    outpath = calculate_path(doc_data['startpoint'], doc_data['endpoint'], model)
 
     # o = json.load(open(outpath))
     # print(o)

@@ -4,7 +4,7 @@ import riomucho
 import numpy as np
 
 def calculate_grm_risk(slope):
-    return np.sqrt(1 / (1 + np.exp(-(slope-28.0) / 3.0)))
+    return np.maximum(1 / (1 + np.exp(-(slope-28.0) / 3.0)), (1 / (1 + np.exp(-(slope-28.0) / 3.0))) + ((slope/300) - 0.15))
 
 def read_function(data, window, ij, g_args):
     """Takes an array, and sets any value above the mean to the max, the rest to 0"""

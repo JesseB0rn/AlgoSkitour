@@ -30,6 +30,8 @@ var currentRoute: _RefFirestore<any> | undefined;
 const currentState: Ref<EState | undefined> = ref();
 const map = ref<InstanceType<typeof Map> | null>(null);
 
+const selectedModel = ref("lake+street");
+
 const selectedPoint = (latlng: coords) => {
   console.log(JSON.stringify(latlng));
 
@@ -56,7 +58,7 @@ const startPlanning = async () => {
         route: null,
         owner: "",
         centerpoint_geohash: "",
-        modelversion: "",
+        modelversion: selectedModel.value,
       })
     );
   watch(currentRoute!, () => {
@@ -84,6 +86,7 @@ const reset = () => {
       v-model:start-point="startPoint"
       v-model:end-point="endPoint"
       v-model:current-state="currentState"
+      v-model:selected-model="selectedModel"
       @plan-start="
         pickingStart = true;
         picking = true;
