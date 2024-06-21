@@ -56,11 +56,13 @@ watch(currentState, (a) => {
         <!-- Control buttons / state indicators -->
         <div class="py-2">
           <button v-if="!currentState" class="bg-green-500 rounded-md py-2 px-4 text-white w-full flex flex-nowrap items-center justify-center" @click="emit('launch-planning')"><PlayIcon class="mr-2"></PlayIcon> Berechnung Starten</button>
-          <div v-if="currentState == 'waiting'" class="bg-yellow-400 rounded-md py-2 px-4 text-white w-full flex flex-nowrap items-center justify-center">Warten...<span class="tooltip">Abbrechen</span></div>
-          <div v-if="currentState == 'processing'" class="bg-blue-600 rounded-md py-2 px-4 text-white w-full flex flex-nowrap items-center justify-center">
+          <div v-if="currentState == 'waiting'" class="bg-yellow-400 rounded-md py-2 px-4 text-white w-full flex flex-nowrap items-center justify-center has-tooltip">
+            Warten...<span class="tooltip">Du bist in der Warteschlange, du kannst dieses Fenster schliessen und später zurückkehren</span>
+          </div>
+          <div v-if="currentState == 'processing'" class="bg-blue-600 rounded-md py-2 px-4 text-white w-full flex flex-nowrap items-center justify-center has-tooltip">
             <SymbolIcon class="mr-2 animate-spin-slow"></SymbolIcon>
             In Berechnung...
-            <span class="tooltip">Abbrechen</span>
+            <span class="tooltip">Deine Route wird momentan berechnet</span>
           </div>
           <div v-if="currentState == 'processed'">Erfolgreich Verarbeitet.</div>
           <button v-if="currentState == 'processed'" class="bg-red-500 rounded-md py-2 px-4 text-white w-full flex flex-nowrap items-center justify-center" @click="emit('reset')"><ResetIcon class="mr-2"></ResetIcon> Nochmals</button>
