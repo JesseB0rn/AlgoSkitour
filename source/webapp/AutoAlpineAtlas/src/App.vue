@@ -3,13 +3,16 @@ import Navbar from "./components/Navbar.vue";
 import Map from "./components/Map.vue";
 import Configsidebar from "./components/Configsidebar.vue";
 import SearchResults from "./components/SearchResults.vue";
+import AccountSidebar from "./components/AccountSidebar.vue";
 import PlanningSidebar from "./components/PlanningSidebar.vue";
 import { Ref, ref, watch } from "vue";
-import { _RefFirestore, useDocument } from "vuefire";
+import { _RefFirestore, useCurrentUser, useDocument } from "vuefire";
 import { GeoPoint, addDoc } from "firebase/firestore";
 import { EState, toursRef } from "./firebase";
 
 export type coords = { lng: number; lat: number };
+
+const user = useCurrentUser();
 
 let showPlanning = ref(false);
 let showSettings = ref(false);
@@ -56,7 +59,7 @@ const startPlanning = async () => {
         startpoint: new GeoPoint(startPoint.value?.lat, startPoint.value?.lng),
         endpoint: new GeoPoint(endPoint.value?.lat, endPoint.value?.lng),
         route: null,
-        owner: "",
+        owner: user?.value?.uid || "",
         centerpoint_geohash: "",
         modelversion: selectedModel.value,
       })
@@ -98,6 +101,7 @@ const reset = () => {
       @launch-planning="startPlanning()"
       @reset="reset()"
     ></PlanningSidebar>
+    <AccountSidebar v-model:show="showUser"></AccountSidebar>
     <SearchResults v-model:searchText="searchText" @navigate="(coord) => (searchResultCoord = coord)"></SearchResults>
     <div class="flex">
       <Map ref="map" v-model:navigateto="searchResultCoord" v-model:searchText="searchText" @map-click="(ltln) => selectedPoint(ltln)"></Map>

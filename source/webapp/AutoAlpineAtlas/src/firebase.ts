@@ -1,6 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, GeoPoint } from "firebase/firestore";
-// ... other firebase imports
+import { getFirestore, collection, GeoPoint, query, where } from "firebase/firestore";
 
 export const firebaseApp = initializeApp({
   apiKey: "AIzaSyDXockQOkVpy34Ear-Jiy2J8qztY1THv1U",
@@ -16,6 +15,7 @@ export const db = getFirestore(firebaseApp);
 
 // here we can export reusable database references
 export const toursRef = collection(db, "tours");
+export const toursUserRef = (userid: string) => query(toursRef, where("owner", "==", userid));
 
 export type EState = "waiting" | "processing" | "processed";
 

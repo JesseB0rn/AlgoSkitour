@@ -36,15 +36,15 @@ const searchText = defineModel("searchText");
       </div>
 
       <div class="flex transition-all" :class="{ 'translate-x-full': isPicking, 'scale-x-0': isPicking, 'w-0': isPicking }">
-        <button class="flex items-center justify-center mr-4 hover:bg-gray-700 rounded-full has-tooltip transition-all duration-100" @click="planning = !planning">
+        <button class="flex items-center justify-center mr-4 hover:bg-gray-700 rounded-full has-tooltip transition-all duration-100" :class="{ 'bg-gray-700': planning }" @click="planning = !planning">
           <span class="tooltip">Neue Route Planen</span>
           <FilePlusIcon class="h-6 w-6 text-green-400 m-2" />
         </button>
-        <button class="flex items-center justify-center mr-4 hover:bg-gray-700 rounded-full has-tooltip transition-all duration-100" @click="showSettings = !showSettings">
+        <button class="flex items-center justify-center mr-4 hover:bg-gray-700 rounded-full has-tooltip transition-all duration-100" :class="{ 'bg-gray-700': showSettings }" @click="showSettings = !showSettings">
           <span class="tooltip">Einstellungen</span>
           <GearIcon class="h-6 w-6 text-green-400 m-2" />
         </button>
-        <button class="flex items-center justify-center mr-8 hover:bg-gray-700 rounded-full has-tooltip transition-all duration-100" @click="showUser = !showUser">
+        <button class="flex items-center justify-center mr-8 hover:bg-gray-700 rounded-full has-tooltip transition-all duration-100" :class="{ 'bg-gray-700': showUser }" @click="showUser = !showUser">
           <span class="tooltip">Eigene Routen</span>
           <PersonIcon class="h-6 w-6 text-green-400 m-2" />
         </button>
