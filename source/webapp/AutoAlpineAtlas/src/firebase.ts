@@ -15,7 +15,7 @@ export const db = getFirestore(firebaseApp);
 
 // here we can export reusable database references
 export const toursRef = collection(db, "tours");
-export const toursUserRef = (userid: string) => query(toursRef, where("owner", "==", userid));
+export const toursUserRef = (userid: string) => query(toursRef, where("owner", "==", userid != "" ? userid : "---"));
 
 export type EState = "waiting" | "processing" | "processed";
 

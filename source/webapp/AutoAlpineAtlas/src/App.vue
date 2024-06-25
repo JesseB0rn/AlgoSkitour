@@ -7,8 +7,9 @@ import AccountSidebar from "./components/AccountSidebar.vue";
 import PlanningSidebar from "./components/PlanningSidebar.vue";
 import { Ref, ref, watch } from "vue";
 import { _RefFirestore, useCurrentUser, useDocument } from "vuefire";
-import { GeoPoint, addDoc } from "firebase/firestore";
+import { GeoPoint, addDoc, doc } from "firebase/firestore";
 import { EState, toursRef } from "./firebase";
+import { db } from "./firebase";
 
 export type coords = { lng: number; lat: number };
 
@@ -73,6 +74,16 @@ const startPlanning = async () => {
   });
 };
 
+const loadMap = (id: string) => {
+  currentRoute = useDocument(doc(db, toursRef.path, id));
+  watch(currentRoute!, () => {
+    if (currentRoute?.data.value["route"]) {
+      let geojson = JSON.parse(currentRoute.data.value["route"]);
+      map.value?.updateCalculatedRoute(geojson);
+    }
+  });
+};
+
 const reset = () => {
   currentRoute = undefined;
   currentState.value = undefined;
@@ -101,7 +112,7 @@ const reset = () => {
       @launch-planning="startPlanning()"
       @reset="reset()"
     ></PlanningSidebar>
-    <AccountSidebar v-model:show="showUser"></AccountSidebar>
+    <AccountSidebar v-model:show="showUser" @hovered-stored-tour="" @selected-stored-tour="loadMap"></AccountSidebar>
     <SearchResults v-model:searchText="searchText" @navigate="(coord) => (searchResultCoord = coord)"></SearchResults>
     <div class="flex">
       <Map ref="map" v-model:navigateto="searchResultCoord" v-model:searchText="searchText" @map-click="(ltln) => selectedPoint(ltln)"></Map>

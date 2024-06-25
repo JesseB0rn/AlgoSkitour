@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import "maplibre-gl/dist/maplibre-gl.css";
-import { Map, NavigationControl, TerrainControl } from "maplibre-gl";
+import maplibregl, { Map, NavigationControl, TerrainControl } from "maplibre-gl";
 import { ModelRef, onMounted, watch } from "vue";
 
 const emit = defineEmits(["map-click"]);
@@ -60,6 +60,21 @@ var map: maplibregl.Map;
 
 const updateCalculatedRoute = (geojson: GeoJSON.FeatureCollection) => {
   (map.getSource("algotour-tour") as unknown as any).setData(geojson);
+
+  const coordinates = (geojson.features[0].geometry as any).coordinates;
+
+  // Pass the first coordinates in the LineString to `lngLatBounds` &
+  // wrap each coordinate pair in `extend` to include them in the bounds
+  // result. A variation of this technique could be applied to zooming
+  // to the bounds of multiple Points or Polygon geometries - it just
+  // requires wrapping all the coordinates with the extend method.
+  const bounds = coordinates.reduce((bounds: any, coord: any) => {
+    return bounds.extend(coord);
+  }, new maplibregl.LngLatBounds(coordinates[0], coordinates[0]));
+
+  map.fitBounds(bounds, {
+    padding: 20,
+  });
 };
 defineExpose({
   updateCalculatedRoute: updateCalculatedRoute,
