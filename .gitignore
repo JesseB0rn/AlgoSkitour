@@ -3,3 +3,4 @@ env/
 *.vrt
 *.tif
 oldenv/
+firebase.json
