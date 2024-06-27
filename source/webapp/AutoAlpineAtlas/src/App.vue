@@ -68,7 +68,10 @@ const startPlanning = async () => {
   watch(currentRoute!, () => {
     currentState.value = currentRoute?.data.value["state"];
     if (currentRoute?.data.value["route"]) {
-      console.log("[ROUTE]", currentRoute.data.value["route"]);
+      showPlanning.value = false;
+      showSettings.value = false;
+      showUser.value = false;
+
       map.value?.updateCalculatedRoute(JSON.parse(currentRoute.data.value["route"]));
     }
   });
@@ -76,6 +79,9 @@ const startPlanning = async () => {
 
 const loadMap = (id: string) => {
   currentRoute = useDocument(doc(db, toursRef.path, id));
+  showPlanning.value = false;
+  showSettings.value = false;
+  showUser.value = false;
   watch(currentRoute!, () => {
     if (currentRoute?.data.value["route"]) {
       let geojson = JSON.parse(currentRoute.data.value["route"]);

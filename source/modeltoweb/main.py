@@ -2,8 +2,10 @@
 Watches for changes in firestore collection, then processes sequentially
 Also sanitizes coords
 """
-QGS_PRC_PATH = "/Applications/QGIS.app/Contents/MacOS/bin/qgis_process"
-FB_PRIVATE_KEY = "/Users/jesseb0rn/Desktop/algotour-834d6-firebase-adminsdk-7jgfl-2082a2e6d6.json"
+
+#TODO: Make output dir a config var
+
+from config import *
 
 import json
 import subprocess
@@ -21,18 +23,15 @@ class EModel:
     ALL = 2
 
 
-
-
-
 def calculate_path(startpoint: GeoPoint, endpoint: GeoPoint, model = EModel.ALL):
   cmd = ""
   match model:
     case EModel.LAKES:
-      cmd=f"{QGS_PRC_PATH} run model:LeastCostCorridor --distance_units=meters --area_units=m2 --ellipsoid=EPSG:7004 --startp='{startpoint.longitude},{startpoint.latitude} [EPSG:4326]' --endp='{endpoint.longitude},{endpoint.latitude} [EPSG:4326]' --pufferradius_m=2500 --risikokarte=/Users/jesseb0rn/AlgoTour/Riskmap_Burned_Lakes.tif --outputpath=/Users/jesseb0rn/AlgoTour/routes/out_$(uuidgen).geojson --json"
+      cmd=f"{QGS_PRC_PATH} run model:LeastCostCorridor --distance_units=meters --area_units=m2 --ellipsoid=EPSG:7004 --startp='{startpoint.longitude},{startpoint.latitude} [EPSG:4326]' --endp='{endpoint.longitude},{endpoint.latitude} [EPSG:4326]' --pufferradius_m=2500 --risikokarte={RISKMAP_LAKES} --outputpath={OUTDIR}/out_$(uuidgen).geojson --json"
     case EModel.NAIVE:
-      cmd=f"{QGS_PRC_PATH} run model:LeastCostCorridor --distance_units=meters --area_units=m2 --ellipsoid=EPSG:7004 --startp='{startpoint.longitude},{startpoint.latitude} [EPSG:4326]' --endp='{endpoint.longitude},{endpoint.latitude} [EPSG:4326]' --pufferradius_m=2500 --risikokarte=/Users/jesseb0rn/AlgoTour/riskmap.tif --outputpath=/Users/jesseb0rn/AlgoTour/routes/out_$(uuidgen).geojson --json"
+      cmd=f"{QGS_PRC_PATH} run model:LeastCostCorridor --distance_units=meters --area_units=m2 --ellipsoid=EPSG:7004 --startp='{startpoint.longitude},{startpoint.latitude} [EPSG:4326]' --endp='{endpoint.longitude},{endpoint.latitude} [EPSG:4326]' --pufferradius_m=2500 --risikokarte={RISKMAP_BASE} --outputpath={OUTDIR}/out_$(uuidgen).geojson --json"
     case _:
-      cmd=f"{QGS_PRC_PATH} run model:LeastCostCorridor --distance_units=meters --area_units=m2 --ellipsoid=EPSG:7004 --startp='{startpoint.longitude},{startpoint.latitude} [EPSG:4326]' --endp='{endpoint.longitude},{endpoint.latitude} [EPSG:4326]' --pufferradius_m=2500 --risikokarte=/Users/jesseb0rn/AlgoTour/Riskmap_Burned_All.tif --outputpath=/Users/jesseb0rn/AlgoTour/routes/out_$(uuidgen).geojson --json"
+      cmd=f"{QGS_PRC_PATH} run model:LeastCostCorridor --distance_units=meters --area_units=m2 --ellipsoid=EPSG:7004 --startp='{startpoint.longitude},{startpoint.latitude} [EPSG:4326]' --endp='{endpoint.longitude},{endpoint.latitude} [EPSG:4326]' --pufferradius_m=2500 --risikokarte={RISKMAP_LAKESSTREET} --outputpath={OUTDIR}/out_$(uuidgen).geojson --json"
   
   print("running:", cmd)
 

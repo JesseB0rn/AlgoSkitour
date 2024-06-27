@@ -89,7 +89,7 @@ onMounted(() => {
     pitch: 55,
     bearing: -40,
     hash: true,
-    style: "/style_light.json",
+    style: "./style_light.json",
     maxZoom: 18,
     maxPitch: 80,
   });
@@ -162,10 +162,10 @@ onMounted(() => {
     } as any);
     map.addSource("terrainSource", {
       type: "raster-dem",
-      url: "https://shop.robofactory.ch/services/tiles_swissalps.json",
+      url: "https://shop.robofactory.ch/swissalps.json",
       attribution: "SwissAlti3D © Swisstopo",
       tileSize: 256,
-    });
+    } as maplibregl.SourceSpecification);
     map.addSource("fatmaplocs", {
       minzoom: 9,
       type: "vector",
