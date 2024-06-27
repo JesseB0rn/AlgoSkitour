@@ -1,0 +1,15 @@
+services:
+  qgis:
+    build: .
+      #entrypoint: /bin/sh
+      #stdin_open: true # docker run -i
+      #tty: true
+    container_name: qgis-model-firebase
+    volumes:
+      # - ./plugins:/root/.local/share/QGIS/QGIS3/profiles/default/python/plugins
+      #- ./models:/root/.local/share/QGIS/QGIS3/profiles/default/processing/models
+      - ./firebase.json:/root/firebase.json
+      - ./riskmaps:/root/riskmaps
+      - ./config.py:/root/config.py
+
+

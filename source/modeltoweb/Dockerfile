@@ -23,14 +23,29 @@ RUN echo "Types: deb deb-src" > /etc/apt/sources.list.d/qgis.sources && \
 RUN apt-get update && apt-get install -y qgis
 
 # Clean up APT when done
-RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Set the default command to run when starting the container
-RUN apt-get install -y python3-pip
+RUN apt-get update && apt-get install -y python3-pip uuid-runtime
 RUN pip install firebase-admin --break-system-packages
+RUN apt-get install -y unzip
+RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
-WORKDIR /root
 
 COPY main.py /root/main.py
+# ADD ./plugins /root/.local/share/QGIS/QGIS3/profiles/default/python/plugin
+# RUN mkdir /root/.local/share/QGIS/QGIS3/profiles/default/python/plugins
+RUN mkdir -p /root/.local/share/QGIS/QGIS3/profiles/default/python/plugins
+RUN wget https://plugins.qgis.org/plugins/leastcostpath/version/1.1/download/ -O /root/.local/share/QGIS/QGIS3/profiles/default/python/plugins/leastcostpath.zip
+RUN unzip /root/.local/share/QGIS/QGIS3/profiles/default/python/plugins/leastcostpath.zip -d /root/.local/share/QGIS/QGIS3/profiles/default/python/plugins/
+RUN rm /root/.local/share/QGIS/QGIS3/profiles/default/python/plugins/leastcostpath.zip
 
-CMD ["/bin/bash"]
+ADD ./models /root/.local/share/QGIS/QGIS3/profiles/default/processing/models
+
+RUN mkdir /root/routes
+
+RUN qgis_process plugins enable leastcostpath
+RUN qgis_process plugins enable processing
+
+WORKDIR /root
+CMD ["python3", "/root/main.py"]
+
