@@ -4,7 +4,7 @@ import riomucho
 import numpy as np
 
 def riskfn(slope):
-    return np.sqrt(1 / (1 + np.exp(-(slope-28.0) / 3.0))) + np.power((1/45)*slope, 2)
+    return np.sqrt(1 / (1 + np.exp(-(slope-28.0) / 3.0))) # + np.power((1/45)*slope, 2)
 
 def calculate_grm_risk(slope):
     # return np.maximum(expterm, expterm + ((slope/300) - 0.15))
