@@ -4,3 +4,4 @@ env/
 *.tif
 oldenv/
 firebase.json
+.firebase/

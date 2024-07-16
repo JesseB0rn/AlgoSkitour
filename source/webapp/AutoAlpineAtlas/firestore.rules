@@ -1,0 +1,16 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /tours/{tourId} {
+      // Allow create operation for everyone
+      allow create: if true;
+      
+      // Allow read if the user's UID matches the owner field or if the owner field is empty
+      allow read: if request.auth.uid == resource.data.owner || resource.data.owner == "";
+      
+      // Deny update and set operations
+      allow update: if false;
+      allow delete: if request.auth.uid == resource.data.owner || resource.data.owner == "";
+    }
+  }
+}
