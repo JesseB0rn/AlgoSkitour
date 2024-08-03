@@ -220,4 +220,13 @@ Es soll sich nur um die Hangneigung bemüht werden, da diese Geländeeigenschaft
 Um die Berechnung der Risikokarte effizient zu gestalten und alle auf dem Rechner verfügbaren Ressource zu verwenden, wird die Berechnung in kleinen Kacheln asugeführt, welche dann zusammengepuzzelt werden. Die einzelnen Kacheln werden dabei auf der GPU verarbeitet. Letztendlich ist diese Berechnung ein grafisches Problem, welches durch die Grafikeinheit mit ihren vielen parallel arbeitenden Rechenkernen um ein vielfaches schneller gelöst werden kann.
 
 \subsubsection{Risikoberechnung}
+
+Der Risikowert einer einzelnen Zelle wird folgendermassen berechnet:
+
+$$
+r(m) = \frac{1}{1 + e^{\frac{-\left(m-s\right)}{3.0}}}
+$$
+
+Je nach prognostizierter Gefahrenstufe des LLB wird $s$ zwischen 20 und 35 linear interpoliert. Im fall der Gefahrenstufe 3= kommt $s$ dabei bei 28.0 zu liegen.
+
 \subsubsection{3D-Karte im Webbrowser}
