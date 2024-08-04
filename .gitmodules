@@ -1,6 +1,3 @@
-[submodule "source/viz/fonts.pbf"]
-	path = source/viz/fonts.pbf
-	url = https://github.com/korywka/fonts.pbf.git
 [submodule "source/static-tiles-php"]
 	path = source/static-tiles-php
 	url = https://github.com/JesseB0rn/static-tiles-php.git
