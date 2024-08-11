@@ -128,7 +128,7 @@ Von zuhause aus~\cite{munter}:
 \subsubsection{Grafische Reduktionsmethode \& Relevante Geländefaktoren}
 
 Die momentan am meisten verwendete Reduktionsmethode ist dabei wohl die sog. <<grafische Reduktionsmethode>>, kurz GRM.\@Bei dieser wird --- je nach prognostizierter Ausgeprägtheit eines Lawinenproblemes --- nur die lokale Hangneigung an einer Stelle zur Entscheidungsfindung eingesetzt~\cite{sacbergspwinter}. In der Plannungsphase wird die Hangneigung aus einer $1:25000$er-Karte mittels Neigungsmesser herausgelesen. Dies liefert jedoch nur die durchschnittliche Neigung des Geländes zwischen den Höhenlinien --- eine möglichen steieren Hangabschnitt sieht man also nicht.
-Unterwegs kann entweder mittles Smartphone, Skistöcker oder Pendel die Hangneigung ermittelt werden. Es kann nun in der Grafik (siehe Abb. \ref{fig:grm}) herausgelesen werden, ob das zu überprüfende Gelände problemslos, nur mit Vorsichtsmassnahmen oder gar nicht betreten werden darf.
+Unterwegs kann entweder mittles Smartphone, Skistöcker oder Pendel die Hangneigung ermittelt werden. Es kann nun in der Grafik (siehe Abb.\ \ref{fig:grm}) herausgelesen werden, ob das zu überprüfende Gelände problemslos, nur mit Vorsichtsmassnahmen oder gar nicht betreten werden darf.
 
 \begin{Figure}
   \centering
@@ -150,11 +150,11 @@ Hänge, deren steilste Stelle mindestens ca. 30° geneigt ist gelten als Lawinen
 
 \subsubsection{Digitale Höhenmodelle}
 
-In den 1960er Jahren verlangte der schweizer Generalstab vom heutigen Bundesamt für Landestopografie zu prüfen, ob tief fliegende feindliche Kampfflugzeuge unbemerkt in den schweizer Luftraum eindringen könnten. Um die für diese Prüfung nötigen Berechnungen erstmals an einem Grossrechner ausführen zu können, mussten die topographischen Höhen aus der Landeskarte $1:250000$ auf Lochkarten transferiert werden. Mit einer Auflöung von \qty{250}{m} wurden die Höhenlinien der analogen Kartenprodukte so in mühseliger Handarbeit zwischen 1966 -- 1968 erstmals digital nutzbar gemacht. Das so erstellte digitale Höhenmodel DEM <<RIMINI>> wurde bis in die 1970er Jahre genutzt.~\cite{swisstopohistdem}
+In den 1960er Jahren verlangte der schweizer Generalstab vom heutigen Bundesamt für Landestopografie zu prüfen, ob tief fliegende feindliche Kampfflugzeuge unbemerkt in den schweizer Luftraum eindringen könnten. Um die für diese Prüfung nötigen Berechnungen erstmals an einem Grossrechner ausführen zu können, mussten die topographischen Höhen aus der Landeskarte $1:250000$ auf Lochkarten transferiert werden. Mit einer Auflöung von \qty{250}{m} wurden die Höhenlinien der analogen Kartenprodukte so in mühseliger Handarbeit zwischen 1966 --~1968 erstmals digital nutzbar gemacht. Das so erstellte digitale Höhenmodel DEM <<RIMINI>> wurde bis in die 1970er Jahre genutzt.~\cite{swisstopohistdem}
 
 Rufe nach einem engmaschigerem Modell brachten schliesslich unter anderem <<DHM25>> hervor, welches Daten in einer Auflösung von bereits \qty{25}{m} mitbringt.~\cite{swisstopohistdem}
 
-Um die Jahrtausendwende erfolgte dank schnelleren CPUs und günstigem Datenspeicher eine Umkehrung des Prozess. Neu werden die analogen Landeskarten auf Basis eines DEM erstellt. Moderne DEMs erreichen dabei eine Auflösung bis zu \qty{0.5}{m} bei einer Genauigkeit von 0.5 -- 3 \unit{m} und werden direkt aus Lasermessungen oder Stereokorrelierten Luftbildern abgeleitet~\cite{alti3dprod}. SwissAlti\textsuperscript{3D} ist genau solch ein Modell.
+Um die Jahrtausendwende erfolgte dank schnelleren CPUs und günstigem Datenspeicher eine Umkehrung des Prozess. Neu werden die analogen Landeskarten auf Basis eines DEM erstellt. Moderne DEMs erreichen dabei eine Auflösung bis zu \qty{0.5}{m} bei einer Genauigkeit von 0.5 --~3 \unit{m} und werden direkt aus Lasermessungen oder Stereokorrelierten Luftbildern abgeleitet~\cite{alti3dprod}. SwissAlti\textsuperscript{3D} ist genau solch ein Modell.
 
 Dank der <<Open Government Data Strategie>> des Bundes werden seit 2020 diverse Datensammlungen die öffentliche Verwaltungen produzieren der Öffentlichkeit wieder zur Verfügung gestellt~\cite{opendataswiss}.
 So landet nebst dem Fahrplan der SBB, Jungwaldflächen und den Standorten aller öffentlichen Toiletten der Stadt Luzern (nebst unzähligen weiteren Datensätzen) auch  SwissAlti\textsuperscript{3D} auf dem Opendataprotal des Bundes.
@@ -166,7 +166,7 @@ Aus einem Solchen Höhenmodel lässt sich die Hangneigung viel präziser und hoc
 
 Berge, Wälder, Flüsse und Seen sind ebenfalls ein wichtiger Kartenbestandteil. Auf Skitour gilt es zum Beispiel Schwimmpassagen zu vermeiden. Swisstopo liefert mit SwissTLM\textsuperscript{3D} einen Datensatz, der alle auf einer Landeskarte ersichtlichen Objekte enthält. Im weiteren verlauf interessieren uns hier vor allem Gewässer (stehend und fliessend), Brücken über diese sowie Wald und Wildruhezonen.
 
-\subsubsection{GIS}
+\subsubsection{GIS}\label{sec:gis}
 
 Geoinformationssysteme (GIS) sind leistungsstarke Werkzeuge, die zur Analyse, Darstellung und Interpretation von geografischen Daten verwendet werden. Mit einem solchen Werkzeug können etwa Landkarten verfasst, ökologische Veränderungen überwacht oder zoologische Migrationsmuster analysiert werden.
 In dieser Arbeit wurde das Werkzeug QGIS~\cite{qgis} extensiv verwendet; unter anderem wurde eine eigene Analyse-Erweiterung entwickelt.
@@ -189,10 +189,12 @@ Eine implementierte Erweiterung die auf dem Algorithmus von Dijkstra aufbaut, wi
 
 Als Heuristik wird im weiteren Verlauf der Arbeit die Taxi- bzw. Chebyshev-Distanz verwendet~\cite{cantrell2000modern}.
 
+\subsubsection{Naismith's Regel}
+
 \subsubsection{Berechnung von topographischen Oberflächenfaktoren}
 
 Wir schneiden $3 \times 3$-Ausschnitt aus dem Höhenmodel. Unser Ziel ist es, die chrakteristischen Geländeeigenschaften für die Zelle $e$ zu berechen.
-$a$ -- $h$ sind die Höhen der Gitterpunkte rund um unserer Zielzelle \textbf{e}:
+$a$~--~$h$ sind die Höhen der Gitterpunkte rund um unserer Zielzelle \textbf{e}:
 
 \begin{Figure}
   \centering
@@ -200,7 +202,7 @@ $a$ -- $h$ sind die Höhen der Gitterpunkte rund um unserer Zielzelle \textbf{e}
   \captionof{figure}{$3 \times 3$-Ausschnitt von Höhen aus einem DEM und deren Benennung}
 \end{Figure}
 
-Hangneigung und Exposition nach \cite{gisslopeaspect}:
+Hangneigung und Exposition nach~\cite{gisslopeaspect}:
 
 \begin{equation} \label{eq1}
   \frac{\Delta z}{\Delta x} = \frac{(c + 2f + i) - (a + 2d + g)}{8r}
@@ -227,7 +229,7 @@ Geländekrümmung nach~\cite{gismath}:
   H &= \frac{{b - h}}{{2r}}
 \end{align}
 
-(6) -- (10) sind die Faktoren eines teilweisen Polynom vierten Grades~\cite{gismath}.
+(6)~--~(10) sind die Faktoren eines teilweisen Polynom vierten Grades~\cite{gismath}.
 Hangkrümmung $c_{Plan}$ und $c_{Profil}$ beschreiben, mit welchem Radius sich die Hangneigung parallel (Plankrümmung) bzw.\ senkrecht (Profilkrümmung) zur Exposition ändert:
 
 \begin{align}
@@ -239,9 +241,19 @@ Hangkrümmung $c_{Plan}$ und $c_{Profil}$ beschreiben, mit welchem Radius sich d
 \vfill
 
 \pagebreak
+
+
+
+
+
 \subsection{Methodik}
 
-Die Berechnung dieser Geländefaktoren wird an die quelloffene Datenabstraktionsbibliothek GDAL ausgelagert. Eine eigene Applikation zur berechnung der Hangneigung wurde zwar implementiert, jedoch war diese nur marginal schneller als die angestammte Lösung.
+Zu Beginn der Arbeit war ein Ziel, möglichst unabhängig von Software-Bibliotheken und fremden Code zu bleiben. So wurde während der Machbarkeitsstudie jedoch festgestellt, dass es letztendlich doch Sinn macht, auf eine komerzielle GIS-Lösung~(siehe~\ref{sec:gis}) zu setzten --- analog der UNIX-Philosopie~\cite{unixphil}. Diese gilt als Orientierungshile, wie Software entworfen werden soll. Unter anderem soll zum Beispiel jeweils die simpelste, funktionale Lösung gewählt werden, Software modular aufgebaut sein oder nur einen Zweck erfüllen --- und keine duplizierte Funktionalität enthalten. Tausende Stunden Entwicklungsarbeit stecken bereits in GDAL~\cite{gdalmanual} und QGIS~\cite{qgis}, auf welchen gerne aufgebaut wurde.
+
+\subsubsection{Erstellung von Gefahrenkarten}
+
+Als Grundlage für alle weiteren Schritte werden Gefahrenkarten benötigt %TODO: weitermachen
+
 
 \subsubsection{Gefahrenwert als Funktion einer Gitterkoordinate}
 Während der Realisierung unseres Programms stellten sich uns zwei Grundlegend verschiedene Herangehensweisen an die Bestimmung des Gefahrenwertes einer Gitterzelle. 
@@ -250,9 +262,7 @@ Die erste Variante versucht, das Gelände analog eines Menschen während einer B
 
 Die zweite Variante simuliert tatsächlichen Lawinenabgänge. Dazu wurde mittels RAMMS::Avalanche zuerst Initialisierungspolygone, also Flächen, welche durch Schneesportler ausgelöst werden könnten, gesucht, und dann mittels einer Standardlawinensituation (50cm Neuschnee, Lockerschneeproblematik) ausgelöst und simuliert. Dies stellte sich aufgrund der hohen Rechenanforderungen und damit verbunden Budgetanforderungen als unpraktikabel heraus.
 
-Folgende Herangehensweise wurde letztendlich ausgewählt:
-
-Es soll sich nur um die Hangneigung bemüht werden, da diese Geländeeigenschaft den höchsten korrelationsfaktor mit der Anzahl Lawinenereignisse bildet. \cite{}. Auf die Geländekrümmung wird Verzichtet, da diese auf die tatsächliche Route praktisch keinen Einfluss hat.\\
+Es soll sich nur um die Hangneigung bemüht werden, da diese Geländeeigenschaft den höchsten korrelationsfaktor mit der Anzahl Lawinenereignisse bildet.~\cite{arpddatasetdocs}. Auf die Geländekrümmung wird Verzichtet, da diese auf die tatsächliche Route praktisch keinen Einfluss hat.\\
 Der Risikowert einer einzelnen Zelle wird folgendermassen berechnet:
 
 \[
