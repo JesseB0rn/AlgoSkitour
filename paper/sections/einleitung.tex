@@ -189,10 +189,6 @@ Eine implementierte Erweiterung die auf dem Algorithmus von Dijkstra aufbaut, wi
 
 Als Heuristik wird im weiteren Verlauf der Arbeit die Taxi- bzw. Chebyshev-Distanz verwendet~\cite{cantrell2000modern}.
 
-\vfill
-
-\pagebreak
-\subsection{Methodik}
 \subsubsection{Berechnung von topographischen Oberflächenfaktoren}
 
 Wir schneiden $3 \times 3$-Ausschnitt aus dem Höhenmodel. Unser Ziel ist es, die chrakteristischen Geländeeigenschaften für die Zelle $e$ zu berechen.
@@ -239,6 +235,11 @@ Hangkrümmung $c_{Plan}$ und $c_{Profil}$ beschreiben, mit welchem Radius sich d
     \\
     c_{Profil} &= \frac{{2(DG^2 + EH^2 + FGH)}}{{G^2 + H^2}}
 \end{align}
+
+\vfill
+
+\pagebreak
+\subsection{Methodik}
 
 Die Berechnung dieser Geländefaktoren wird an die quelloffene Datenabstraktionsbibliothek GDAL ausgelagert. Eine eigene Applikation zur berechnung der Hangneigung wurde zwar implementiert, jedoch war diese nur marginal schneller als die angestammte Lösung.
 
