@@ -10,7 +10,7 @@ def download_file(url, download_dir):
         local_filename = os.path.join(download_dir, f"{url.split('=')[-1]}.json")
         if (os.path.isfile(local_filename)): 
             return url, "Already downloaded"
-        with requests.get(url, stream=True) as response:
+        with requests.get(url, stream=True, cookies=cookies) as response:
             response.raise_for_status()
             with open(local_filename, 'wb') as f:
                 for chunk in response.iter_content(chunk_size=8192):
@@ -50,7 +50,10 @@ def download_files_from_csv(csv_file, download_dir, max_workers=4):
             progress.update(1)
     
     progress.close()
-
+cookies = {
+"PHPSESSID": "6ecc957148c228f17576553d94bf49da",
+"fe_typo_user":"5c826e7690f89c3265a028d296a2c09c.4ce0505673bbe61127b950b454988dd75dfeb889eb6c27bee59dfe31b1b10564"
+}
 if __name__ == "__main__":
     csv_file = 'index.csv'  # Path to your CSV file
     download_dir = '/Users/jesseb0rn/Documents/repos/Maturaarbeit-AlgoSkitour/evaluation/sac_routen'          # Directory where files will be saved
