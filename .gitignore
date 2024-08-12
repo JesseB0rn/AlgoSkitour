@@ -5,3 +5,4 @@ env/
 oldenv/
 firebase.json
 .firebase/
+evaluation/aggregate.json
