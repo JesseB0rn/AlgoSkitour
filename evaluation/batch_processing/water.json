@@ -1,0 +1,210 @@
+[
+  {
+    "PARAMETERS": {
+      "startp": "'2629146.153316,1089555.143920 [EPSG:2056]'",
+      "endp": "'2634025.049036,1086250.463429 [EPSG:2056]'",
+      "points_crs": "QgsCoordinateReferenceSystem('EPSG:2056')",
+      "risikokarte": "'/Users/jesseb0rn/AlgoTour/Riskmap_Burned_Lakes_nar.tif'",
+      "dem": "'/Users/jesseb0rn/AlgoTour/dem_10.0m.tif'",
+      "avy_cost_coeff": "45",
+      "steep_downhill": "5",
+      "downhill": "2.5",
+      "flat": "0.25",
+      "uphill": "2.5",
+      "steep_uphill": "5"
+    },
+    "OUTPUTS": { "outputpath": "TEMPORARY_OUTPUT" }
+  },
+  {
+    "PARAMETERS": {
+      "startp": "'2629146.153316,1089555.143920 [EPSG:2056]'",
+      "endp": "'2633300.237243,1087363.172185 [EPSG:2056]'",
+      "points_crs": "QgsCoordinateReferenceSystem('EPSG:2056')",
+      "risikokarte": "'/Users/jesseb0rn/AlgoTour/Riskmap_Burned_Lakes_nar.tif'",
+      "dem": "'/Users/jesseb0rn/AlgoTour/dem_10.0m.tif'",
+      "avy_cost_coeff": "45",
+      "steep_downhill": "5",
+      "downhill": "2.5",
+      "flat": "0.25",
+      "uphill": "2.5",
+      "steep_uphill": "5"
+    },
+    "OUTPUTS": { "outputpath": "TEMPORARY_OUTPUT" }
+  },
+  {
+    "PARAMETERS": {
+      "startp": "'2610457.099987,1138787.455331 [EPSG:2056]'",
+      "endp": "'2611176.625517,1140608.295448 [EPSG:2056]'",
+      "points_crs": "QgsCoordinateReferenceSystem('EPSG:2056')",
+      "risikokarte": "'/Users/jesseb0rn/AlgoTour/Riskmap_Burned_Lakes_nar.tif'",
+      "dem": "'/Users/jesseb0rn/AlgoTour/dem_10.0m.tif'",
+      "avy_cost_coeff": "45",
+      "steep_downhill": "5",
+      "downhill": "2.5",
+      "flat": "0.25",
+      "uphill": "2.5",
+      "steep_uphill": "5"
+    },
+    "OUTPUTS": { "outputpath": "TEMPORARY_OUTPUT" }
+  },
+  {
+    "PARAMETERS": {
+      "startp": "'2634688.130980,1138286.277390 [EPSG:2056]'",
+      "endp": "'2636122.401048,1137310.746606 [EPSG:2056]'",
+      "points_crs": "QgsCoordinateReferenceSystem('EPSG:2056')",
+      "risikokarte": "'/Users/jesseb0rn/AlgoTour/Riskmap_Burned_Lakes_nar.tif'",
+      "dem": "'/Users/jesseb0rn/AlgoTour/dem_10.0m.tif'",
+      "avy_cost_coeff": "45",
+      "steep_downhill": "5",
+      "downhill": "2.5",
+      "flat": "0.25",
+      "uphill": "2.5",
+      "steep_uphill": "5"
+    },
+    "OUTPUTS": { "outputpath": "TEMPORARY_OUTPUT" }
+  },
+  {
+    "PARAMETERS": {
+      "startp": "'2672788.904007,1158842.058660 [EPSG:2056]'",
+      "endp": "'2675242.155315,1166331.200096 [EPSG:2056]'",
+      "points_crs": "QgsCoordinateReferenceSystem('EPSG:2056')",
+      "risikokarte": "'/Users/jesseb0rn/AlgoTour/Riskmap_Burned_Lakes_nar.tif'",
+      "dem": "'/Users/jesseb0rn/AlgoTour/dem_10.0m.tif'",
+      "avy_cost_coeff": "45",
+      "steep_downhill": "5",
+      "downhill": "2.5",
+      "flat": "0.25",
+      "uphill": "2.5",
+      "steep_uphill": "5"
+    },
+    "OUTPUTS": { "outputpath": "TEMPORARY_OUTPUT" }
+  },
+  {
+    "PARAMETERS": {
+      "startp": "'2672788.904007,1158842.058660 [EPSG:2056]'",
+      "endp": "'2674942.743417,1162839.190938 [EPSG:2056]'",
+      "points_crs": "QgsCoordinateReferenceSystem('EPSG:2056')",
+      "risikokarte": "'/Users/jesseb0rn/AlgoTour/Riskmap_Burned_Lakes_nar.tif'",
+      "dem": "'/Users/jesseb0rn/AlgoTour/dem_10.0m.tif'",
+      "avy_cost_coeff": "45",
+      "steep_downhill": "5",
+      "downhill": "2.5",
+      "flat": "0.25",
+      "uphill": "2.5",
+      "steep_uphill": "5"
+    },
+    "OUTPUTS": { "outputpath": "TEMPORARY_OUTPUT" }
+  },
+  {
+    "PARAMETERS": {
+      "startp": "'2675584.439050,1175998.449115 [EPSG:2056]'",
+      "endp": "'2674613.540636,1172773.018696 [EPSG:2056]'",
+      "points_crs": "QgsCoordinateReferenceSystem('EPSG:2056')",
+      "risikokarte": "'/Users/jesseb0rn/AlgoTour/Riskmap_Burned_Lakes_nar.tif'",
+      "dem": "'/Users/jesseb0rn/AlgoTour/dem_10.0m.tif'",
+      "avy_cost_coeff": "45",
+      "steep_downhill": "5",
+      "downhill": "2.5",
+      "flat": "0.25",
+      "uphill": "2.5",
+      "steep_uphill": "5"
+    },
+    "OUTPUTS": { "outputpath": "TEMPORARY_OUTPUT" }
+  },
+  {
+    "PARAMETERS": {
+      "startp": "'2675584.439050,1175998.449115 [EPSG:2056]'",
+      "endp": "'2677739.161418,1172470.042038 [EPSG:2056]'",
+      "points_crs": "QgsCoordinateReferenceSystem('EPSG:2056')",
+      "risikokarte": "'/Users/jesseb0rn/AlgoTour/Riskmap_Burned_Lakes_nar.tif'",
+      "dem": "'/Users/jesseb0rn/AlgoTour/dem_10.0m.tif'",
+      "avy_cost_coeff": "45",
+      "steep_downhill": "5",
+      "downhill": "2.5",
+      "flat": "0.25",
+      "uphill": "2.5",
+      "steep_uphill": "5"
+    },
+    "OUTPUTS": { "outputpath": "TEMPORARY_OUTPUT" }
+  },
+  {
+    "PARAMETERS": {
+      "startp": "'2708039.096698,1191754.101905 [EPSG:2056]'",
+      "endp": "'2709274.193255,1188874.155714 [EPSG:2056]'",
+      "points_crs": "QgsCoordinateReferenceSystem('EPSG:2056')",
+      "risikokarte": "'/Users/jesseb0rn/AlgoTour/Riskmap_Burned_Lakes_nar.tif'",
+      "dem": "'/Users/jesseb0rn/AlgoTour/dem_10.0m.tif'",
+      "avy_cost_coeff": "45",
+      "steep_downhill": "5",
+      "downhill": "2.5",
+      "flat": "0.25",
+      "uphill": "2.5",
+      "steep_uphill": "5"
+    },
+    "OUTPUTS": { "outputpath": "TEMPORARY_OUTPUT" }
+  },
+  {
+    "PARAMETERS": {
+      "startp": "'2715331.738257,1186699.351393 [EPSG:2056]'",
+      "endp": "'2712653.167447,1185506.434546 [EPSG:2056]'",
+      "points_crs": "QgsCoordinateReferenceSystem('EPSG:2056')",
+      "risikokarte": "'/Users/jesseb0rn/AlgoTour/Riskmap_Burned_Lakes_nar.tif'",
+      "dem": "'/Users/jesseb0rn/AlgoTour/dem_10.0m.tif'",
+      "avy_cost_coeff": "45",
+      "steep_downhill": "5",
+      "downhill": "2.5",
+      "flat": "0.25",
+      "uphill": "2.5",
+      "steep_uphill": "5"
+    },
+    "OUTPUTS": { "outputpath": "TEMPORARY_OUTPUT" }
+  },
+  {
+    "PARAMETERS": {
+      "startp": "'2722971.112952,1155736.486243 [EPSG:2056]'",
+      "endp": "'2722952.297546,1150418.275193 [EPSG:2056]'",
+      "points_crs": "QgsCoordinateReferenceSystem('EPSG:2056')",
+      "risikokarte": "'/Users/jesseb0rn/AlgoTour/Riskmap_Burned_Lakes_nar.tif'",
+      "dem": "'/Users/jesseb0rn/AlgoTour/dem_10.0m.tif'",
+      "avy_cost_coeff": "45",
+      "steep_downhill": "5",
+      "downhill": "2.5",
+      "flat": "0.25",
+      "uphill": "2.5",
+      "steep_uphill": "5"
+    },
+    "OUTPUTS": { "outputpath": "TEMPORARY_OUTPUT" }
+  },
+  {
+    "PARAMETERS": {
+      "startp": "'2791148.689465,1143460.658877 [EPSG:2056]'",
+      "endp": "'2789947.518525,1139762.049145 [EPSG:2056]'",
+      "points_crs": "QgsCoordinateReferenceSystem('EPSG:2056')",
+      "risikokarte": "'/Users/jesseb0rn/AlgoTour/Riskmap_Burned_Lakes_nar.tif'",
+      "dem": "'/Users/jesseb0rn/AlgoTour/dem_10.0m.tif'",
+      "avy_cost_coeff": "45",
+      "steep_downhill": "5",
+      "downhill": "2.5",
+      "flat": "0.25",
+      "uphill": "2.5",
+      "steep_uphill": "5"
+    },
+    "OUTPUTS": { "outputpath": "TEMPORARY_OUTPUT" }
+  },
+  {
+    "PARAMETERS": {
+      "startp": "'2794256.992580,1143225.370234 [EPSG:2056]'",
+      "endp": "'2793969.030357,1139502.202387 [EPSG:2056]'",
+      "points_crs": "QgsCoordinateReferenceSystem('EPSG:2056')",
+      "risikokarte": "'/Users/jesseb0rn/AlgoTour/Riskmap_Burned_Lakes_nar.tif'",
+      "dem": "'/Users/jesseb0rn/AlgoTour/dem_10.0m.tif'",
+      "avy_cost_coeff": "45",
+      "steep_downhill": "5",
+      "downhill": "2.5",
+      "flat": "0.25",
+      "uphill": "2.5",
+      "steep_uphill": "5"
+    },
+    "OUTPUTS": { "outputpath": "TEMPORARY_OUTPUT" }
+  }
+]
