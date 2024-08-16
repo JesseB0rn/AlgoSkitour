@@ -27,6 +27,8 @@
 \usepackage{graphicx}
 \graphicspath{ {./illustrationen/} }
 \usepackage[figurename=Abb.]{caption}
+\usepackage{rotating}
+
 
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -113,7 +115,9 @@
 \newenvironment{Mappage}
 {
 	\newgeometry{scale=1, left=3cm, right=2cm, top=3.00cm, bottom=2.8cm}
-	\thispagestyle{plain}
+	% \thispagestyle{plain}
 	
 }
 {\restoregeometry}
+
+\newcommand{\code}{\texttt}

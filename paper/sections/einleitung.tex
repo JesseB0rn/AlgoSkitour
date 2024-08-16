@@ -1,4 +1,8 @@
 \section{Einleitung}
+
+\subsection{Ziel der Arbeit}
+%TODO: lol
+
 \subsection{Theoretische Grundlagen}
 \subsubsection{Analytische vs. Praktische Lawinenkunde}
 Lawinenprobleme lassen sich grundsätzlich aus zwei Perspektiven betrachten und vorhersagen: Einerseits auf Basis der Schneedecke, anderer seits auf Basis von Geländeformen und Statistik.
@@ -147,7 +151,7 @@ Hänge, deren steilste Stelle mindestens ca. 30° geneigt ist gelten als Lawinen
 
 
 
-\subsubsection{Digitale Höhenmodelle}
+\subsubsection{Digitale Höhenmodelle}\label{sec:dem}
 
 In den 1960er Jahren verlangte der schweizer Generalstab vom heutigen Bundesamt für Landestopografie zu prüfen, ob tief fliegende feindliche Kampfflugzeuge unbemerkt in den schweizer Luftraum eindringen könnten. Um die für diese Prüfung nötigen Berechnungen erstmals an einem Grossrechner ausführen zu können, mussten die topographischen Höhen aus der Landeskarte $1:250000$ auf Lochkarten transferiert werden. Mit einer Auflöung von \qty{250}{m} wurden die Höhenlinien der analogen Kartenprodukte so in mühseliger Handarbeit zwischen 1966 --~1968 erstmals digital nutzbar gemacht. Das so erstellte digitale Höhenmodell DEM <<RIMINI>> wurde bis in die 1970er Jahre genutzt.~\cite{swisstopohistdem}
 
@@ -186,12 +190,12 @@ Da wir jeweils den Vorgänger jeder Zelle gespeichert haben, können wir am Ende
 
 Eine implementierte Erweiterung die auf dem Algorithmus von Dijkstra aufbaut, wird A* (A-Star) gennant. Hier wird die Berechnung der zu minimierenden Kosten um eine Heuristik (eine Schätzung der verbleibenden Kosten) erweitert. Formal werden die zu minimierenden Kosten neu also $f(n)=g(n)+h(n)$.~\cite{Hart1968}
 
-Als Heuristik wird im weiteren Verlauf der Arbeit die Taxi- bzw. Chebyshev-Distanz verwendet~\cite{cantrell2000modern}.
+Als Heuristik wird im weiteren Verlauf der Arbeit die Taxi- bzw. Chebyshev-Distanz verwendet~\cite{cantrell2000modern}. Der Beweis für die Zulässigkeit der Heuristik wird dem Leser als Übung überlassen. 
 
 \subsubsection{Naismith'sche Regel}
 
 Nebst den risikoabhängigen Durchgangskosten, werden auch noch Bewegungskosten berücksichtigt. Diese beschreiben die zeit und Anstrengung die benötigt wird, um einen Meter Weg zurückzulegen. Eine weit verbreitete und akzeptierte Schätzungsmethode ist die sog. Naismith'sche Regel~\cite{naismithsrule}.
-Beim Skitouren wird dabei je \qty{4000}{m} Horizontaldistanz und \qty{400}{hm} Vertikaldistanz eine Stunde Wegzeit gerechnet~\cite{sacbergspwinter}\cite{naismithsrule}.
+Beim Skitouren wird dabei je \qty{4000}{m} Horizontaldistanz und \qty{400}{hm} Vertikaldistanz eine Stunde Wegzeit gerechnet~\cite{sacbergspwinter}\cite{naismithsrule}. (Für eine \qty{3500}{m} lange Tour mit \qty{800}{hm} Anstieg wird eine Aufstiegsdauer von $\frac{\qty{3000}{m}}{\qty{4000}{m}} + \frac{\qty{800}{hm}}{\qty{400}{hm}} = \qty{2}{h}\ \qty{45}{\min}$ gerechnet)
 
 
 \subsubsection{Berechnung von topographischen Oberflächenfaktoren}
@@ -254,6 +258,8 @@ Hangkrümmung $c_{Plan}$ und $c_{Profil}$ beschreiben, mit welchem Radius sich d
 Zu Beginn der Arbeit war ein Ziel, möglichst unabhängig von Software-Bibliotheken und fremden Code zu bleiben. So wurde während der Machbarkeitsstudie jedoch festgestellt, dass es letztendlich doch Sinn macht, auf eine komerzielle GIS-Lösung~(siehe~\ref{sec:gis}) zu setzten --- analog der UNIX-Philosopie~\cite{unixphil}. Diese gilt als Orientierungshile, wie Software entworfen werden soll. Unter anderem soll zum Beispiel jeweils die simpelste, funktionale Lösung gewählt werden, Software modular aufgebaut sein oder nur einen Zweck erfüllen --- und keine duplizierte Funktionalität enthalten~\cite{unixphil}. Tausende Stunden Entwicklungsarbeit stecken bereits in GDAL~\cite{gdalmanual} und QGIS~\cite{qgis}, auf welchen gerne aufgebaut wurde.
 \subsubsection{Herunterladen des Höhenmodells}
 
+Wie bereits in\ \ref{sec:dem} erwähnt, wird SwissAlti\textsuperscript{3D} in $\qty{1}{km} \times \qty{1}{km}$ grössen Kacheln ausgeliefert, welche einzeln Heruntergeladen und anschliessend wieder vereint werden müssen~\cite{alti3dprod}. Auf dem Datenportal von swisstopo kann für jeden Kanton eine Liste mit den URLs der Kacheln, welche in dem Kanton liegen, heruntergeladen werden. Mittels eines Python-Skriptes wurden so über Nacht knapp \qty{30}{GB} Höhendaten heruntergeladen. Durch \code{gdal\_warp}, \code{rasterio} und \code{gdal2tiles} wird als erstes eine Kopie in einem für die Webkarte lesbaren Datenformat erstellt. (Siehe Anhang für weitere Details)
+%TODO: Anhang mit RasterDEM erklärung
 
 \subsubsection{Erstellung von Risikokarten}
 
@@ -280,8 +286,36 @@ Um die Berechnung der Risikokarte effizient zu gestalten und alle auf dem Rechne
 
 \subsubsection{Einbrennen von Gewässern und Brücken}
 
+SwissTLM\textsuperscript{3D} liefert den Verlauf von Strassen sowie Gewässern. Zuerst werden die Daten so gefiltert, das nur noch Oberflächengewässer und Strassenabschnitte, die als Brücke deklariert sind im Datensatz vorhanden sind.
+
+In QGIS werden nun zuerst alle Gewässerflächen um einen Radius von \qty{7.5}{m} <<gepuffer>>, also erweitert. Die resultierenden Gewässerpolygone werden gerastert und mit einem Risikowert von $9 \times 10^{9}$ in die rohe Risikokarte eingebrannt. Anmschliessend wird dasselbe mit den Brücken wiederholt, hier wird jedoch das Risiko auf $0.0$ gesetzt. Somit sind Gewässer für den Algorithmus ein absolutes Tabu und werden nur bei Brücken überquert. Auf das Abwägen ob eine Querung möglich ist, wurde aus Zeitgründen verzichtet.
+
 \subsubsection{QGIS-Plugin LeastCostWalk}
+
+Um den Algorithmus von Dijkstra nun auch auszuführen, musste eine neue Erweiterung für QGIS in Python implementiert werden. Ein Auszug des Quellcodes befindet sich im Anhang. Gegenüber bestehenden Least-Cost-Plugins verfügt das hier implementierte über die Funktionalität, Wegzeit/Bewegungskosten gegen Reibungs- bzw. Risikokosten abzuwägen. Dies geschieht mittels 5 Parametern $k_{risk}$, wie schwer die Risikokosten ins Gewicht fallen, $c_{steepascend}$ / $c_{steepdescend}$, wie stark steile Auf- \& Abstiegspassagen gewichtet werden, $c_{flat}$, wie teuer Horizontaldistanz ist und $c_{ascend}$ / $c_{descend}$, wie teuer ein normaler Auf- \& Absteig ist.
+
+Nebst den Kostenkoeffizienten werden Start- \& Zielpunkt, die Koordinatenreferenzsysteme dieser Punkte, das Höhenmodell und die gewünschte Variante der Risikokarte an das Modell übergeben. Wird die Erweiterung in der grafischen Oberfläche von QGIS gestartet, entspricht dies Abb.\ \ref{fig:qgisplugin}. 
+
+Im Fall der Webanwendung wird die Erweiterung serverseitig über die Kommandozeile automatisch aufgerufen. Um hier Rechenressourcen einzusparen, wird das Höhenmodell sowie die Risikokarte zuerst auf einen Bereich rund um unsere Zielregion zugeschnitten.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=7.5cm]{qgisplugin}
+  \caption{QGIS-Erweiterung <<LeastCostWalk>> in der grafischen Oberfläche von QGIS}\label{fig:qgisplugin}
+\end{figure}
 
 \subsubsection{Server Deployment mit Docker}
 
+Um ein einfaches Bereitstellen zu ermöglichen und so horizontale Skalierbarkeit der Serverressource zu gewährleisten, wurde ein Docker-Image\footnote{Vereinfacht gesagt: Ein Miniaturbetriebssystem das auf diversen Rechner innert Sekunden als Gastsystem hochgefahren werden kann und vom Rest des Systems isoliert ist} erstellt. Darin wurde die GIS-Anwendung sowie die Risikokarten und das Höhenmodell vorinstalliert. Momentan läuft die Anwendung nur auf einem Miniaturserver unter Ubuntu Server 24.04 LTS.\@Vorteil der hier gewählten Paketierung ist jedoch, das auch andere Serverbetreibsysteme ohne Änderung der des eigentlichen Quellcodes unterstützt werden. Zusätzliche Instanzen könnten ebenfalls zugeschalten werden, um eine durchgehend verfügbare öffentliche Version für 100 --~1000 Nutzer ohne Warteschleife zur Verfügung stellen zu können.
+
 \subsubsection{3D-Karte im Webbrowser}
+
+Als erweiterung zum reinen GIS-Modell wurde eine Webanwendung mittels Vue.js und MapLibre GL JS realisiert~\cite{vuedevman}\cite{maplibregljs}. Als Basislayer für die Karte wurde das Layer <<Base Map>> von swisstopo verwendet, welches durch die Höhendaten von SwissAlti\textsuperscript{3D} in eine drei-dimensionale Form gebracht wurde~\cite{basevtprod}\cite{alti3dprod}. Nutzer können sich mittels einem Google-Account anmelden und ihre Routen so abspeichern und wieder aufrufen. Zusätzlich steht basierend auf den in SwissTLM verfügbaren Lokalnamen eine Suchfunktion zur verfügung. Die Planung einer neuen Tour kann durch die Auswahl von Start- \& Zielort sowie der gewünschten Modellvariante in Auftrag gegeben werden --- innert ca.\ \qty{20}{s} ist das Resulat anschliessen verfügbar und wird dem Nutzer direkt angezeigt.
+
+\begin{Mappage}
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{webapp}
+    \caption{Nutzeroberfläche}\label{fig:mainui}
+  \end{figure}
+\end{Mappage}

@@ -3,9 +3,9 @@
 
 Resultat ist eine Webapp, welche in allen modernen Webbrowsern funktioniert. Mittels Klicken können Start- \& Zielpunkt ausgewählt werden. Mit einem bestätigenden Klick auf <<Ausführen>> wird im Hintergrund ein GIS-Modell gestartet, welches entweder eine <<rohe>> Gefahrenkarte oder eine mit eingebrannten Gewässern verwendet.
 
-\subsubsection{Produktevaluation}
+\subsubsection{Modellevaluation}
 
-Es wurden 14 typische Frühlings-Skitouren \& -Skihochtouren aus dem SAC Tourenportal ausgewählt und mittels einem kurzen Python-Skript heruntergeladen. Anschliessend wurden die Modellversionen mit und ohne eingebrannten Gewässern für die Start und Zielpunkte der einzelnen Routensegmente ausgeführt. Star und Zielpunkte wurden dabei von Hand plaziert. Für alle 28 Tests wurden die Gleichen Hyperparameter verwendet: $k_{risk}={50.0}; c_{steepascend}={5.0}; c_{steepdescend}={5.0}; c_{flat}={0.25}; c_{ascend}={2.5}; c_{descend}={2.5}$
+Es wurden 14 typische Frühlings-Skitouren \& -Skihochtouren aus dem SAC Tourenportal ausgewählt und mittels einem kurzen Python-Skript heruntergeladen. Anschliessend wurden die Modellversionen mit und ohne eingebrannten Gewässern für die Start und Zielpunkte der einzelnen Routensegmente ausgeführt. Star und Zielpunkte wurden dabei von Hand plaziert. Für alle 28 Tests wurden die Gleichen Hyperparameter verwendet: $k_{risk}={50.0};\ c_{steepascend}={5.0};\ c_{steepdescend}={5.0};\ c_{flat}={0.25};\ c_{ascend}={2.5};\ c_{descend}={2.5}$
 
 Für einige Regionen bzw. Gipfel (Länta, Steingletscher) war nur eine von beiden Gefahrenkarten brauchbar --- so macht es wenig Sinn, Quer über den Steinsee zu laufen, da dieser nur selten zugefroren ist. Erfahrungswerte mit beiden Modellversionen zeigen, dass in den meisten Fällen beide Versionen vom Benutzer begutachtet werden müssen.
 
@@ -33,47 +33,35 @@ Die Route auf den Piz Palü ist aufgrund der Nähe zu einer Spaltenzone (siehe A
 
 Auch bei den Touren auf den Galenstock sowie den Dammastock werden eher einer Hochtour entsprechende Spurwahlen getroffen. In der Praxis sind diese mit Skiern mangels einer attraktiven Abfahrt vom Skidepot aus keine Trendtouren-Kandidaten. (Für diese Routen siehe Anhang..........)
 %TODO: Insert correct ref
+
 \begin{Mappage}
-{%
-  % \raggedleft
+{
   \begin{figure}[H]
     \centering
-    \includegraphics[page=1,width=.8\linewidth]{./../evaluation/PDFs/Tierbergli.pdf}
-    \caption{Geplante Tour vom Steingletscher zu der Tierberglihütte SAC und dem Sustenhorn,\\Basislayer: swisstopo}\label{fig:tierbergli}
-  \end{figure}
-  \par
-  \par
-  % \clearpage
+    \includegraphics[page=1,width=.9\linewidth]{./../evaluation/PDFs/Tierbergli.pdf}
+    \caption{Tour vom Steingletscher zu der Tierberglihütte SAC und dem Sustenhorn, \\Basislayer: swisstopo}\label{fig:tierbergli}
+    \end{figure}
 
   \begin{figure}[H]
     \centering
-    \includegraphics[page=1,width=.8\linewidth]{./../evaluation/PDFs/Clariden.pdf}
-    \caption{Geplante Tour von der Klausenpass-Passhöhe auf den Clariden,\\Basislayer: swisstopo}\label{fig:clariden}
+    \includegraphics[page=1,width=.9\linewidth]{./../evaluation/PDFs/Clariden.pdf}
+    \caption{Geplante Tour von der Klausenpass-Passhöhe auf den Clariden, \\Basislayer: swisstopo}\label{fig:clariden}
   \end{figure}
-  \par
-  \par
 }
-\end{Mappage}
+% \end{Mappage}
 
-\begin{Mappage}
+% \begin{Mappage}
 {%
-    % \raggedleft
     \begin{figure}[H]
       \centering
-      \includegraphics[page=1,width=.8\linewidth]{./../evaluation/PDFs/Monte Rosa Massiv.pdf}
+      \includegraphics[page=1,width=.9\linewidth]{./../evaluation/PDFs/Monte Rosa Massiv.pdf}
       \caption{Geplante Tour von der Monte-Rosa-Hütte SAC auf Dufourspitze und Signalkuppe,\\Basislayer: swisstopo}\label{fig:monterosa}
     \end{figure}
-    \par
-    \par
     \begin{figure}[H]
       \centering
-      \includegraphics[page=1,width=.8\linewidth]{./../evaluation/PDFs/Piz Palü.pdf}
+      \includegraphics[page=1,width=.9\linewidth]{./../evaluation/PDFs/Piz Palü.pdf}
       \caption{Geplante Tour von der Diavolezza auf den Piz Palü\\Basislayer: swisstopo}\label{fig:pizpalu}
     \end{figure}
-    \par
-    \par
-
-
 }
 \end{Mappage}
 
