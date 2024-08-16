@@ -104,3 +104,16 @@
 \newenvironment{Figure}
   {\par\medskip\noindent\minipage{\linewidth}}
   {\endminipage\par\medskip}
+
+\makeatletter
+\newcommand*{\rom}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\makeatother
+
+
+\newenvironment{Mappage}
+{
+	\newgeometry{scale=1, left=3cm, right=2cm, top=3.00cm, bottom=2.8cm}
+	\thispagestyle{plain}
+	
+}
+{\restoregeometry}
