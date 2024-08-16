@@ -12,8 +12,8 @@ const searchText = defineModel("searchText");
 <template>
   <div class="min-w-full bg-gray-950 min-h-20 border-b-4 border-green-400 flex items-center justify-start shadow-green-400 shadow-2xl xs:min-h-16">
     <div class="flex items-center justify-center mx-8">
-      <h1 class="hidden sm:block text-3xl font-bold text-white">SkitourBuddy</h1>
-      <h1 class="sm:hidden font-bold text-white text-xl">SB</h1>
+      <h1 class="hidden sm:block text-3xl font-bold text-white">Algotour</h1>
+      <h1 class="sm:hidden font-bold text-white text-xl">AT</h1>
     </div>
     <span class="flex flex-grow"></span>
     <div class="flex flex-grow mr-4">
