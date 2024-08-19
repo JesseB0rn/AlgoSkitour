@@ -82,12 +82,20 @@ Es ist möglich, das mehrere Lawinenproblem miteinander auftreten. Im LLB sind j
 \subsubsection{Lawinenbulletin / -lagebericht \& Gefahrenstufen}
 
 Im Lawinenbulletin/Lawinenlagebericht, kurz LLB, werden die momentan am Berg zu erwartenden Lawinenprobleme (siehe~\ref{lawinenprobleme}) zusammengefasst und mit diversen zusätzlichen Datenprodukten ergänzt.
+
+Abb.\ \ref{fig:bulletin} zeigt ein Beispiel eines LLB Bulletins, wie dieses während dem Winter täglich erscheint.
+
 In der europäischen Lawinengefahrenskala werden fünf Warnstufen unterschieden, von <<1 -~gering>> bis <<5 -~sehr gross>>.~\cite{lawinengefskala} 
 Rund 50\% der Unfälle geschehen dabei bei <<3~-~mässig>>~\cite{achtunglawine}.
 
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=7.5cm]{bulletin}
+  \caption{Bulletin vom 12.2.24~\cite{slfarchiv}}\label{fig:bulletin}
+\end{figure}
+
 Die Skala ist kontinuierlich, jedoch nicht linear. Heisst konkret: 
 Im Durchschnitt ist das Risiko bei <<mässig>> fünf Mal so hoch wie bei <<gering>>, und bei <<erheblich>> drei Mal so hoch wie bei <<mässig>>~\cite{sacbergspwinter}. (Siehe Abb.\ \ref{fig:llbdanger})
-%TODO: Hier ein Bulletin als Beispiel?
 
 \begin{figure}[H]
   \centering
@@ -272,7 +280,7 @@ Stattdessen soll sich nur um die Hangneigung bemüht werden, da diese Geländeei
 Der Risikowert einer einzelnen Zelle wird folgendermassen berechnet:
 
 \[
-r(\rho) = \frac{1}{1 + e^{\frac{s-\rho}{3.0}}}
+r(\rho) = \sqrt{\frac{1}{1 + e^{\frac{s-\rho}{3.0}}}}
 \]
 
 Je nach prognostizierter Gefahrenstufe des LLB wird $s$ zwischen 20 und 35 linear interpoliert. Im fall der Gefahrenstufe 3= kommt $s$ dabei bei 28.0 zu liegen. (Siehe Abb.~\ref{fig:graph} für die resultierende Risikofunktion)
