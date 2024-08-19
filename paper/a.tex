@@ -1,5 +1,5 @@
 % !TeX program = xelatex
-\documentclass[a4paper]{scrarticle}
+\documentclass[a4paper, listof=numbered]{scrarticle}
 
 \usepackage{style}
 \usepackage{pdfpages}
@@ -10,6 +10,7 @@
     sections/vorwort,
 		sections/einleitung,
 		sections/hauptteil,
+    sections/schlusswort,
     sections/anhang,
 }
 
@@ -38,20 +39,19 @@
 \pagenumbering{arabic}
 \include{sections/einleitung}
 \include{sections/hauptteil}
-\section{Schlusswort, Fazit und Diskussion}
-
+\include{sections/schlusswort}
 \clearpage
 
-\addcontentsline{toc}{section}{Literatur}
-\printbibliography
+% \addcontentsline{toc}{section}{Literatur}
+\printbibliography[heading=bibnumbered]
 \clearpage
 
-\addcontentsline{toc}{section}{Abbildungsverzeichnis}
+% \addcontentsline{toc}{section}{Abbildungsverzeichnis}
+\appendix
 \listoffigures
 \skiplines{2}
-Alle Abbildungen ohne Kurzverweis in der Beschriftung stammen aus eigener Hand
+Alle Abbildungen ohne Kurzverweis in der Beschriftung stammen aus eigener Hand. Die Hintergrundkarten stammen wo nicht anders erwähnt aus der <<LK-Winter>> von swisstopo.
 \clearpage
-
 \include{sections/anhang}
 
 \end{document}
