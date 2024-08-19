@@ -1,7 +1,10 @@
+\begin{multicols}{2}
+
 \section{Einleitung}
 
 \subsection{Ziel der Arbeit}
-%TODO: lol
+
+Es soll in erster Linie ein Computer-Modell entwickelt werden, das aufgrund eines Höhenmodells eine möglichst defensive/lawinensichere Aufstiegsroute plant. Als erweiterung wird dieses Modell in einer Webapp, auf einer ansprechenden 3D-Karte als Hintergrundebene, zur verfügung gestellt. Die vom Modell produzierten Touren werden mit Literaturrouten aus dem Tourenportal des SAC, bzw.\ aus diversen dort gesammelten Tourenführern verglichen und ihre begehbarkeit kritisch überprüft.
 
 \subsection{Theoretische Grundlagen}
 \subsubsection{Analytische vs. Praktische Lawinenkunde}
@@ -24,7 +27,7 @@ Dies steht der praktischen Lawinenkunde gegenüber. Hier beobachten wir die Schn
     \item Verschüttungsgefahr gross –\\ Mitreis- \& Absturzgefahr gross
     \item Gefahr ab einer Hangneigung von $30\degree$
   \end{itemize}
-  \columnbreak{}
+  % \columnbreak{}
     
   \item Lockerschneelawinen~\cite{sacbergspwinter}\cite{slfLawinentypen}:
   \begin{itemize}
@@ -43,13 +46,13 @@ Dies steht der praktischen Lawinenkunde gegenüber. Hier beobachten wir die Schn
 \end{enumerate}
 Für unsere Zwecke interessieren uns an erster Stelle \textbf{Schneebrettlawinen} und an zweiter \textbf{Lockerschneelawinen}, da diese Lawinentypen für die meissten Unfälle mit Personenschaden abseits der Schweizer Pisten verantwortlich sind. In $\qty{95}{\percent}$ aller Unfälle lösen Schneesportler dabei ihre Unglückslawine selbst aus~\cite{ortovoxlabsnow}. Aus diesem Grund wird im weiteren Verlauf dieser Arbeit einer möglichen Fernauslösung keine weitere Beachtung geschenkt.
 
-\pagebreak
+% \pagebreak
 \subsubsection{Typische Lawinenprobleme}\label{lawinenprobleme}
 
 \begin{enumerate}
   \item Neuschneeproblem~\cite{achtunglawine}:
   \begin{itemize}
-    \item Frischer Niederschlag, der sich schlecht mit der darunterliegenden Schneeschichten verbunden hat. 
+    \item Frischer Neuschnee, der sich schlecht mit der darunterliegenden Schneeschichten verbunden hat. 
     \item Ab der Kritischen Neuschneemenge (je nach Bedingungen zwischen \qty{10}{cm} --~\qty{50}{cm}) mindestens die Warnstufe <<3 -~Erheblich>> im LLB.\@
     \item Setzt sich in 2 bis 3 Tagen
   \end{itemize}
@@ -64,7 +67,7 @@ Für unsere Zwecke interessieren uns an erster Stelle \textbf{Schneebrettlawinen
   \begin{itemize}
     \item Die Schneedecke wird durch eindringendes Wasser geschwächt
     \item Erste Durchfeuchtung führt zu der bedeutendsten Schwächung
-    \item Gefahr nach Regenperioden im Winter
+    \item Gefahr nach andauernden Regenperioden im Winter
     \item Typische Frühlingslawinen, Gefahr steigt im Verlauf des Tages mit steigender Temperatur an
     \item Lange anhaltende Gefahr
   \end{itemize}
@@ -76,20 +79,20 @@ Für unsere Zwecke interessieren uns an erster Stelle \textbf{Schneebrettlawinen
 \end{enumerate}
 Es ist möglich, das mehrere Lawinenproblem miteinander auftreten. Im LLB sind jeweils alle zu erwartenden Lawinenprobleme mit einer eigenen Gefahrenstufe aufgeführt.~\cite{slfTypischeLawinenprobleme}
 
-\subsubsection{Lawinenlagebericht}
+\subsubsection{Lawinenbulletin / -lagebericht \& Gefahrenstufen}
 
-Im Lawinenlagebericht, kurz LLB, werden die momentan am Berg zu erwartenden Lawinenprobleme (siehe~\ref{lawinenprobleme}) zusammengefasst und mit diversen zusätzlichen Daten ergänzt.
-In der europäischen Lawinengefahrenskala werden fünf Warnstufen unterschieden, von <<1 -~gering>> bis <<5 -~sehr gross>>.~\cite{lawinengefskala}
-
+Im Lawinenbulletin/Lawinenlagebericht, kurz LLB, werden die momentan am Berg zu erwartenden Lawinenprobleme (siehe~\ref{lawinenprobleme}) zusammengefasst und mit diversen zusätzlichen Datenprodukten ergänzt.
+In der europäischen Lawinengefahrenskala werden fünf Warnstufen unterschieden, von <<1 -~gering>> bis <<5 -~sehr gross>>.~\cite{lawinengefskala} 
 Rund 50\% der Unfälle geschehen dabei bei <<3~-~mässig>>~\cite{achtunglawine}.
 
 Die Skala ist kontinuierlich, jedoch nicht linear. Heisst konkret: 
-Im Durchschnitt ist das Risiko bei <<mässig>> fünf Mal so hoch wie bei <<gering>>, und bei <<erheblich>> drei Mal so hoch wie bei <<mässig>>~\cite{sacbergspwinter}.
+Im Durchschnitt ist das Risiko bei <<mässig>> fünf Mal so hoch wie bei <<gering>>, und bei <<erheblich>> drei Mal so hoch wie bei <<mässig>>~\cite{sacbergspwinter}. (Siehe Abb.\ \ref{fig:llbdanger})
+%TODO: Hier ein Bulletin als Beispiel?
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=7.5cm]{gefahrenstufen}
-  \caption{Die 5 Europäsischen Lawinengefahrstufen in einem Graph}
+  \caption{Die 5 Europäsischen Lawinengefahrstufen in einem Graph}\label{fig:llbdanger}
 \end{figure}
 
 Um die Einteilung dieser fünf Kategorien weiter zu verfeinern, wurden in der Schweiz zusätzlich Teilabstufen mittels $+$, $-$ und $=$ eingeführt (So lautet die Warnstufe im Bericht nun z.B.\ $3+$, wenn die tatsächliche Gefahr bereits nahe an einer $4$ bzw.\ $4-$ liegt)~\cite{sacbergspwinter}.
@@ -312,10 +315,17 @@ Um ein einfaches Bereitstellen zu ermöglichen und so horizontale Skalierbarkeit
 
 Als erweiterung zum reinen GIS-Modell wurde eine Webanwendung mittels Vue.js und MapLibre GL JS realisiert~\cite{vuedevman}\cite{maplibregljs}. Als Basislayer für die Karte wurde das Layer <<Base Map>> von swisstopo verwendet, welches durch die Höhendaten von SwissAlti\textsuperscript{3D} in eine drei-dimensionale Form gebracht wurde~\cite{basevtprod}\cite{alti3dprod}. Nutzer können sich mittels einem Google-Account anmelden und ihre Routen so abspeichern und wieder aufrufen. Zusätzlich steht basierend auf den in SwissTLM verfügbaren Lokalnamen eine Suchfunktion zur verfügung. Die Planung einer neuen Tour kann durch die Auswahl von Start- \& Zielort sowie der gewünschten Modellvariante in Auftrag gegeben werden --- innert ca.\ \qty{20}{s} ist das Resulat anschliessen verfügbar und wird dem Nutzer direkt angezeigt.
 
-\begin{Mappage}
+\end{multicols}
+
+% \begin{Mappage}
   \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{webapp}
-    \caption{Nutzeroberfläche}\label{fig:mainui}
+    \caption{Nutzeroberfläche der Webapp, Tour auf den Clariden}\label{fig:mainui}
   \end{figure}
-\end{Mappage}
+% \end{Mappage}
+
+\begin{multicols}{2}
+
+
+\end{multicols}
