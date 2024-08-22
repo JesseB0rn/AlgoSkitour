@@ -4,17 +4,27 @@
 
 \subsection{Ziel der Arbeit}
 
-Es soll in erster Linie ein Computer-Modell entwickelt werden, das aufgrund eines Höhenmodells eine möglichst defensive/lawinensichere Aufstiegsroute plant. Als erweiterung wird dieses Modell in einer Webapp, auf einer ansprechenden 3D-Karte als Hintergrundebene, zur verfügung gestellt. Die vom Modell produzierten Touren werden mit Literaturrouten aus dem Tourenportal des SAC, bzw.\ aus diversen dort gesammelten Tourenführern verglichen und ihre begehbarkeit kritisch überprüft.
+Es soll in erster Linie ein Computer-Modell entwickelt werden, welches aufgrund eines Höhenmodells eine möglichst defensive (risikominimierende) Aufstiegsroute plant. Als Erweiterung wird dieses Modell mit einer ansprechenden 3D-Karte als Hintergrundebene in einer Webapp zur Verfügung gestellt. Die vom Modell produzierten Touren werden mit Literaturrouten aus dem Tourenportal des SAC, bzw.\ aus diversen dort gesammelten Tourenführern verglichen und ihre Begehbarkeit kritisch überprüft.
 
-\section{Theoretische Grundlagen}
+\subsection{Bestehende Referenzsysteme}
+\begin{itemize}
+  \item Andreas eisenhut Masterarbeit
+  \item Skitourenguru
+\end{itemize}
+
+\section{Grundlagen der Lawinenkunde}
 \subsection{Analytische vs. Praktische Lawinenkunde}
 Lawinenprobleme lassen sich grundsätzlich aus zwei Perspektiven betrachten und vorhersagen: Einerseits auf Basis der Schneedecke, anderer seits auf Basis von Geländeformen und Statistik.
 Dabei wird bei der praktischen Lawinenkunde auf das erstellen von beispielsweise Schneeprofilen (Extended Coloumn Test) zur Einschätzung der lokalen Stabilität der Schneedecke gesetzt.
 
-Bei der analytischen Lawinenkunde arbeiten wir mit historischen Unfalldaten, konkret ist das Ziel, ein qunatitatives Mass für das eingegangene Riskio zu errechnen.
-Dies steht der praktischen Lawinenkunde gegenüber. Hier beobachten wir die Schneedecke und leiten daraus die Entscheidung ab, weiter aufzusteigen oder umzukehren – diese Entscheidung steht in beiden Gebieten im Vordergrund.
+Bei der analytischen Lawinenkunde arbeiten wir mit historischen Unfalldaten, konkret ist das Ziel, ein quantitatives Mass für das eingegangene Risiko zu errechnen.
+Daraus leiten wir die Entscheidung ab, weiter aufzusteigen oder umzukehren – diese Entscheidung steht in beiden Gebieten im Vordergrund.
 
 \subsection{Lawinentypen}
+
+Lawinen lassen sich anhand ihrer Auslösemechanismen, des Materials, das sie transportieren, und der spezifischen Bedingungen, unter denen sie entstehen, klassifizieren. Die wichtigsten Lawinentypen --- Schneebrettlawinen, Lockerschneelawinen, Gleitschneelawinen (und Staublawinen) --- unterscheiden sich in ihrer Entstehung, Dynamik und den daraus resultierenden Gefahren. Eine genaue Kenntnis dieser Unterschiede ist notwendig für die Lawinenkunde und das alpine Risikomanagement.
+
+%TODO: Seitenumbrüche hier prüfen
 
 \begin{enumerate}
   \item Schneebrettlawinen~\cite{sacbergspwinter}\cite{slfLawinentypen}:
@@ -22,7 +32,7 @@ Dies steht der praktischen Lawinenkunde gegenüber. Hier beobachten wir die Schn
     \item Fordern 90\% der Lawinenopfer
     \item Abriss entlang einer Kante, Schnee gleitet als ganzer Block <<Brett>> ab
     \item Brett gleitet auf einer darunterliegenden Schwachschicht in der Schneedecke ab
-    \item Kann aufgrund von mehrbelastung durch Wintersportler oder spontan abgehen
+    \item Kann aufgrund von Mehrbelastung durch Wintersportler oder spontan abgehen
     \item Auslösender Athlet steht oft mitten im Schneebrett
     \item Verschüttungsgefahr gross –\\ Mitreis- \& Absturzgefahr gross
     \item Gefahr ab einer Hangneigung von $30\degree$
@@ -41,7 +51,7 @@ Dies steht der praktischen Lawinenkunde gegenüber. Hier beobachten wir die Schn
   \begin{itemize}
     \item Ebenfalls linienförmige Abrisskante
     \item Die gesamte Schneedecke gleitet ab
-    \item Kleine Bedeutung für Wintersportler – gehen oft spontan ab und gefährden vor allem Infrastruktur
+    \item Kleine Bedeutung für Wintersportler –-- gehen oft spontan ab und gefährden vor allem Infrastruktur (Abgleiten erfolgt über mehrere Stunden oder Tage hinweg, zeigt sich gut durch sog. <<Fischmäuler>>)
   \end{itemize}
 \end{enumerate}
 Für unsere Zwecke interessieren uns an erster Stelle \textbf{Schneebrettlawinen} und an zweiter \textbf{Lockerschneelawinen}, da diese Lawinentypen für die meissten Unfälle mit Personenschaden abseits der Schweizer Pisten verantwortlich sind. In $\qty{95}{\percent}$ aller Unfälle lösen Schneesportler dabei ihre Unglückslawine selbst aus~\cite{ortovoxlabsnow}. Aus diesem Grund wird im weiteren Verlauf dieser Arbeit einer möglichen Fernauslösung keine weitere Beachtung geschenkt.
@@ -49,26 +59,28 @@ Für unsere Zwecke interessieren uns an erster Stelle \textbf{Schneebrettlawinen
 % \pagebreak
 \subsection{Typische Lawinenprobleme}\label{lawinenprobleme}
 
+In der Lawinenkunde werden bestimmte Lawinenprobleme definiert, um die komplexen Zusammenhänge einfacher verständlich zu machen und die Risikoanalyse zu erleichtern. Diese typischen Lawinenprobleme umfassen verschiedene Szenarien, die besonders häufig auftreten und die Lawinengefahr massgeblich beeinflussen. Ein tiefes Verständnis dieser Probleme ist von Nöten, um in gefährdetem Gelände sicher unterwegs zu sein und präzise Entscheidungen in Bezug auf Lawinensicherheit zu treffen.
+
 \begin{enumerate}
   \item Neuschneeproblem~\cite{achtunglawine}:
   \begin{itemize}
-    \item Frischer Neuschnee, der sich schlecht mit der darunterliegenden Schneeschichten verbunden hat. 
-    \item Ab der Kritischen Neuschneemenge (je nach Bedingungen zwischen \qty{10}{cm} --~\qty{50}{cm}) mindestens die Warnstufe <<3 -~Erheblich>> im LLB.\@
+    \item Frischer Neuschnee, welcher sich schlecht mit der darunterliegenden Schneeschichten verbunden hat. 
+    \item Produziert ab der kritischen Neuschneemenge (je nach Bedingungen zwischen \qty{10}{cm} --~\qty{50}{cm}) mindestens die Warnstufe <<3 -~Erheblich>> im LLB.\@
     \item Setzt sich in 2 bis 3 Tagen
   \end{itemize}
   \item Triebschneeproblem~\cite{achtunglawine}:
   \begin{itemize}
     \item Wind trägt Neuschnee in Windschattenlagen
-    \item Praktisch immer gebunden, ideale Voraussetzungen für ein Schneebrett
-    \item Gefahr durch Schneeverfrachtungen
-    \item Setzt sich in 2 bis 3 Tagen
+    \item Triebschnee verbindet sich leicht mit sich selbst, jedoch nicht mit darunterliegenden Schichten; ideale Voraussetzungen für ein Schneebrett
+    \item Gefahr durch Schneeverfrachtungen (z.B. auch Wechten)
+    \item Setzt sich innert 2 bis 3 Tagen
   \end{itemize}
   \item Nassschneeproblem~\cite{achtunglawine}:
   \begin{itemize}
     \item Die Schneedecke wird durch eindringendes Wasser geschwächt
-    \item Erste Durchfeuchtung führt zu der bedeutendsten Schwächung
+    \item Die erste Durchfeuchtung führt zu der bedeutendsten Schwächung
     \item Gefahr nach andauernden Regenperioden im Winter
-    \item Typische Frühlingslawinen, Gefahr steigt im Verlauf des Tages mit steigender Temperatur an
+    \item Typische Frühlingslawinen, steigende Gefahr im Verlauf des Tages mit steigender Temperatur
     \item Lange anhaltende Gefahr
   \end{itemize}
   \item Altschneeproblem~\cite{achtunglawine}:
@@ -79,7 +91,7 @@ Für unsere Zwecke interessieren uns an erster Stelle \textbf{Schneebrettlawinen
 \end{enumerate}
 Es ist möglich, das mehrere Lawinenproblem miteinander auftreten. Im LLB sind jeweils alle zu erwartenden Lawinenprobleme mit einer eigenen Gefahrenstufe aufgeführt.~\cite{slfTypischeLawinenprobleme}
 
-\subsection{Lawinenbulletin / -lagebericht \& Gefahrenstufen}
+\subsection{Lawinenlagebericht (Bulletin) \& Gefahrenstufen}
 
 Im Lawinenbulletin/Lawinenlagebericht, kurz LLB, werden die momentan am Berg zu erwartenden Lawinenprobleme (siehe~\ref{lawinenprobleme}) zusammengefasst und mit diversen zusätzlichen Datenprodukten ergänzt.
 
@@ -142,8 +154,8 @@ Von zuhause aus~\cite{munter}:
 
 \subsection{Grafische Reduktionsmethode \& Relevante Geländefaktoren}
 
-Die momentan am meisten verwendete Reduktionsmethode ist dabei wohl die sog. <<grafische Reduktionsmethode>>, kurz GRM.\@Bei dieser wird --- je nach prognostizierter Ausgeprägtheit eines Lawinenproblemes --- nur die lokale Hangneigung an einer Stelle zur Entscheidungsfindung eingesetzt~\cite{sacbergspwinter}. In der Plannungsphase wird die Hangneigung aus einer $1:25000$er-Karte mittels Neigungsmesser herausgelesen. Dies liefert jedoch nur die durchschnittliche Neigung des Geländes zwischen den Höhenlinien --- eine möglichen steieren Hangabschnitt sieht man also nicht.
-Unterwegs kann entweder mittles Smartphone, Skistöcker oder Pendel die Hangneigung ermittelt werden. Es kann nun in der Grafik (siehe Abb.\ \ref{fig:grm}) herausgelesen werden, ob das zu überprüfende Gelände problemslos, nur mit Vorsichtsmassnahmen oder gar nicht betreten werden darf.
+Die momentan am meisten verwendete Reduktionsmethode ist dabei wohl die sog. <<grafische Reduktionsmethode>>, kurz GRM.\@Bei dieser wird --- je nach prognostizierter Ausgeprägtheit eines Lawinenproblemes --- nur die lokale Hangneigung an einer Stelle zur Entscheidungsfindung eingesetzt~\cite{sacbergspwinter}. In der Plannungsphase wird die Hangneigung aus einer $1:25000$er-Karte mittels Neigungsmesser herausgelesen. Dies liefert jedoch nur die durchschnittliche Neigung des Geländes zwischen den Höhenlinien --- eine möglichen steileren Hangabschnitt sieht man also nicht.
+Unterwegs kann entweder mittels Smartphone, Skistöcker oder Pendel die Hangneigung ermittelt werden. Es kann nun in der Grafik (siehe Abb.\ \ref{fig:grm}) herausgelesen werden, ob das zu überprüfende Gelände problemlos, nur mit Vorsichtsmassnahmen oder gar nicht betreten werden darf.
 
 \begin{figure}[H]
   \centering
@@ -151,24 +163,24 @@ Unterwegs kann entweder mittles Smartphone, Skistöcker oder Pendel die Hangneig
   \caption{GRM-Karte~\cite{achtunglawine}}\label{fig:grm}
 \end{figure}
 
-
+An der grafische Reduktionsmethode wird oft kritisiert, dass sich zu stark auf die Hangneigung gestützt wird. Deshalb wird diese oft zusammen mit sog. <<Mustern>> gelehrt. Diese beschreiben einige Warnzeichen und wie diese das Risiko beeinflussen~\cite{achtunglawine}. Letztendlich bleibt die GRM jedoch, wie der Name verrät, eine Reduktionsmethode --- es werden selektiv die in die Auswertung einfliessenden Parameter reduziert.
 
 \subsection{Unfalldaten \& Begehungen}
 
 Hänge, deren steilste Stelle mindestens ca. 30° geneigt ist gelten als Lawinengefährdet. Etwa 18° geneigtes Gelände wird am häufigsten begangen, zwischen 30° und 40° Steigt das Lawinenrisiko enorm an.~\cite{sacbergspwinterp99} 
 
 
+%TODO: Kritik an 3x3 und GRM
 
-
-
+\section{Geoinformatische Grundlagen}
 
 \subsection{Digitale Höhenmodelle}\label{sec:dem}
 
-In den 1960er Jahren verlangte der schweizer Generalstab vom heutigen Bundesamt für Landestopografie zu prüfen, ob tief fliegende feindliche Kampfflugzeuge unbemerkt in den schweizer Luftraum eindringen könnten. Um die für diese Prüfung nötigen Berechnungen erstmals an einem Grossrechner ausführen zu können, mussten die topographischen Höhen aus der Landeskarte $1:250000$ auf Lochkarten transferiert werden. Mit einer Auflöung von \qty{250}{m} wurden die Höhenlinien der analogen Kartenprodukte so in mühseliger Handarbeit zwischen 1966 --~1968 erstmals digital nutzbar gemacht. Das so erstellte digitale Höhenmodell DEM <<RIMINI>> wurde bis in die 1970er Jahre genutzt.~\cite{swisstopohistdem}
+In den 1960er Jahren verlangte der schweizer Generalstab vom heutigen Bundesamt für Landestopografie zu prüfen, ob tief fliegende feindliche Kampfflugzeuge unbemerkt in den schweizer Luftraum eindringen könnten. Um die für diese Prüfung nötigen Berechnungen erstmals an einem Grossrechner ausführen zu können, mussten die topographischen Höhen aus der Landeskarte $1:250000$ auf Lochkarten transferiert werden. Mit einer Auflösung von \qty{250}{m} wurden die Höhenlinien der analogen Kartenprodukte so in mühseliger Handarbeit zwischen 1966 --~1968 erstmals digital nutzbar gemacht. Das so erstellte digitale Höhenmodell DEM <<RIMINI>> wurde bis in die 1970er Jahre genutzt.~\cite{swisstopohistdem}
 
-Rufe nach einem engmaschigerem Modell brachten schliesslich unter anderem <<DHM25>> hervor, welches Daten in einer Auflösung von bereits \qty{25}{m} mitbringt.~\cite{swisstopohistdem}
+Rufe nach einem engmaschigeren Modell brachten schliesslich unter anderem <<DHM25>> hervor, welches Daten in einer Auflösung von bereits \qty{25}{m} mitbringt.~\cite{swisstopohistdem}
 
-Um die Jahrtausendwende erfolgte dank schnelleren CPUs und günstigem Datenspeicher eine Umkehrung des Prozess. Neu werden die analogen Landeskarten auf Basis eines DEM erstellt. Moderne DEMs erreichen dabei eine Auflösung bis zu \qty{0.5}{m} bei einer Genauigkeit von 0.5 --~3 \unit{m} und werden direkt aus Lasermessungen oder Stereokorrelierten Luftbildern abgeleitet~\cite{alti3dprod}. SwissAlti\textsuperscript{3D} ist genau solch ein Modell.
+Um die Jahrtausendwende erfolgte dank schnelleren CPUs und günstigem Datenspeicher eine Umkehrung des Prozess. Neu werden die analogen Landeskarten auf Basis eines DEM erstellt. Moderne DEMs erreichen dabei eine Auflösung bis zu \qty{0.5}{m} bei einer Genauigkeit von 0.5 --~3 \unit{m} und werden direkt aus Lasermessungen oder stereokorrelierten Luftbildern abgeleitet~\cite{alti3dprod}. SwissAlti\textsuperscript{3D} ist genau solch ein Modell.
 
 Dank der <<Open Government Data Strategie>> des Bundes werden seit 2020 diverse Datensammlungen die öffentliche Verwaltungen produzieren der Öffentlichkeit wieder zur Verfügung gestellt~\cite{opendataswiss}.
 So landet nebst dem Fahrplan der SBB, Jungwaldflächen und den Standorten aller öffentlichen Toiletten der Stadt Luzern (nebst unzähligen weiteren Datensätzen) auch  SwissAlti\textsuperscript{3D} auf dem Opendataprotal des Bundes.
@@ -176,14 +188,14 @@ SwissAlti\textsuperscript{3D} wird als GeoTIFF ausgeliefert. GeoTIFF sind verlus
 
 Aus einem Solchen Höhenmodell lässt sich die Hangneigung viel präziser und hochauflösender herauslesen, als dies von Hand aus einer $1:25000$er-Karte möglich ist.
 
-\subsection{Digitale landschaftmodelle}
+\subsection{Digitale Landschaftmodelle}
 
 Berge, Wälder, Flüsse und Seen sind ebenfalls ein wichtiger Kartenbestandteil. Auf Skitour gilt es zum Beispiel Schwimmpassagen zu vermeiden. Swisstopo liefert mit SwissTLM\textsuperscript{3D} einen Datensatz, der alle auf einer Landeskarte ersichtlichen Objekte enthält. Im weiteren verlauf interessieren uns hier vor allem Gewässer (stehend und fliessend), Brücken über diese sowie Wald und Wildruhezonen.
 
 \subsection{GIS}\label{sec:gis}
 
 Geoinformationssysteme (GIS) sind leistungsstarke Werkzeuge, die zur Analyse, Darstellung und Interpretation von geografischen Daten verwendet werden. Mit einem solchen Werkzeug können etwa Landkarten verfasst, ökologische Veränderungen überwacht oder zoologische Migrationsmuster analysiert werden.
-In dieser Arbeit wurde das Werkzeug QGIS~\cite{qgis} extensiv verwendet; unter anderem wurde eine eigene Analyse-Erweiterung entwickelt.
+In dieser Arbeit wurde das quelloffene Werkzeug QGIS~\cite{qgis} extensiv verwendet; unter anderem wurde eine eigene Analyse-Erweiterung entwickelt. QGIS wurde gegenüber anderen kommerziellen GIS-Lösungen gewählt, da diese oft schnell teuer verrechnet werden.
 
 %TODO: Zitat in mitte von Satz für einzelnes Wort so iO?
 

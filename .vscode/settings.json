@@ -16,5 +16,7 @@
   "editor.wrappingIndent": "deepIndent",
   "editor.wordWrap": "on",
   "liveServer.settings.port": 5501,
-  "csv-preview.separator": ";"
+  "csv-preview.separator": ";",
+  "cSpell.language": "de-CH",
+  "cSpell.words": ["Begehbarkeit", "Geoinformatische", "Schneeverfrachtungen", "Schwachschicht", "Skitourenguru", "Verschüttungsgefahr"]
 }
