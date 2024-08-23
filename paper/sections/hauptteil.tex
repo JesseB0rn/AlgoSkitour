@@ -45,7 +45,7 @@ Ebenso erreicht die Tour auf den Clariden in der Eigenevaluation eine Bestnote -
 % % \begin{multicols}{2}
 
 Weniger erfreulich sieht das Resultat bei den Touren im Monte Rosa Massiv aus. Bei der Route auf die Dufourspitze findet der Algorithmus ohne weitere Hilfe zwar eine Spuranlage, welche als Hochtour so existiert, im Winter jedoch --- dank einer Kletterstelle im~\rom{3}. Grad --- kaum oder nur unter extremer Schwierigkeit und nur ohne Skis begangen werden kann. 
-Die Tour welche nicht direkt zum Gipfel, sondern nur bis zum Skidepot der Literaturtour führt, funktioniert und kann so begangen werden. Die Routenwahl ist jedoch um einiges defensiver als jene aus dem Tourenführer (siehe Abb.\ \ref{fig:monterosa} <<Manuelles Skidepot>>). Ein umweg von ca.\ \qty{1}{h} wird gegenüber eines \qty{32}{°} steilen Hanges in Kauf genommen.
+Die Tour welche nicht direkt zum Gipfel, sondern nur bis zum Skidepot der Literaturtour führt, funktioniert und kann so begangen werden. Die Routenwahl ist jedoch um einiges defensiver als jene aus dem Tourenführer (siehe Abb.\ \ref{fig:monterosa} <<Manuelles Skidepot>>). Ein Umweg von ca.\ \qty{1}{h} wird gegenüber eines \qty{32}{°} steilen Hanges in Kauf genommen.
 
 % % \end{multicols}
 \begin{figure*}[h]
@@ -65,17 +65,27 @@ Die Route auf den Piz Palü ist aufgrund der Nähe zu einer Spaltenzone (siehe A
 \end{figure*}
 
 % % \begin{multicols}{2}
-Auch bei den Touren auf den Galenstock sowie den Dammastock werden eher einer Hochtour entsprechende Spurwahlen getroffen. In der Praxis sind diese mit Skiern mangels einer attraktiven Abfahrt vom Skidepot aus keine Trendtouren-Kandidaten. (Für diese Routen siehe Anhang)
-%TODO: Insert correct ref
+Auch bei den Touren auf den Galenstock sowie den Dammastock werden eher einer Hochtour entsprechende Spurwahlen getroffen. In der Praxis sind diese mit Skiern mangels einer attraktiven Abfahrt vom Skidepot aus keine Trendtouren-Kandidaten. (Für diese Routen siehe Anhang\ \ref{app:evalroutes})
+
 % \end{multicols}
+\clearpage
 
 \subsection{Einschränkungen des Modells}
+%TODO: QRM citen
+Die vom Modell verwendete Reduktionsmethode entspricht de-facto der GRM.\@So übernimmt diese Primär auch deren Schwächen. Es existieren mit der QRM eine Reduktionsmethode, welche ein umfassenderes Bild des Geländes beobachtet.\cite{qrm}
+Leider lassen die Quellen keine vollständig einsatzfähige Reproduktion zu.
+
+Ebenfalls leidet das Modell grundsätzlich unter einem Zielkonflikt. In der aktuellen Implementation kann das Modell theoretisch entscheiden, einen zu 100\% tödlichen Abschnitt zu durchqueren, wenn die Wegersparnis gross genug ist. In der Praxis ist dies jedoch selten der Fall und wurde während der Evaluation nie beobachtet.
+
+Ist ein Grat genug breit verzeichnet, wird dieser momentan mit einem Risikowert nahe von $0.00$ ausgewiesen --- ungeachtet der tatsächlichen Begehbarkeit. Hier gilt jedoch das Prinzip <<Garbage in - garbage out>> --- die Datengrundlage lässt keine schlüssige Aussage über die Begehbarkeit von Graten zu.
+
+\subsection{Mögliche Verbesserungen}
 
 
-\clearpage
 % \begin{multicols}{2}
+\clearpage
 \section{Methodische Reflexion}
-\subsection{Versionierung, Backup und Archiv mit Git}
+\subsection{Versionsverwaltung, Backup und Archiv mit Git}
 
 In der Softwareentwicklung haben sich Softwareversionierungstools wie Git bereits bewährt. Mit diesen ist es möglich, laufende Veränderungen in Textdateien (bzw. Programmcode) zeitlich sortiert zu speichern. So kann auf verschiedenen Rechner an unterschiedlichen Versionen gearbeitet werden, welche anschliessend mit minimalem Aufwand wieder zusammengeführt (gemerged) werden können. Jede Änderung wird als <<Commit>> gespeichert --- diese können mit einem kleinen Kommentar versehen werden. Man ist ausserdem frei darin, auf einen vorherigen Commit zurückzuspringen, sollte man mit einer Änderung nicht mehr zufrieden sein. Kurz: Zeitreise für Softwareentwicklung. 
 In dieser Arbeit wurde jeglicher Programmcode sowie die Arbeit selbst in ein Git-Repository <<eingecheckt>>. Dieses wurde auf Github synchronisiert, um ein sicheres Speichern aller Daten zu ermöglichen und einen Arbeitsverlust zu verhindern --- was sich als absolut empfehlenswert herausgestellt hat. Speziell die Kombionation von Git und \LaTeX\ hat sich für das Verfassen einer Arbeit als mächtiger Arbeitsprozess bewährt.
