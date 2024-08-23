@@ -1,7 +1,7 @@
 % \begin{multicols}{2}
 \section{Resultat}
 
-Resultat ist eine Webapp, welche in allen modernen Webbrowsern funktioniert. Mittels Klicken können Start- \& Zielpunkt ausgewählt werden. Mit einem bestätigenden Klick auf <<Ausführen>> wird im Hintergrund ein GIS-Modell gestartet, welches entweder eine <<rohe>> Gefahrenkarte oder eine mit eingebrannten Gewässern verwendet. Mit eigenen Touren kann auf \url{https://algotour.app} experimentiert werden.
+Resultat ist eine Webapp, welche in allen modernen Webbrowsern funktioniert. Mittels Klicken können Start- \& Zielpunkt ausgewählt werden. Mit einem bestätigenden Klick auf <<Ausführen>> wird im Hintergrund ein \gls{gis}-Modell gestartet, welches entweder eine <<rohe>> Gefahrenkarte oder eine mit eingebrannten Gewässern verwendet. Mit eigenen Touren kann auf \url{https://algotour.app} experimentiert werden.
 
 \section{Diskussion}
 
@@ -72,7 +72,7 @@ Auch bei den Touren auf den Galenstock sowie den Dammastock werden eher einer Ho
 
 \subsection{Einschränkungen des Modells}
 %TODO: QRM citen
-Die vom Modell verwendete Reduktionsmethode entspricht de-facto der GRM.\@So übernimmt diese Primär auch deren Schwächen. Es existieren mit der QRM eine Reduktionsmethode, welche ein umfassenderes Bild des Geländes beobachtet.\cite{qrm}
+Die vom Modell verwendete Reduktionsmethode entspricht de-facto der \gls{grm}.\@So übernimmt diese Primär auch deren Schwächen. Es existieren mit der \gls{qrm} eine Reduktionsmethode, welche ein umfassenderes Bild des Geländes beobachtet.\cite{qrm}
 Leider lassen die Quellen keine vollständig einsatzfähige Reproduktion zu.
 
 Ebenfalls leidet das Modell grundsätzlich unter einem Zielkonflikt. In der aktuellen Implementation kann das Modell theoretisch entscheiden, einen zu 100\% tödlichen Abschnitt zu durchqueren, wenn die Wegersparnis gross genug ist. In der Praxis ist dies jedoch selten der Fall und wurde während der Evaluation nie beobachtet.
@@ -92,7 +92,7 @@ In dieser Arbeit wurde jeglicher Programmcode sowie die Arbeit selbst in ein Git
 
 \subsection{Verworfene Variante}
 
-Die erste Variante, mit der Risikokarten hätten erstellt werden sollen, stellte sich als unpraktisch heraus. Aufgrund einer Quelle wurde eine 3D-Lawinensimulation implementiert, bzw.\ ein Versuch in deren Richtung unternommen. Die Physiksimulation könnte jedoch nicht korrekt implementiert werden --- mangels des nötigen mathematischen geschicks\footnote{Numerische Verfahren zur Lösung von partielleen Differentialgleichungen entziehen sich der Expertiese des Autoren}. Mit diesem hier nur kurz ausgeführten Unternehmen liesse sich bereits eine ganze Arbeit füllen, hier wurde der Versuch jedoch nach ca.\ einer Woche abgebrochen und eine einfachere Varainte, die der GRM ähnelt, ausgewählt. Zwischenzeitliche wurde eine Lawinensimulation mittels RAMMS::Avalanche in Betracht gezogen, was jedoch aus praktischer Sicht sowie wegen dem eigentlichen Zweck des Werkzeuges (Gefahrenmodellierung von Infrastrukturprojekten mit grossen, seltenen Lawinenereignissen) auch nicht möglich war.
+Die erste Variante, mit der Risikokarten hätten erstellt werden sollen, stellte sich als unpraktisch heraus. Aufgrund einer Quelle wurde eine 3D-Lawinensimulation implementiert, bzw.\ ein Versuch in deren Richtung unternommen. Die Physiksimulation könnte jedoch nicht korrekt implementiert werden --- mangels des nötigen mathematischen geschicks\footnote{Numerische Verfahren zur Lösung von partielleen Differentialgleichungen entziehen sich der Expertiese des Autoren}. Mit diesem hier nur kurz ausgeführten Unternehmen liesse sich bereits eine ganze Arbeit füllen, hier wurde der Versuch jedoch nach ca.\ einer Woche abgebrochen und eine einfachere Varainte, die der \gls{grm} ähnelt, ausgewählt. Zwischenzeitliche wurde eine Lawinensimulation mittels RAMMS::Avalanche in Betracht gezogen, was jedoch aus praktischer Sicht sowie wegen dem eigentlichen Zweck des Werkzeuges (Gefahrenmodellierung von Infrastrukturprojekten mit grossen, seltenen Lawinenereignissen) auch nicht möglich war.
 
 \subsection{GIS}
 
@@ -103,11 +103,11 @@ Bereits in der Projektarbeit des Autors hat sich gezeigt, das Microsoft Word ein
 
 \subsection{Evaluation}
 
-In der ersten Fassung des Projektvertrages sollte die Evaluation anhand von Expertenmeinungen stattfinden. Dies wurde im  Verlauf der Arbeit verworfen, da eine hohe Expertise in der Bedienung des Modells nötig ist, um brauchbare Paramter auszuwählen. Die Zeit die für erwerben der nötigen GIS-Kentnisse, auswählen von Routen und evaluieren konnte Freiwilligen nicht zugemutet werden. Nach Vorschlag der Betreuungsperson wurde schliesslicihe die Variante mit Literaturrouten gewählt.
+In der ersten Fassung des Projektvertrages sollte die Evaluation anhand von Expertenmeinungen stattfinden. Dies wurde im  Verlauf der Arbeit verworfen, da eine hohe Expertise in der Bedienung des Modells nötig ist, um brauchbare Paramter auszuwählen. Die Zeit die für erwerben der nötigen \gls{gis}-Kentnisse, auswählen von Routen und evaluieren konnte Freiwilligen nicht zugemutet werden. Nach Vorschlag der Betreuungsperson wurde schliesslicihe die Variante mit Literaturrouten gewählt.
 
 \subsection{3D-Karte \& Webapp}
 
 Dank des hohen Standards der bei der Entwicklung von MapLibre~GL~JS~\cite{maplibregljs} durch die Beitragenden eingehalten wird, konnte innert wenigen Minuten eine erste Version der 3D-Karte erstellt werden. Swisstopo liefert ihre Grundlagenkarte ebenfalls bereit in einem Format, das bereits kompatibel ist. Das Grundgerüsst der Webapp wurde in Vue.js implementiert, was ich im NAWiMAT-Praktikum erlernt habe. Diese Wahl stellte sich als sehr günstig heraus, auch wenn eine minimale Adaptionsschicht zwischen Vue und MapLibre zusätzlich implementiert werden musste.
-Die grössten Schwierigkeiten stellten sich beim umwandeln der Höhendaten. Diese mussten von GeoTIFF in ein sog.\ RGB-DEM umgewandelt werden. Von Höhe als direktem Rasterwert zu einem RGB-Bild, in welchem die Höhe in Farbwerte umgewandelt wird. Durch das verändern der Bildgrösse, treffen die neuen Pixel nicht genau auf die alten. Für Bilddaten würde man nun bilinear interpolieren, d.h.\ die Farbwerte der 4 umliegenden Pixel je nach Distanz gewichtet verrechnen. Probiert man dies mit RGB-DEM-Bildern, verfälscht man die höhen an Kanten bei denen zum ersten mal blaue Pixel relevant werden (Es entstehen falschem, hohe Spitzen). Die Lösung für dieses eigentlich triviale Problem bestand darin, QGIS mittels CLI-Flag mitzuteilen nur das nächste Pixel anstelle der nächsten 4 zu verwenden.
+Die grössten Schwierigkeiten stellten sich beim umwandeln der Höhendaten. Diese mussten von GeoTIFF in ein sog.\ RGB-\acrshort{dem} umgewandelt werden. Von Höhe als direktem Rasterwert zu einem RGB-Bild, in welchem die Höhe in Farbwerte umgewandelt wird. Durch das verändern der Bildgrösse, treffen die neuen Pixel nicht genau auf die alten. Für Bilddaten würde man nun bilinear interpolieren, d.h.\ die Farbwerte der 4 umliegenden Pixel je nach Distanz gewichtet verrechnen. Probiert man dies mit RGB-\acrshort{dem}-Bildern, verfälscht man die höhen an Kanten bei denen zum ersten mal blaue Pixel relevant werden (Es entstehen falschem, hohe Spitzen). Die Lösung für dieses eigentlich triviale Problem bestand darin, QGIS mittels \acrshort{cli}-Flag mitzuteilen nur das nächste Pixel anstelle der nächsten 4 zu verwenden.
 
 % \end{multicols}

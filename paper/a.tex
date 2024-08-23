@@ -12,6 +12,7 @@
 		sections/hauptteil,
     sections/schlusswort,
     sections/anhang,
+    sections/glossar,
 }
 
 
@@ -23,6 +24,17 @@
 \ihead{Algorithmische Skitourenplanung}
 \ifoot{\\Jesse Born, 2024}
 
+\newacronym{llb}{LLB}{Lawinenlagebericht}
+\newacronym{gis}{GIS}{Geoinformationssystem}
+\newacronym{dhm}{DHM}{digitales Höhenmodell}
+\newacronym{dem}{DEM}{Digital Elevation Model}
+\newacronym{cli}{CLI}{Command Line Interface}
+\newacronym{grm}{GRM}{Grafische Reduktionsmethode}
+\newacronym{qrm}{QRM}{Quantitative Reduktionsmethode}
+\newacronym{gpu}{GPU}{Grafikprozessor}
+\newacronym{unix}{UNIX}{UNiplexed Information Computing System}
+\newacronym{gdal}{GDAL}{Geospatial Data Abstraction Library}
+
 \begin{document}
 
 
@@ -33,6 +45,7 @@
 \addcontentsline{toc}{section}{Inhaltsverzeichnis}
 \tableofcontents
 
+% \include{sections/glossar}
 
 \include{sections/abstract}
 \include{sections/vorwort}
@@ -42,12 +55,15 @@
 \include{sections/schlusswort}
 \clearpage
 
+
 % \addcontentsline{toc}{section}{Literatur}
 \printbibliography[heading=bibnumbered]
 \clearpage
 
 % \addcontentsline{toc}{section}{Abbildungsverzeichnis}
 \appendix
+\printglossary[type=\acronymtype, title={Abkürzungsverzeichnis}, nonumberlist]
+\clearpage
 \listoffigures
 \skiplines{2}
 Alle Abbildungen ohne Kurzverweis in der Beschriftung stammen aus eigener Hand. Die Hintergrundkarten stammen wo nicht anders erwähnt aus der <<LK-Winter>> von swisstopo.
