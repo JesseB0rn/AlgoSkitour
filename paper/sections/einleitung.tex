@@ -10,6 +10,7 @@ Es soll in erster Linie ein Computer-Modell entwickelt werden, welches aufgrund 
 
 Mit dem Algorithmus von Andreas Eisenhut besteht seit 2013 eine mehr oder wenig fertig implementierte Lösung um Skitouren im Gelände automatisch zu planen\ \cite{eisenhuttourknopfdruck}. Trotz der starken Abhängigkeit von kostenpflichtigen Werkzeugen stellt diese Arbeit eine Pionierleistung in diesem Gebiet dar und wurde ebenfalls durch die Platform Skitourenguru aufgegriffen. Hier ist es jedoch nutzerseitig nicht möglich, einen Punkt A und B einzugeben und eine Route zurück zu erhalten. Zum Verfassungszeitpunkt dieser Arbeit kann die öffentlich zugängliche Version des Tools nur verwendet werden um bestehende GPS-Tracks und von Hand gezeichnete Routen idealer zu legen. Die Thesis von A. Eisenhut wurde wären dem Implementationsprozess dieser Arbeit nicht referenziert, erst während dem Verfassen der finalen Arbeit.
 
+\clearpage
 \section{Grundlagen der Lawinenkunde}
 \subsection{Analytische vs. Praktische Lawinenkunde}
 Lawinenprobleme lassen sich grundsätzlich aus zwei Perspektiven betrachten und vorhersagen: Einerseits auf Basis der Schneedecke, anderer seits auf Basis von Geländeformen und Statistik.
@@ -169,7 +170,7 @@ Hänge, deren steilste Stelle mindestens ca. 30° geneigt ist gelten als Lawinen
 
 
 %TODO: Kritik an 3x3 und \gls{grm}
-
+\clearpage
 \section{Geoinformatische Grundlagen}
 
 \subsection{Digitale Höhenmodelle}\label{sec:dem}
@@ -218,7 +219,7 @@ Als Heuristik wird im weiteren Verlauf der Arbeit die Taxi- bzw. Chebyshev-Dista
 Nebst den risikoabhängigen Durchgangskosten, werden auch noch Bewegungskosten berücksichtigt. Diese beschreiben die zeit und Anstrengung die benötigt wird, um einen Meter Weg zurückzulegen. Eine weit verbreitete und akzeptierte Schätzungsmethode ist die sog. Naismith'sche Regel~\cite{naismithsrule}.
 Beim Skitouren wird dabei je \qty{4000}{m} Horizontaldistanz und \qty{400}{hm} Vertikaldistanz eine Stunde Wegzeit gerechnet~\cite{sacbergspwinter}\cite{naismithsrule}. (Für eine \qty{3500}{m} lange Tour mit \qty{800}{hm} Anstieg wird eine Aufstiegsdauer von $\frac{\qty{3000}{m}}{\qty{4000}{m}} + \frac{\qty{800}{hm}}{\qty{400}{hm}} = \qty{2}{h}\ \qty{45}{\min}$ gerechnet)
 
-
+\clearpage
 \subsection{Berechnung von topographischen Oberflächenfaktoren}
 
 Wir schneiden $3 \times 3$-Ausschnitt aus dem Höhenmodell. Unser Ziel ist es, die chrakteristischen Geländeeigenschaften für die Zelle $e$ zu berechen.
@@ -329,6 +330,7 @@ Im Fall der Webanwendung wird die Erweiterung serverseitig über die Kommandozei
 
 Um ein einfaches Bereitstellen zu ermöglichen und so horizontale Skalierbarkeit der Serverressource zu gewährleisten, wurde ein Docker-Image\footnote{Vereinfacht gesagt: Ein Miniaturbetriebssystem das auf diversen Rechner innert Sekunden als Gastsystem hochgefahren werden kann und vom Rest des Systems isoliert ist} erstellt. Darin wurde die \gls{gis}-Anwendung sowie die Risikokarten und das Höhenmodell vorinstalliert. Momentan läuft die Anwendung nur auf einem Miniaturserver unter Ubuntu Server 24.04 LTS.\@Vorteil der hier gewählten Paketierung ist jedoch, das auch andere Serverbetreibsysteme ohne Änderung der des eigentlichen Quellcodes unterstützt werden. Zusätzliche Instanzen könnten ebenfalls zugeschalten werden, um eine durchgehend verfügbare öffentliche Version für 100 --~1000 Nutzer ohne Warteschleife zur Verfügung stellen zu können.
 
+\clearpage
 \subsection{3D-Karte im Webbrowser}
 
 Als erweiterung zum reinen \gls{gis}-Modell wurde eine Webanwendung mittels Vue.js und MapLibre GL JS realisiert~\cite{vuedevman}\cite{maplibregljs}. Als Basislayer für die Karte wurde das Layer <<Base Map>> von swisstopo verwendet, welches durch die Höhendaten von SwissAlti\textsuperscript{3D} in eine drei-dimensionale Form gebracht wurde~\cite{basevtprod}\cite{alti3dprod}. Nutzer können sich mittels einem Google-Account anmelden und ihre Routen so abspeichern und wieder aufrufen. Zusätzlich steht basierend auf den in SwissTLM verfügbaren Lokalnamen eine Suchfunktion zur verfügung. Die Planung einer neuen Tour kann durch die Auswahl von Start- \& Zielort sowie der gewünschten Modellvariante in Auftrag gegeben werden --- innert ca.\ \qty{20}{s} ist das Resulat anschliessen verfügbar und wird dem Nutzer direkt angezeigt.
