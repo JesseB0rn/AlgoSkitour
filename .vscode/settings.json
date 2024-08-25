@@ -18,5 +18,19 @@
   "liveServer.settings.port": 5501,
   "csv-preview.separator": ";",
   "cSpell.language": "de-CH",
-  "cSpell.words": ["Begehbarkeit", "Geoinformatische", "nutzerseitig", "Schneeverfrachtungen", "Schwachschicht", "Skitourenguru", "Tourenführern", "Tourenportal", "Verschüttungsgefahr"]
+  "cSpell.words": [
+    "Basislayer",
+    "Begehbarkeit",
+    "Dufourspitze",
+    "Geoinformatische",
+    "nutzerseitig",
+    "Routenwahl",
+    "Schneeverfrachtungen",
+    "Schwachschicht",
+    "Skitourenguru",
+    "Tourenführer",
+    "Tourenführern",
+    "Tourenportal",
+    "Verschüttungsgefahr"
+  ]
 }
