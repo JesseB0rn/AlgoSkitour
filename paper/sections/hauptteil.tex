@@ -67,21 +67,29 @@ Die Route auf den Piz Palü ist aufgrund der Nähe zu einer Spaltenzone (siehe A
 \end{figure*}
 
 % % \begin{multicols}{2}
-Auch bei den Touren auf den Galenstock sowie den Dammastock werden eher einer Hochtour entsprechende Spurwahlen getroffen. In der Praxis sind diese mit Skiern mangels einer attraktiven Abfahrt vom Skidepot aus keine Trendtouren-Kandidaten. (Für diese Routen siehe Anhang\ \ref{app:evalroutes})
+Auch bei den Touren auf den Galenstock sowie den Dammastock werden eher einer Hochtour entsprechende Spurwahlen getroffen. 
+In der Praxis sind diese mit Skiern mangels einer attraktiven Abfahrt vom Skidepot aus keine Trendtouren-Kandidaten. (Für diese Routen siehe Anhang\ \ref{app:evalroutes}) Hier zeigt sich, dass das Modell nicht ziwschen Ski- und Fussaufstieg unterscheiden kann. Hier könnte das Modell um einen Mechanismus zur Schätzung eines Skidepots bzw.\ von Tragepassagen ergänzt werden. Solche Funktionalität ist in\ \cite{footandcautionsection} beschrieben und hat sich als praktikabel erwiesen.
 
 % \end{multicols}
 \clearpage
 
 \subsection{Einschränkungen des Modells}
-%TODO: QRM citen
 Die vom Modell verwendete Reduktionsmethode entspricht de-facto der \gls{grm}.\@So übernimmt diese Primär auch deren Schwächen. Es existieren mit der \gls{qrm} eine Reduktionsmethode, welche ein umfassenderes Bild des Geländes beobachtet.\cite{qrm}
 Leider lassen die Quellen keine vollständig einsatzfähige Reproduktion zu.
 
 Ebenfalls leidet das Modell grundsätzlich unter einem Zielkonflikt. In der aktuellen Implementation kann das Modell theoretisch entscheiden, einen zu 100\% tödlichen Abschnitt zu durchqueren, wenn die Wegersparnis gross genug ist. In der Praxis ist dies jedoch selten der Fall und wurde während der Evaluation nie beobachtet.
 
-Ist ein Grat genug breit verzeichnet, wird dieser momentan mit einem Risikowert nahe von $0.00$ ausgewiesen --- ungeachtet der tatsächlichen Begehbarkeit. Hier gilt jedoch das Prinzip <<Garbage in - garbage out>> --- die Datengrundlage lässt keine schlüssige Aussage über die Begehbarkeit von Graten zu.
+Ist ein Grat genug breit verzeichnet, wird dieser momentan mit einem Risikowert nahe von $0.00$ ausgewiesen --- ungeachtet der tatsächlichen Begehbarkeit. Hier gilt jedoch das Prinzip <<Garbage in --- garbage out>> --- die Datengrundlage lässt keine schlüssige Aussage über die Begehbarkeit von Graten zu.
 
 \subsection{Mögliche Verbesserungen}
+
+Das Potenzial des Computers wird bei der Erstellung von Risikokarten bisher nur unzureichend genutzt --- eine fortgeschrittenere Reduktionsmethode als die \gls{grm} ist daher wünschenswert. Vielversprechende Alternativen sind beispielsweise die \acrlong{qrm}, die derzeit auf der Plattform skitourenguru.com eingesetzt wird, sowie SLABS, ein bisher nur theoretisch erprobtes, verbessertes probabilistisches Verfahren zur Lawinenrisikobewertung~\cite{qrm}\cite{slabs}. Diese Umstellung lässt sich einfach durchführen, es muss nur eine Riskokarte mit der gewünschten Reduktionsmethode angefertigt werden. Da in der Entwicklung dieser beiden erwähnten probabilistischen, computergestützten Risikobeurteilungsmethoden der benötigte Quellcode bereits verfasst wurde --- eine Veröffentlichung dessen wäre im Rahmen der Publikation der Werke wünschenswert gewesen.
+
+Eine andere denkbare Erweiterung ist eine Richtungsauswahl. So könnte die Gewichtung von negativer bzw.\ positiver Vertikaldistanz könne einfach ergänzt werden. So wird das Durchqueren unnötiger Mulden beispielsweise vermieden. Ebenfalls sind die Anforderungen an Abfahrtsgelände anders als diese an Aufstiegsgelände. In der Praxis wird in der Abfahrt meist steileres Gelände bevorzugt.
+
+\subsection{Anwendungsbereich}
+
+Im Schema 3$\times$3 siedelt sich das Modell als ausgangslage der Stufe \textbf{Regional} an --- gleich wie Führerliteratur. Die endgültige Spuranlage, die Stelle von Spitzkehren oder ob ein Einzelhang wirklich durchquert wird liegt in der Entscheidungsgewalt des jeweiligen Tourengängers. So es wäre Sinnvoller, gem.\ \cite{eisenhuttourknopfdruck} <<Korridore>> vorherzusagen, anstelle von Ideallinien. So kann die Unsicherheit des Modells besser vermittelt sowie ein unkritische Umgang mit der Ausgabe dessen verhindert werden.
 
 
 % \begin{multicols}{2}
