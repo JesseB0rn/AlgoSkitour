@@ -1,0 +1,4 @@
+- Abkürzungen?
+- Referenzen?
+- Quellen?
+- Seitenumbrüche korrekt, verlorene Zeilen?
