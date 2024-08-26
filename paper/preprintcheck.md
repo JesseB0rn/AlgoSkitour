@@ -2,3 +2,4 @@
 - Referenzen?
 - Quellen?
 - Seitenumbrüche korrekt, verlorene Zeilen?
+- Strichlänge 2 anstelle 3
