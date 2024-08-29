@@ -4,29 +4,33 @@
 
 \subsection{Ziel der Arbeit}
 
-Es soll in erster Linie ein Computer-Modell entwickelt werden, welches aufgrund eines Höhenmodells eine möglichst defensive (risikominibierende) Aufstiegsroute plant. Als Erweiterung wird dieses Modell mit einer ansprechenden 3D-Karte als Hintergrundebene in einer Webapp zur Verfügung gestellt. Die vom Modell produzierten Touren werden mit Literaturrouten aus dem Tourenportal des SAC, bzw.\ aus diversen dort gesammelten Tourenführern verglichen und ihre Begehbarkeit kritisch überprüft.
+Es soll in erster Linie ein Computerprogramm entwickelt werden, welches aufgrund eines Höhenmodells eine möglichst defensive (risikominimierende) Aufstiegsroute plant. Als Erweiterung wird dieses Modell mit einer ansprechenden 3D-Karte als Hintergrundebene in einer öffentlich zugänglichen Webapp zur Verfügung gestellt. Die vom Modell produzierten Touren werden mit Literaturrouten aus dem Tourenportal des SAC, bzw.\ aus diversen dort gesammelten Tourenführern verglichen und ihre Begehbarkeit kritisch überprüft.
 
 \subsection{Bestehende Referenzsysteme}
 
-Mit dem Algorithmus von Andreas Eisenhut besteht seit 2013 eine mehr oder wenig fertig implementierte Lösung um Skitouren im Gelände automatisch zu planen\ \cite{eisenhuttourknopfdruck}. Trotz der starken Abhängigkeit von kostenpflichtigen Werkzeugen stellt diese Arbeit eine Pionierleistung in diesem Gebiet dar und wurde ebenfalls durch die Platform Skitourenguru aufgegriffen. Hier ist es jedoch nutzerseitig nicht möglich, einen Punkt A und B einzugeben und eine Route zurück zu erhalten. Zum Verfassungszeitpunkt dieser Arbeit kann die öffentlich zugängliche Version des Tools nur verwendet werden um bestehende GPS-Tracks und von Hand gezeichnete Routen idealer zu legen. Die Thesis von A. Eisenhut wurde wären dem Implementationsprozess dieser Arbeit nicht referenziert, erst während dem Verfassen der finalen Arbeit.
+Mit dem Algorithmus von Andreas Eisenhut besteht seit 2013 eine mehr oder wenig fertig implementierte Lösung um Skitouren im Gelände automatisch zu planen\ \cite{eisenhuttourknopfdruck}. Trotz der starken Abhängigkeit von kostenpflichtigen Werkzeugen stellt diese Arbeit eine Pionierleistung in diesem Gebiet dar und wurde ebenfalls durch die Platform Skitourenguru aufgegriffen. Hier ist es jedoch nutzerseitig nicht möglich, eine Navigation von einem Start- zu einem Zielpunkt durchzuführen. Zum Verfassungszeitpunkt dieser Arbeit kann die öffentlich zugängliche Version des Tools nur verwendet werden um bestehende GPS-Tracks und von Hand gezeichnete Routen idealer zu legen. Die Thesis von A. Eisenhut wurde wären dem Implementationsprozess dieser Arbeit nicht referenziert, erst während dem Verfassen der finalen Arbeit.
 
 \clearpage
 \section{Grundlagen der Lawinenkunde}
-\subsection{Analytische vs. Praktische Lawinenkunde}
-Lawinenprobleme lassen sich grundsätzlich aus zwei Perspektiven betrachten und vorhersagen: Einerseits auf Basis der Schneedecke, anderer seits auf Basis von Geländeformen und Statistik.
-Dabei wird bei der praktischen Lawinenkunde auf das erstellen von beispielsweise Schneeprofilen (Extended Coloumn Test) zur Einschätzung der lokalen Stabilität der Schneedecke gesetzt.
+\subsection{Ziel der Lawinenkunde}
 
-Bei der analytischen Lawinenkunde arbeiten wir mit historischen Unfalldaten, konkret ist das Ziel, ein quantitatives Mass für das eingegangene Risiko zu errechnen.
-Daraus leiten wir die Entscheidung ab, weiter aufzusteigen oder umzukehren – diese Entscheidung steht in beiden Gebieten im Vordergrund.
+Konkret steht eine Entscheidung im Vordergrund: <<GO / NO-GO>>. Ist mit den aktuell vorherrschenden Wetterbedingungen eine Tour mit akzeptierbarem Restrisiko möglich? Welche Vorsichtsmassnahmen müssen dazu getroffen werde? Gibt es Schlüsselstellen, welche nicht durchquert werden dürfen? In der modernen Lawinenkunde wird der Fokus vor allem auf die Praxis gelegt. <<Wie kann das bestehende Risiko eingeschätzt werden?>> Während früher vor allem ein Fokus auf Bergungsmethoden gelegt wurde, wird heute vermehrt präventiv gearbeitet.~\cite{harveyrhynerschweizerlawinenkunde}
+
+Literarische Klassiker im Bereich der Lawinenkunde sind beispielsweise Werner Munters \citetitle{munter}, in welchem erstmals auch der Faktor Mensch nebst dem Gelände und den Verhältnissen betrachtet wurde~\cite{munter}. In dieser Arbeit wird grundsätzlich im Faktor <<Gelände>> gearbeitet.
+% Lawinenprobleme lassen sich grundsätzlich aus zwei Perspektiven betrachten und vorhersagen: Einerseits auf Basis der Schneedecke, andererseits auf Basis von Geländeformen und Statistik.
+% Dabei wird bei der praktischen Lawinenkunde auf das erstellen von beispielsweise Schneeprofilen (Extended Coloumn Test) zur Einschätzung der lokalen Stabilität der Schneedecke gesetzt.~\cite{harveyrhynerschweizerlawinenkunde}
+
+% Bei der analytischen Lawinenkunde arbeiten wir mit historischen Unfalldaten, konkret ist das Ziel, ein quantitatives Mass für das eingegangene Risiko zu errechnen.
+% Daraus leiten wir die Entscheidung ab, weiter aufzusteigen oder umzukehren – diese Entscheidung steht in beiden Gebieten im Vordergrund~\cite{ortovoxlabsnow}\cite{harveyrhynerschweizerlawinenkunde}.
 
 \subsection{Lawinentypen}
 
-Lawinen lassen sich anhand ihrer Auslösemechanismen, des Materials, das sie transportieren, und der spezifischen Bedingungen, unter denen sie entstehen, klassifizieren. Die wichtigsten Lawinentypen --- Schneebrettlawinen, Lockerschneelawinen, Gleitschneelawinen (und Staublawinen) --- unterscheiden sich in ihrer Entstehung, Dynamik und den daraus resultierenden Gefahren. Eine genaue Kenntnis dieser Unterschiede ist notwendig für die Lawinenkunde und das alpine Risikomanagement.
+Lawinen lassen sich anhand ihrer Auslösemechanismen, des Materials, das sie transportieren, und der spezifischen Bedingungen, unter denen sie entstehen, klassifizieren. Die wichtigsten Lawinentypen --- Schneebrettlawinen, Lockerschneelawinen, Gleitschneelawinen (und Staublawinen) --- unterscheiden sich in ihrer Entstehung, Dynamik und den daraus resultierenden Gefahren~\cite{harveyrhynerschweizerlawinenkunde}. Eine genaue Kenntnis dieser Unterschiede ist notwendig für die Lawinenkunde und das alpine Risikomanagement.
 
 %TODO: Seitenumbrüche hier prüfen
 
 \begin{enumerate}
-  \item Schneebrettlawinen~\cite{sacbergspwinter}\cite{slfLawinentypen}:
+  \item Schneebrettlawinen~\cite{harveyrhynerschweizerlawinenkunde}\cite{sacbergspwinter}\cite{slfLawinentypen}:
   \begin{itemize}
     \item Fordern 90\% der Lawinenopfer
     \item Abriss entlang einer Kante, Schnee gleitet als ganzer Block <<Brett>> ab
@@ -38,7 +42,7 @@ Lawinen lassen sich anhand ihrer Auslösemechanismen, des Materials, das sie tra
   \end{itemize}
   % % \columnbreak{}
     
-  \item Lockerschneelawinen~\cite{sacbergspwinter}\cite{slfLawinentypen}:
+  \item Lockerschneelawinen~\cite{harveyrhynerschweizerlawinenkunde}\cite{sacbergspwinter}\cite{slfLawinentypen}:
   \begin{itemize}
     \item Punktförmiger Auslösepunkt
     \item Reisst immer mehr Schnee mit, Kegelförmiger Abgang der nach unten breiter wird
@@ -46,35 +50,35 @@ Lawinen lassen sich anhand ihrer Auslösemechanismen, des Materials, das sie tra
     \item Im Auslösepunkt ist meistens eine hohe Steigung von $40\degree$ notwendig
   \end{itemize}
 
-  \item Gleitschneelawinen~\cite{sacbergspwinter}\cite{slfLawinentypen}:
+  \item Gleitschneelawinen~\cite{harveyrhynerschweizerlawinenkunde}\cite{sacbergspwinter}\cite{slfLawinentypen}:
   \begin{itemize}
     \item Ebenfalls linienförmige Abrisskante
     \item Die gesamte Schneedecke gleitet ab
     \item Kleine Bedeutung für Wintersportler –-- gehen oft spontan ab und gefährden vor allem Infrastruktur (Abgleiten erfolgt über mehrere Stunden oder Tage hinweg, zeigt sich gut durch sog. <<Fischmäuler>>)
   \end{itemize}
 \end{enumerate}
-Für unsere Zwecke interessieren uns an erster Stelle \textbf{Schneebrettlawinen} und an zweiter \textbf{Lockerschneelawinen}, da diese Lawinentypen für die meissten Unfälle mit Personenschaden abseits der Schweizer Pisten verantwortlich sind. In $\qty{95}{\percent}$ aller Unfälle lösen Schneesportler dabei ihre Unglückslawine selbst aus~\cite{ortovoxlabsnow}. Aus diesem Grund wird im weiteren Verlauf dieser Arbeit einer möglichen Fernauslösung keine weitere Beachtung geschenkt.
+Für unsere Zwecke interessieren uns an erster Stelle \textbf{Schneebrettlawinen} und an zweiter \textbf{Lockerschneelawinen}, da diese Lawinentypen für die meisten Unfälle mit Personenschaden abseits der Schweizer Pisten verantwortlich sind~\cite{harveyrhynerschweizerlawinenkunde}. In $\qty{95}{\percent}$ aller Unfälle lösen Schneesportler dabei ihre Unglückslawine selbst aus~\cite{ortovoxlabsnow}. Aus diesem Grund wird im weiteren Verlauf dieser Arbeit einer möglichen Fernauslösung keine weitere Beachtung geschenkt. Damit wird vor allem verhindert, das flächendeckend auf Basis von zu langen/falsch eingeschätzten Ablagerungsbereichen ein zu hohes Risiko vorhergesagt wird~\cite{athmaps}.
 
 % \pagebreak
 \subsection{Typische Lawinenprobleme}\label{lawinenprobleme}
 
-In der Lawinenkunde werden bestimmte Lawinenprobleme definiert, um die komplexen Zusammenhänge einfacher verständlich zu machen und die Risikoanalyse zu erleichtern. Diese typischen Lawinenprobleme umfassen verschiedene Szenarien, die besonders häufig auftreten und die Lawinengefahr massgeblich beeinflussen. Ein tiefes Verständnis dieser Probleme ist von Nöten, um in gefährdetem Gelände sicher unterwegs zu sein und präzise Entscheidungen in Bezug auf Lawinensicherheit zu treffen.
+In der Lawinenkunde werden bestimmte Lawinenprobleme definiert, um die komplexen Zusammenhänge einfacher verständlich zu machen und die Risikoanalyse zu erleichtern. Diese typischen Lawinenprobleme umfassen verschiedene Szenarien, die besonders häufig auftreten und die Lawinengefahr massgeblich beeinflussen. Ein tiefes Verständnis dieser Probleme ist von Nöten, um in gefährdetem Gelände sicher unterwegs zu sein und präzise Entscheidungen in Bezug auf Lawinensicherheit zu treffen. Es werden vier Lawinenprobleme unterschieden:
 
 \begin{enumerate}
-  \item Neuschneeproblem~\cite{achtunglawine}:
+  \item Neuschneeproblem~\cite{harveyrhynerschweizerlawinenkunde}\cite{achtunglawine}:
   \begin{itemize}
     \item Frischer Neuschnee, welcher sich schlecht mit der darunterliegenden Schneeschichten verbunden hat. 
     \item Produziert ab der kritischen Neuschneemenge (je nach Bedingungen zwischen \qty{10}{cm} --~\qty{50}{cm}) mindestens die Warnstufe <<3 -~Erheblich>> im \acrfull{llb}.\@
     \item Setzt sich in 2 bis 3 Tagen
   \end{itemize}
-  \item Triebschneeproblem~\cite{achtunglawine}:
+  \item Triebschneeproblem~\cite{harveyrhynerschweizerlawinenkunde}\cite{achtunglawine}:
   \begin{itemize}
     \item Wind trägt Neuschnee in Windschattenlagen
     \item Triebschnee verbindet sich leicht mit sich selbst, jedoch nicht mit darunterliegenden Schichten; ideale Voraussetzungen für ein Schneebrett
     \item Gefahr durch Schneeverfrachtungen (z.B. auch Wechten)
     \item Setzt sich innert 2 bis 3 Tagen
   \end{itemize}
-  \item Nassschneeproblem~\cite{achtunglawine}:
+  \item Nassschneeproblem~\cite{harveyrhynerschweizerlawinenkunde}\cite{achtunglawine}:
   \begin{itemize}
     \item Die Schneedecke wird durch eindringendes Wasser geschwächt
     \item Die erste Durchfeuchtung führt zu der bedeutendsten Schwächung
@@ -82,7 +86,7 @@ In der Lawinenkunde werden bestimmte Lawinenprobleme definiert, um die komplexen
     \item Typische Frühlingslawinen, steigende Gefahr im Verlauf des Tages mit steigender Temperatur
     \item Lange anhaltende Gefahr
   \end{itemize}
-  \item Altschneeproblem~\cite{achtunglawine}:
+  \item Altschneeproblem~\cite{harveyrhynerschweizerlawinenkunde}\cite{achtunglawine}:
   \begin{itemize}
     \item z.B. Eingeschneite Harschschichten schwächen die Schneedecke erheblich
     \item Dauert Wochen bis Monate an
@@ -92,11 +96,11 @@ Es ist möglich, das mehrere Lawinenproblem miteinander auftreten. Im \gls{llb} 
 
 \subsection{Lawinenlagebericht (Bulletin) \& Gefahrenstufen}
 
-Im Lawinenbulletin/Lawinenlagebericht, kurz \gls{llb}, werden die momentan am Berg zu erwartenden Lawinenprobleme (siehe~\ref{lawinenprobleme}) zusammengefasst und mit diversen zusätzlichen Datenprodukten ergänzt.
+Im Lawinenbulletin/Lawinenlagebericht, kurz \gls{llb}, werden die momentan am Berg zu erwartenden Lawinenprobleme (siehe~\ref{lawinenprobleme}) zusammengefasst und mit diversen zusätzlichen Datenprodukten ergänzt~\cite{lawinengefskala}.
 
 Abb.\ \ref{fig:bulletin} zeigt ein Beispiel eines \gls{llb} Bulletins, wie dieses während dem Winter täglich erscheint.
 
-In der europäischen Lawinengefahrenskala werden fünf Warnstufen unterschieden, von <<1 -~gering>> bis <<5 -~sehr gross>>.~\cite{lawinengefskala} 
+In der europäischen Lawinengefahrenskala werden fünf Warnstufen unterschieden, von <<1 -~gering>> bis <<5 -~sehr gross>>~\cite{harveyrhynerschweizerlawinenkunde}\cite{lawinengefskala}.
 Rund 50\% der Unfälle geschehen dabei bei <<3~-~mässig>>~\cite{achtunglawine}.
 
 \begin{figure}[H]
@@ -113,7 +117,7 @@ Im Durchschnitt ist das Risiko bei <<mässig>> fünf Mal so hoch wie bei <<gerin
   \includegraphics[width=7.5cm]{gefahrenstufen}
   \caption{Die 5 Europäsischen Lawinengefahrstufen in einem Graph}\label{fig:llbdanger}
 \end{figure}
-
+\clearpage
 Um die Einteilung dieser fünf Kategorien weiter zu verfeinern, wurden in der Schweiz zusätzlich Teilabstufen mittels $+$, $-$ und $=$ eingeführt (So lautet die Warnstufe im Bericht nun z.B.\ $3+$, wenn die tatsächliche Gefahr bereits nahe an einer $4$ bzw.\ $4-$ liegt)~\cite{sacbergspwinter}.
 unterschiedliche Interpretation der standartisierten europäischen Skala sorgen leider dafür, das Differenzen zwischen Schweizerischen und Ausländischen Vorhersagen bestehen. Dies stellt besonders in Grenzregionen ein Problem dar, in dieser Arbeit im weiteren jedoch keine Beachtung geschenkt.
 
@@ -123,9 +127,9 @@ unterschiedliche Interpretation der standartisierten europäischen Skala sorgen 
 Lawinen sind das Resultat eines unglücklichen Zusammenspiels drei wesentlicher Faktoren: 
 \textbf{Verhältnisse} (Wetterlage und Zustand der Schneedecke), \textbf{Gelände} (Neigung, Exposition, Höhe) und \textbf{Mensch} (95\% aller Lawinen mit Personenschaden wurden durch Menschen ausgelöst)~\cite{ortovoxlabsnow}.
 
-Weder die Verhältnissen noch das Gelände lässt sich direkt von Wintersportlern beeinflussen. Nur durch die Wahl eines anderen Datums (nur in Ausnahmefällen sinnvoll, z.B.\ bei einer Erstbesteigung), oder durch clever Spuranlage lasen sich diese Faktoren mildern. 
+Weder die Verhältnissen noch das Gelände lässt sich direkt von Wintersportlern beeinflussen. Nur durch die Wahl eines anderen Datums (nur in Ausnahmefällen sinnvoll, z.B.\ bei einer Expedition), oder durch clever Spuranlage lasen sich diese Faktoren mildern. 
 Ist beides keine Option, muss eine alternative Tour ausgewählt werden.
-Den grössten Einfluss hat bei weitem die maximale Hangneigung --- daher konzentrieren sich die meisten gängigen Reduktionsmethoden vor allem darauf.
+Den grössten Einfluss hat bei weitem die maximale Hangneigung --- daher konzentrieren sich die meisten gängigen Reduktionsmethoden wie GRM und Avulator vor allem darauf~\cite{harveyrhynerschweizerlawinenkunde}.
 
 \subsection{Schema 3~\texttimes~3}
 Der Goldstandard der Tourenplanung ist heute Werner Munters $3\times3$-Schema. Dabei werden in drei <<Zoom>>-Stufen drei Faktoren ausgewertet:
@@ -153,8 +157,8 @@ Von zuhause aus~\cite{munter}:
 
 \subsection{Grafische Reduktionsmethode \& Relevante Geländefaktoren}
 
-Die momentan am meisten verwendete Reduktionsmethode ist dabei wohl die sog.\ \gls{grm}.\@Bei dieser wird --- je nach prognostizierter Ausgeprägtheit eines Lawinenproblemes --- nur die lokale Hangneigung an einer Stelle zur Entscheidungsfindung eingesetzt~\cite{sacbergspwinter}. In der Plannungsphase wird die Hangneigung aus einer $1:25000$er-Karte mittels Neigungsmesser herausgelesen. Dies liefert jedoch nur die durchschnittliche Neigung des Geländes zwischen den Höhenlinien --- eine möglichen steileren Hangabschnitt sieht man also nicht.
-Unterwegs kann entweder mittels Smartphone, Skistöcker oder Pendel die Hangneigung ermittelt werden. Es kann nun in der Grafik (siehe Abb.\ \ref{fig:grm}) herausgelesen werden, ob das zu überprüfende Gelände problemlos, nur mit Vorsichtsmassnahmen oder gar nicht betreten werden darf.
+Die momentan am meisten verwendete Reduktionsmethode ist dabei wohl die sog.\ \gls{grm}.\ Bei dieser wird --- je nach prognostizierter Ausgeprägtheit eines Lawinenproblemes --- nur die lokale Hangneigung an einer Stelle zur Entscheidungsfindung eingesetzt~\cite{sacbergspwinter}. In der Plannungsphase wird die Hangneigung aus einer $1:25000$er-Karte mittels Neigungsmesser herausgelesen. Dies liefert jedoch nur die durchschnittliche Neigung des Geländes zwischen den Höhenlinien --- eine möglichen steileren Hangabschnitt sieht man also nicht.
+Unterwegs kann entweder mittels Smartphone, Skistöcker oder Pendel die Hangneigung ermittelt werden. Es kann nun in der Grafik (siehe Abb.\ \ref{fig:grm}) herausgelesen werden, ob das zu überprüfende Gelände problemlos, nur mit Vorsichtsmassnahmen wie Entlastungsabständen oder gar nicht betreten werden darf.
 
 \begin{figure}[H]
   \centering
@@ -162,7 +166,7 @@ Unterwegs kann entweder mittels Smartphone, Skistöcker oder Pendel die Hangneig
   \caption{\gls{grm}-Karte~\cite{achtunglawine}}\label{fig:grm}
 \end{figure}
 
-An der grafische Reduktionsmethode wird oft kritisiert, dass sich zu stark auf die Hangneigung gestützt wird. Deshalb wird diese oft zusammen mit sog. <<Mustern>> gelehrt. Diese beschreiben einige Warnzeichen und wie diese das Risiko beeinflussen~\cite{achtunglawine}. Letztendlich bleibt die \gls{grm} jedoch, wie der Name verrät, eine Reduktionsmethode --- es werden selektiv die in die Auswertung einfliessenden Parameter reduziert.
+An der grafische Reduktionsmethode wird oft kritisiert, dass sich zu stark auf die Hangneigung gestützt wird. Deshalb wird diese oft zusammen mit sog. <<Mustern>> gelehrt. Diese beschreiben einige Warnzeichen und wie diese das Risiko beeinflussen~\cite{achtunglawine}. Dabei wird beispielsweise auf <<Fischmäuler>> geachtet, welche ein Gleitschneeproblem im Hang anzeigen~\cite{harveyrhynerschweizerlawinenkunde}. Letztendlich bleibt die \gls{grm} jedoch, wie der Name verrät, eine Reduktionsmethode --- es werden selektiv die in die Auswertung einfliessenden Parameter reduziert.
 
 \subsection{Unfalldaten \& Begehungen}
 
@@ -195,17 +199,17 @@ Berge, Wälder, Flüsse und Seen sind ebenfalls ein wichtiger Kartenbestandteil.
 \gls{gis} sind leistungsstarke Werkzeuge, die zur Analyse, Darstellung und Interpretation von geografischen Daten verwendet werden. Mit einem solchen Werkzeug können etwa Landkarten verfasst, ökologische Veränderungen überwacht oder zoologische Migrationsmuster analysiert werden.
 In dieser Arbeit wurde das quelloffene Werkzeug QGIS extensiv verwendet; unter anderem wurde eine eigene Analyse-Erweiterung entwickelt~\cite{qgis}. QGIS wurde gegenüber anderen kommerziellen \gls{gis}-Lösungen gewählt, da diese oft schnell teuer verrechnet werden.
 
-\subsection{Dijkstra's Algorithmus und A*}
+\subsection{Algorithmus von Dijkstra und A*}
 
-Die Suche nach einem Pfad mit minimalen Kosten lässt sich Formal als Graphproblem darstellen und lösen --- dabei wird jeder Gitterpunkt zu einem Knotenpunkt in einem Graphen, der mittels acht ungerichteten Kanten mit seinen Nachbarn verbunden ist. So kann das Problem bereits mit dem Algorithmus von Dijkstra gelöst werden~\cite{dijkstra1959note}.
+Die Suche nach einem Pfad mit minimalen Kosten lässt sich Formal als Graphproblem\footnote{Ein Graph beschreibt ein Netzwerk aus Knoten, welche durch Kanten verbunden sind} darstellen und lösen --- dabei wird jeder Gitterpunkt zu einem Knotenpunkt in einem Graphen, der mittels acht ungerichteten Kanten mit seinen Nachbarn verbunden ist. So kann das Problem bereits mit dem Algorithmus von Dijkstra gelöst werden~\cite{dijkstra1959note}.
 
-Es wird eine leere Vorrangwarteschlange initialisiert, der sofort der dem Ursprungspunkt entsprechend Knoten mit Kosten 0 hinzugefügt wird. Die laufenden Kosten aller Knoten werden auf $+ \infty$ gesetzt. Wir führen nun folgende zwei Schritte fortlaufend aus, bis der Knoten, welcher der Zielzelle entspricht, erweitert wurde.
+Es wird eine leere Vorrangwarteschlange\footnote{Eine Liste an Elementen, welche bereits beim Einfügen anhand eines Wertes sortiert werden} initialisiert, welcher sofort der dem Ursprungspunkt entsprechend Knoten mit Kosten 0 hinzugefügt wird. Die laufenden Kosten aller Knoten werden auf $+ \infty$ gesetzt. Wir führen nun folgende zwei Schritte fortlaufend aus, bis der Knoten, welcher der Zielzelle entspricht, erweitert wurde.~\cite{dijkstra1959note}
 \begin{itemize}
-  \item \textbf{Selektion:} Wir fahren mit jenem Knoten fort, der die geringsten laufenden Kosten hat. Dank der Vorrangwarteschlange ist dies trivial möglich, da diese Datenstruktur bereits beim Eingügen eines Elementes dieses am richtigen Ort einsortieren kann. Mit dem abrufen des vordersten Elements aus der Warteschlange, wird dieses auch entfernt.
-  \item \textbf{Erweitern:} Wir iterieren durch die Nachbarn unseres aktuellen Knoten. Jeden Nachbarn, bei dem die Summe aus den laufenden Kosten des aktuellen Knoten, den Gitterkosten des Nachbarn sowie den Bewegungskosten zwischen den beiden Zellen geringer ist, als dessen bisherige Kosten, fügen wir diesen mit der oben errechneten Summe als Priorität der Warteschlange hinzu. Formal sind die zu minimierenden Kosten hier $f(n)=g(n)$, wobei $n$ dem nächsten Knoten und $g(n)$ den laufenden Kosten vom Start zum Knoten $n$ entspricht. Ausserdem speichern wir, von welcher Zelle aus die Nachbarn erreicht wurden.
+  \item \textbf{Selektion:} Wir fahren mit jenem Knoten fort, der die geringsten laufenden Kosten hat. Dank der Vorrangwarteschlange ist dies trivial möglich, da diese Datenstruktur bereits beim Eingügen eines Elementes dieses am richtigen Ort einsortieren kann. Mit dem abrufen des vordersten Elements aus der Warteschlange, wird dieses auch entfernt.~\cite{dijkstra1959note}
+  \item \textbf{Erweitern:} Wir iterieren durch die Nachbarn unseres aktuellen Knoten. Jeden Nachbarn, bei dem die Summe aus den laufenden Kosten des aktuellen Knoten, den Gitterkosten des Nachbarn sowie den Bewegungskosten zwischen den beiden Zellen geringer ist, als dessen bisherige Kosten, fügen wir diesen mit der oben errechneten Summe als Priorität der Warteschlange hinzu. Formal sind die zu minimierenden Kosten hier $f(n)=g(n)$, wobei $n$ dem nächsten Knoten und $g(n)$ den laufenden Kosten vom Start zum Knoten $n$ entspricht. Ausserdem speichern wir, von welcher Zelle aus die Nachbarn erreicht wurden.~\cite{dijkstra1959note}
 \end{itemize}
 
-Da wir jeweils den Vorgänger jeder Zelle gespeichert haben, können wir am Ende den Pfad vom Ende zum Start hin zurückverfolgen, und so nicht nur die gesamten Kosten, sondern auch den Pfad als Lösung erhalten.
+Da wir jeweils den Vorgänger jeder Zelle gespeichert haben, können wir am Ende den Pfad vom Ende zum Start hin zurückverfolgen, und so nicht nur die gesamten Kosten, sondern auch den Pfad als Lösung erhalten~\cite{dijkstra1959note}.
 
 Eine implementierte Erweiterung die auf dem Algorithmus von Dijkstra aufbaut, wird A* (A-Star) gennant. Hier wird die Berechnung der zu minimierenden Kosten um eine Heuristik (eine Schätzung der verbleibenden Kosten) erweitert. Formal werden die zu minimierenden Kosten neu also $f(n)=g(n)+h(n)$.~\cite{Hart1968}
 
@@ -213,7 +217,7 @@ Als Heuristik wird im weiteren Verlauf der Arbeit die Taxi- bzw. Chebyshev-Dista
 
 \subsection{Naismith'sche Regel}
 
-Nebst den risikoabhängigen Durchgangskosten, werden auch noch Bewegungskosten berücksichtigt. Diese beschreiben die zeit und Anstrengung die benötigt wird, um einen Meter Weg zurückzulegen. Eine weit verbreitete und akzeptierte Schätzungsmethode ist die sog. Naismith'sche Regel~\cite{naismithsrule}.
+Nebst den risikoabhängigen Durchgangskosten, werden auch noch Bewegungskosten berücksichtigt. Diese beschreiben die Zeit und Anstrengung die benötigt wird, um einen Meter Weg zurückzulegen. Eine weit verbreitete und akzeptierte Schätzungsmethode ist die sog. Naismith'sche Regel~\cite{naismithsrule}.
 Beim Skitouren wird dabei je \qty{4000}{m} Horizontaldistanz und \qty{400}{hm} Vertikaldistanz eine Stunde Wegzeit gerechnet~\cite{sacbergspwinter}\cite{naismithsrule}. (Für eine \qty{3500}{m} lange Tour mit \qty{800}{hm} Anstieg wird eine Aufstiegsdauer von $\frac{\qty{3000}{m}}{\qty{4000}{m}} + \frac{\qty{800}{hm}}{\qty{400}{hm}} = \qty{2}{h}\ \qty{45}{\min}$ gerechnet)
 
 \clearpage
@@ -274,23 +278,23 @@ Hangkrümmung $c_{Plan}$ und $c_{Profil}$ beschreiben, mit welchem Radius sich d
 
 \section{Methodik}
 
-Zu Beginn der Arbeit war ein Ziel, möglichst unabhängig von Software-Bibliotheken und fremden Code zu bleiben. So wurde während der Machbarkeitsstudie jedoch festgestellt, dass es letztendlich doch Sinn macht, auf eine kommerzielle \gls{gis}-Lösung~(siehe~\ref{sec:gis}) zu setzten --- analog der \acrshort{unix}-Philosophie~\cite{unixphil}. Diese gilt als Orientierungsfile, wie Software entworfen werden soll. Unter anderem soll zum Beispiel jeweils die simpelste, funktionale Lösung gewählt werden, Software modular aufgebaut sein oder nur einen Zweck erfüllen --- und keine duplizierte Funktionalität enthalten~\cite{unixphil}. Tausende Stunden Entwicklungsarbeit stecken bereits in \acrshort{gdal} \acrlong{gdal}~\cite{gdalmanual} und QGIS~\cite{qgis}, auf welchen gerne aufgebaut wurde.
+Zu Beginn der Arbeit war ein Ziel, möglichst unabhängig von Software-Bibliotheken und fremden Code zu bleiben. So wurde während der Machbarkeitsstudie jedoch festgestellt, dass es letztendlich doch Sinn macht, auf eine kommerzielle \gls{gis}-Lösung~(siehe~\ref{sec:gis}) zu setzten --- analog der \acrshort{unix}-Philosophie~\cite{unixphil}. Diese gilt als Orientierungsfile, wie Software entworfen werden soll. Unter anderem soll zum Beispiel jeweils die simpelste, funktionale Lösung gewählt werden, Software modular aufgebaut sein oder nur einen Zweck erfüllen --- und keine duplizierte Funktionalität enthalten~\cite{unixphil}. Tausende Stunden Entwicklungsarbeit stecken bereits in \acrshort{gdal} (\acrlong{gdal}) und QGIS, auf welchen gerne aufgebaut wurde~\cite{gdalmanual}\cite{qgis}.
 \subsection{Herunterladen des Höhenmodells}
 
-Wie bereits in\ \ref{sec:dem} erwähnt, wird SwissAlti\textsuperscript{3D} in $\qty{1}{km} \times \qty{1}{km}$ grossen Kacheln ausgeliefert, welche einzeln Heruntergeladen und anschliessend wieder vereint werden müssen~\cite{alti3dprod}. Auf dem Datenportal von swisstopo kann für jeden Kanton eine Liste mit den URLs der Kacheln, welche in dem Kanton liegen, heruntergeladen werden. Mittels eines Python-Skriptes wurden so über Nacht knapp \qty{30}{GB} Höhendaten heruntergeladen. Durch \code{gdal\_warp}, \code{rasterio} und \code{gdal2tiles} wird als erstes eine Kopie in einem für die Webkarte lesbaren Datenformat erstellt. Anstatt das Höhenwerte direkt aus dem Pixelraster gelesen werden, werden diese auf die 3 Farbkanäle RGB verteilt. So schlüsselt der rote Farbwert nun einzelne Höhenmeter, der blaue Kanal 256 hm und der grüne $256^2$ hm auf.
+Wie bereits in\ \ref{sec:dem} erwähnt, wird SwissAlti\textsuperscript{3D} in $\qty{1}{km} \times \qty{1}{km}$ grossen Kacheln ausgeliefert, welche einzeln heruntergeladen und anschliessend wieder vereint werden müssen~\cite{alti3dprod}. Auf dem Datenportal von swisstopo kann für jeden Kanton eine Liste mit den URLs der Kacheln, welche in dem Kanton liegen, heruntergeladen werden. Mittels eines Python-Skriptes wurden so über Nacht knapp \qty{30}{GB} Höhendaten der Kantone BE, GL, GR, NW, OW, SZ, UR und VS heruntergeladen. Durch \code{gdal\_warp}, \code{rasterio} und \code{gdal2tiles} wird als erstes eine Kopie in einem für die Webkarte lesbaren Datenformat erstellt. Anstatt das Höhenwerte direkt aus dem Pixelraster gelesen werden, werden diese auf die drei RGB-Farbkanäle verteilt. So schlüsselt der rote Farbwert nun einzelne Höhenmeter, der blaue Kanal 256 hm und der grüne $256^2$ hm auf.
 
 \subsection{Erstellung von Risikokarten}
 
 Als Grundlage für alle weiteren Schritte werden Risikokarten benötigt; ursprünglich hätten tatsächliche Lawinenabgägne simuliert werden sollen. Mittels RAMMS::Avalanche wurden zuerst Initialisierungspolygone, also Flächen, welche durch Schneesportler ausgelöst werden könnten, gesucht und dann mittels einer Standardlawinensituation (50cm Neuschnee, Lockerschneeproblematik) ausgelöst und simuliert. Dies stellte sich aufgrund der hohen Rechenanforderungen und damit verbunden Budget- \& Zeitanforderungen als unpraktikabel heraus.
 
 Stattdessen soll sich nur um die Hangneigung bemüht werden, da diese Geländeeigenschaft den höchsten korrelationsfaktor mit der Anzahl Lawinenereignisse bildet~\cite{arpddatasetdocs}. Dies ist ausserdem in der \gls{grm} bereits gebräuchlich. Auf die Geländekrümmung wird Verzichtet, da diese auf die tatsächliche Route praktisch keinen Einfluss hat.\\
-Der Risikowert einer einzelnen Zelle wird folgendermassen berechnet:
+Der Risikowert einer einzelnen Zelle wird folgendermassen berechnet (gemäss~\citeauthor{sacbergspwinterp99})\cite{sacbergspwinterp99}:
 
 \[
 r(\rho) = \sqrt{\frac{1}{1 + e^{\frac{s-\rho}{3.0}}}}
 \]
 
-Je nach prognostizierter Gefahrenstufe des \gls{llb} wird $s$ zwischen 20 und 35 linear interpoliert. Im fall der Gefahrenstufe 3= kommt $s$ dabei bei 28.0 zu liegen. (Siehe Abb.~\ref{fig:graph} für die resultierende Risikofunktion)
+Je nach prognostizierter Gefahrenstufe des \gls{llb} wird $s$ zwischen 20 und 35 linear interpoliert. Im Fall der Gefahrenstufe 3= kommt $s$ dabei bei 28.0 zu liegen. (Siehe Abb.~\ref{fig:graph} für die resultierende Risikofunktion)
 
 Mittels einem Python-Skript und dem Paket \code{rasterio} wurde diese Berechnung am gesamten Gitter ausgeführt.
 
@@ -310,13 +314,18 @@ SwissTLM\textsuperscript{3D} liefert den Verlauf von Strassen sowie Gewässern. 
 
 In QGIS werden nun zuerst alle Gewässerflächen um einen Radius von \qty{7.5}{m} <<gepuffert>>, also erweitert. Die resultierenden Gewässerpolygone werden gerastert und mit einem Risikowert von $9 \times 10^{9}$ in die rohe Risikokarte eingebrannt. Anschliessend wird dasselbe mit den Brücken wiederholt, hier wird jedoch das Risiko auf $0.0$ gesetzt. Somit sind Gewässer für den Algorithmus ein absolutes Tabu und werden nur bei Brücken überquert. Auf das Abwägen ob eine Überquerung möglich ist, wurde aus Zeitgründen verzichtet.
 
+%TODO: Grafik puffern und einbrennen
+
+\improvement{Grafik}
+
+
 \subsection{QGIS-Plugin LeastCostWalk}
 
 Um den Algorithmus von Dijkstra nun auch auszuführen, musste eine neue Erweiterung für QGIS in Python implementiert werden. Ein Auszug des Quellcodes befindet sich im Anhang. Gegenüber bestehenden Least-Cost-Plugins verfügt das hier implementierte über die Funktionalität, Wegzeit/Bewegungskosten gegen Reibungs- bzw. Risikokosten abzuwägen. Dies geschieht mittels 5 Parametern $k_{risk}$, wie schwer die Risikokosten ins Gewicht fallen, $c_{steepascend}$ / $c_{steepdescend}$, wie stark steile Auf- \& Abstiegspassagen gewichtet werden, $c_{flat}$, wie teuer Horizontaldistanz ist und $c_{ascend}$ / $c_{descend}$, wie teuer ein normaler Auf- \& Abstieg ist. Die jeweiligen Quantitäten werden mit ihren Koeffizienten Gewichtet und summiert.
 
-Nebst den Kostenkoeffizienten werden Start- \& Zielpunkt, die Koordinatenreferenzsysteme dieser Punkte, das Höhenmodell und die gewünschte Variante der Risikokarte an das Modell übergeben. Wird die Erweiterung in der grafischen Oberfläche von QGIS gestartet, entspricht dies Abb.\ \ref{fig:qgisplugin}. Das gesamte Modell ist in der Abb.\ \ref{fig:walkmodel} ersichtlich. Wird das Modell als Endanwendung genutzt, wird vor dem Start der tatsächlichen Berechnungen ein Rechteck rund um die Zielregion aus der Risikokarte ausgeschnitten. So können die benötigten Rechenressourcen eingegrenzt werden.
+Nebst den Kostenkoeffizienten werden Start- \& Zielpunkt, die Koordinatenreferenzsysteme dieser Punkte, das Höhenmodell und die gewünschte Variante der Risikokarte an das Modell übergeben. Wird die Erweiterung in der grafischen Oberfläche von QGIS gestartet, entspricht dies Abb.\ \ref{fig:qgisplugin}. Das gesamte Modell ist in der Abb.\ \ref{fig:walkmodel} ersichtlich. Wird das Modell als Endanwendung genutzt, wird vor dem Start der tatsächlichen Berechnungen ein Rechteck rund um die Zielregion aus der Risikokarte und dem \acrshort{dhm} ausgeschnitten. So können die benötigten Rechenressourcen eingegrenzt werden.
 
-Im Fall der Webanwendung wird die Erweiterung serverseitig über die Kommandozeile bzw.\ per \acrshort{cli} automatisch aufgerufen. Um hier Rechenressourcen einzusparen, wird das Höhenmodell sowie die Risikokarte zuerst auf einen Bereich rund um unsere Zielregion zugeschnitten.
+Im Fall der Webanwendung wird die Erweiterung serverseitig über die Kommandozeile bzw.\ per \acrshort{cli} automatisch aufgerufen.
 
 \begin{figure}[H]
   \centering
@@ -326,12 +335,13 @@ Im Fall der Webanwendung wird die Erweiterung serverseitig über die Kommandozei
 
 \subsection{Server Deployment mit Docker}
 
-Um ein einfaches Bereitstellen zu ermöglichen und so horizontale Skalierbarkeit\footnote{Anstelle einen einzelnen Server mit mehr bzw.\ leistungsstärkeren Hardware zu bestücken, kann ein weiterer zugeschaltet/horizontal daneben gestellt werden} der Serverressource zu gewährleisten, wurde ein Docker-Image\footnote{Vereinfacht gesagt: Ein Miniaturbetriebssystem das auf diversen Rechner innert Sekunden als Gastsystem hochgefahren werden kann und vom Rest des Systems isoliert ist} erstellt. Darin wurde die \gls{gis}-Anwendung sowie die Risikokarten und das Höhenmodell vorinstalliert. Momentan läuft die Anwendung nur auf einem Miniaturserver unter Ubuntu Server 24.04 LTS.\@Vorteil der hier gewählten Paketierung ist jedoch, das auch andere Serverbetreibsysteme ohne Änderung der des eigentlichen Quellcodes unterstützt werden. Zusätzliche Instanzen könnten ebenfalls zugeschalten werden, um eine durchgehend verfügbare öffentliche Version für 100 --~1000 Nutzer ohne lange Wartezeiten zur Verfügung stellen zu können.
+Um ein einfaches Bereitstellen zu ermöglichen und so horizontale Skalierbarkeit\footnote{Anstelle einen einzelnen Server mit mehr bzw.\ leistungsstärkeren Hardware zu bestücken, kann ein weiterer zugeschaltet/horizontal daneben gestellt werden} der Serverressource zu gewährleisten, wurde ein Docker-Image\footnote{Vereinfacht gesagt: Ein Miniaturbetriebssystem das auf diversen Rechner innert Sekunden als Gastsystem hochgefahren werden kann und vom Rest des Systems isoliert ist} erstellt. Darin wurde die \gls{gis}-Anwendung sowie die Risikokarten und das Höhenmodell vorinstalliert. Momentan läuft die Anwendung auf nur einem Miniaturserver unter Ubuntu Server 24.04 LTS.\ Vorteil der hier gewählten Paketierung ist jedoch, das auch andere Serverbetriebsysteme ohne Änderung der des eigentlichen Quellcodes unterstützt werden. Zusätzliche Instanzen könnten ebenfalls zugeschalten werden, um eine durchgehend verfügbare öffentliche Version für 100 --~1000 Nutzer ohne lange Wartezeiten zur Verfügung stellen zu können.
 
 \clearpage
 \subsection{3D-Karte im Webbrowser}
 
-Als Erweiterung zum reinen \gls{gis}-Modell wurde eine Webanwendung mittels Vue.js und MapLibre GL JS realisiert~\cite{vuedevman}\cite{maplibregljs}. Als Basislayer für die Karte wurde das Layer <<Vector Base Map>> von swisstopo verwendet, welches durch die Höhendaten von SwissAlti\textsuperscript{3D} in eine drei-dimensionale Form gebracht wurde~\cite{basevtprod}\cite{alti3dprod}. Nutzer können sich mittels einem Google-Account anmelden und ihre Routen so persönlich abspeichern und wieder aufrufen. Zusätzlich steht basierend auf den in SwissTLM verfügbaren Lokalnamen eine Suchfunktion zur Verfügung. Die Planung einer neuen Tour kann durch die Auswahl von Start- \& Zielort sowie der gewünschten Modellvariante in Auftrag gegeben werden --- innert ca.\ \qty{20}{s} ist das Resultat anschliessen verfügbar und wird dem Nutzer direkt angezeigt.
+Als Erweiterung zum reinen \gls{gis}-Modell wurde eine Webanwendung mittels Vue.js und MapLibre GL JS realisiert~\cite{vuedevman}\cite{maplibregljs}. Als Basislayer für die Karte wurde das Layer <<Vector Base Map>> von swisstopo verwendet, welches durch die Höhendaten von SwissAlti\textsuperscript{3D} in eine drei-dimensionale Form gebracht wurde~\cite{basevtprod}\cite{alti3dprod}. Nutzer können sich mittels einem Google-Account anmelden und ihre Routen so persönlich abspeichern und wieder aufrufen. Zusätzlich steht basierend auf den in SwissTLM verfügbaren Lokalnamen eine Suchfunktion zur Verfügung.
+Die Planung einer neuen Tour kann durch die Auswahl von Start- \& Zielort sowie der gewünschten Modellvariante in Auftrag gegeben werden --- innert ca.\ \qty{20}{s} ist das Resultat anschliessend verfügbar und wird dem Nutzer direkt angezeigt.
 
 % \end{multicols}
 
