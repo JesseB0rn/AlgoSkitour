@@ -5,11 +5,11 @@ import type { FunctionalComponent, HTMLAttributes, VNodeProps } from "vue";
 
 <template>
   <div class="relative inline-flex py-2 shadow-inner shadow-stone-400">
-    <div class="absolute top-0 left-0 h-full transition-transform duration-300 rounded w-28" :style="bgStyle"></div>
+    <div class="absolute top-0 left-0 h-full transition-transform duration-300 rounded w-32" :style="bgStyle"></div>
     <button
       v-for="(option, index) in options"
       :key="index"
-      :class="['relative z-10 py-2 px-4 rounded transition-colors duration-300 w-28 flex items-center justify-center text-xs', active === option ? 'text-white' : 'text-gray-800']"
+      :class="['relative z-10 py-2 px-4 rounded transition-colors duration-300 w-32 flex items-center justify-center text-xs', active === option ? 'text-white' : 'text-gray-800']"
       @click="setActive(option, index)"
     >
       <component :is="iconMapping[option]" class="mr-2" />
@@ -32,7 +32,7 @@ interface ToggleSwitchData {
 export default defineComponent({
   data() {
     return {
-      options: ["Abfahrt", "Aufstieg", "Varianten"],
+      options: ["Abfahrt", "Aufstieg"],
       colors: ["#EF4444", "#10B981", "#F59E0B"], // Use HEX colors for smooth transition
       active: "Aufstieg",
       activeIndex: 1,
@@ -46,7 +46,7 @@ export default defineComponent({
   computed: {
     bgStyle() {
       return {
-        transform: `translateX(${this.activeIndex * 7}rem)`,
+        transform: `translateX(${this.activeIndex * 8}rem)`,
         backgroundColor: this.activeColor,
       };
     },

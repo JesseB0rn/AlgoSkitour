@@ -3,6 +3,7 @@ import { Cross1Icon, Crosshair2Icon, PlayIcon, ResetIcon, SymbolIcon } from "@ra
 import { coords } from "../App.vue";
 import { Ref, watch } from "vue";
 import { EState } from "../firebase";
+import ToggleSwitch from "./ToggleSwitch.vue";
 
 const emit = defineEmits(["plan-start", "plan-end", "launch-planning", "reset"]);
 const startPoint: Ref<coords | undefined> = defineModel("startPoint");
@@ -33,6 +34,9 @@ watch(currentState, (a) => {
         </button>
       </div>
       <div class="">
+        <div class="flex mb-4 items-center justify-center">
+          <ToggleSwitch></ToggleSwitch>
+        </div>
         <!-- Start / Endpoint selection -->
         <div class="py-2 flex flex-nowrap items-center" v-if="!currentState">
           <button class="bg-blue-500 rounded-md py-2 px-4 text-white flex flex-nowrap items-center w-40 justify-center mr-2" @click="emit('plan-start')"><Crosshair2Icon class="mr-2"></Crosshair2Icon>Startpunkt</button>
