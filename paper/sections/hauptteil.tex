@@ -1,9 +1,9 @@
 % \begin{multicols}{2}
 \section{Resultat}
 
-Resultat ist einerseits die Webapp, welche in allen modernen Webbrowsern funktioniert. Mittels Klicken können in der 3D-karte Start- \& Zielpunkt ausgewählt werden. Mit einem bestätigenden Klick auf <<Ausführen>> wird im Hintergrund ein \gls{gis}-Modell gestartet, welches entweder eine <<rohe>> Gefahrenkarte oder eine mit eingebrannten Gewässern verwendet. Mit eigenen Touren kann auf \url{https://algotour.app} experimentiert werden. (Siehe Abb.\ \ref{fig:mainui})
+Das Produkt dieser Arbeit ist einerseits die Web-App, welche in allen modernen Webbrowsern funktioniert. Mittels Klicken können in der 3-D-Karte Start- \& Zielpunkt ausgewählt werden. Mit einem bestätigenden Mausklick auf <<Ausführen>> wird im Hintergrund ein \gls{gis}-Modell gestartet, welches entweder eine <<rohe>> Gefahrenkarte oder eine mit enthaltenen Gewässern verwendet. Mit eigenen Touren kann auf \url{https://algotour.app} experimentiert werden. (Siehe Abb.\ \ref{fig:mainui})
 
-Andererseits die zugehörigen \gls{gis}-Modelle, welche im Hintergrund für alle Berechnungen benötigt werden. Abb.\ \ref{fig:walkmodel} ist ein Beispiel eines solchen Modells. Dieses ist konkret für die endgültige Pfadberechnung auf dem Server verantwortlich.
+Andererseits sind die zugehörigen \gls{gis}-Modelle, welche im Hintergrund für alle Berechnungen benötigt werden, auch Teil des Resultats. Abb.\ \ref{fig:walkmodel} ist ein Beispiel eines solchen Modells. Das hier gezeigte Modell ist konkret für die endgültige Pfadberechnung auf dem Server verantwortlich.
 
 % \begin{figure}[H]
 %   \centering
@@ -23,9 +23,9 @@ Andererseits die zugehörigen \gls{gis}-Modelle, welche im Hintergrund für alle
 
 \subsection{Modellevaluation}
 
-Es wurden 14 typische Frühlings-Skitouren \& -Skihochtouren aus dem SAC Tourenportal ausgewählt und mittels einem kurzen Python-Skript heruntergeladen. Anschliessend wurden die Modellversionen mit und ohne eingebrannten Gewässern für die Start und Zielpunkte der einzelnen Routensegmente ausgeführt. Star und Zielpunkte wurden dabei von Hand plaziert. Für alle 28 Tests wurden die Gleichen Hyperparameter verwendet: $k_{risk}={50.0};\ c_{steepascend}={5.0};\ c_{steepdescend}={5.0};\ c_{flat}={0.25};\ c_{ascend}={2.5};\ c_{descend}={2.5}$
+Es wurden 14 typische Frühlings-Skitouren \& -Skihochtouren aus dem SAC Tourenportal ausgewählt und mittels einem kurzen Python-Skript heruntergeladen. Anschliessend wurden die Modellversionen mit und ohne eingebrannten Gewässern für die Start und Zielpunkte der einzelnen Routensegmente ausgeführt. Start- und Zielpunkte wurden dabei von Hand platziert. Für alle 28 Tests wurden die gleichen Hyperparameter verwendet: $k_{risk}={50.0};\ c_{steepascend}={5.0};\ c_{steepdescend}={5.0};\ c_{flat}={0.25};\ c_{ascend}={2.5};\ c_{descend}={2.5}$
 
-Für einige Regionen bzw. Gipfel (Länta, Steingletscher) war nur eine von beiden Gefahrenkarten brauchbar --- so macht es wenig Sinn, Quer durch den Steinsee zu waten, da dieser nur selten zugefroren ist. Erfahrungswerte mit beiden Modellversionen zeigen, dass in den meisten Fällen beide Versionen vom Benutzer begutachtet werden müssen.
+Für einige Regionen bzw. Gipfel (Länta, Steingletscher) war nur eine von beiden Gefahrenkarten brauchbar --- so macht es wenig Sinn, quer durch den Steinsee zu waten, da dieser nur selten zugefroren ist. Erfahrungswerte mit beiden Modellversionen zeigen, dass in den meisten Fällen beide Versionen vom Benutzer begutachtet werden müssen.
 %TOUREN
 %// Clariden
 % //Galenstock
@@ -38,7 +38,7 @@ Für einige Regionen bzw. Gipfel (Länta, Steingletscher) war nur eine von beide
 %// Sustenhorn
 Nachfolgend wird eine Auswahl der Touren kurz diskutiert.
 
-Die besten Routen waren jene vom Steingletscher aus auf die Tierberglihütte SAC, sowie auf das Sustenhorn. (Wenn die korrekte Gefahrenkarte verwendet wird --- Die andere produziert unbrauchbare Resultate) Es kann eine hohe Korrelation mit den Literaturrouten die der SAC im Tourenportal auflistet festgestellt werden~\cite{mmzentralch}. (Siehe Abb.\ \ref{fig:tierbergli})
+Die besten Routen waren jene vom Steingletscher aus auf die Tierberglihütte SAC, sowie auf das Sustenhorn. (Sofern die korrekte Gefahrenkarte verwendet wird --- Die andere produziert unbrauchbare Resultate.) Es kann eine hohe Übereinstimmung mit den Literaturrouten, welche der SAC im Tourenportal auflistet, festgestellt werden~\cite{mmzentralch}. (Siehe Abb.\ \ref{fig:tierbergli})
 
 % \end{multicols}
 \begin{figure*}[ht]
@@ -79,42 +79,50 @@ Die Route auf den Piz Palü ist aufgrund der Nähe zu einer Spaltenzone (siehe A
   \includegraphics[page=1,width=.9\linewidth]{./../evaluation/PDFs/Piz Palü.pdf}
   \caption{Geplante Tour von der Diavolezza auf den Piz Palü\\Basislayer: swisstopo}\label{fig:pizpalu}
 \end{figure*}
+\begin{figure*}[ht]
+  \centering
+  \includegraphics[page=1,width=.9\linewidth]{./../evaluation/PDFs/Furka - Galenstock & Dammastock.pdf}
+  \caption{Geplante Tour auf Galen- und Dammastock\\Basislayer: swisstopo}\label{fig:pizpalu}
+\end{figure*}
+\begin{figure*}[ht]
+  \centering
+  \includegraphics[page=1,width=.9\linewidth]{./../evaluation/PDFs/Länta - Rheinwaldhorn_Adula.pdf}
+  \caption{Geplante Tour von der Läntahütte auf das Rheinwaldhorn\\Basislayer: swisstopo}\label{fig:pizpalu}
+\end{figure*}
 
 % % \begin{multicols}{2}
-Auch bei den Touren auf den Galenstock sowie den Dammastock werden eher einer Hochtour entsprechende Spurwahlen getroffen. (Wobei die Resultate des gewässerunterschtützten Modelles ungültig sind) 
-In der Praxis sind diese mit Skiern mangels einer attraktiven Abfahrt vom Skidepot aus keine Trendtouren-Kandidaten. (Für diese Routen siehe Anhang\ \ref{app:evalroutes}) Hier zeigt sich, dass das Modell nicht ziwschen Ski- und Fussaufstieg unterscheiden kann. Hier könnte das Modell um einen Mechanismus zur Schätzung eines Skidepots bzw.\ von Tragepassagen ergänzt werden. Solche Funktionalität ist in\ \citeauthor{footandcautionsection} beschrieben und hat sich als praktikabel erwiesen~\cite{footandcautionsection}. Im gleichen Zug wäre eine automatische Schätzung der Schwierigkeit in der Skitourenskala des \acrshort{sac}s denkbar.
+Auch bei den Touren auf den Galenstock sowie den Dammastock werden eher einer Hochtour entsprechende Spurwahlen getroffen. (Wobei die Resultate des gewässerunterstützten Modells ungültig sind.) 
+In der Praxis sind diese mit Skiern mangels einer attraktiven Abfahrt vom Skidepot aus keine Trendtouren-Kandidaten. Hier zeigt sich, dass das Modell nicht ziwschen Ski- und Fussaufstieg unterscheiden kann. Hier könnte das Modell um einen Mechanismus zur Schätzung eines Skidepots bzw.\ von Tragepassagen ergänzt werden. Solche Funktionalität ist in\ \citeauthor{footandcautionsection} beschrieben und hat sich als praktikabel erwiesen~\cite{footandcautionsection}. Im gleichen Zug wäre eine automatische Schätzung der Schwierigkeit in der Skitourenskala des \acrshort{sac}s denkbar. 
+Alle Routen werden im Anhang\ \ref{app:evalroutes} zusätzlich gross abgebildet.
 
 % \end{multicols}
 \clearpage
 
 \subsection{Einschränkungen des Modells}
-Die vom Modell verwendete Reduktionsmethode entspricht de-facto der \gls{grm}. So übernimmt diese primär auch deren Schwächen. Es existieren mit der \gls{qrm} eine Reduktionsmethode, welche ein umfassenderes Bild des Geländes beobachtet.\cite{qrm}
+Die vom Modell verwendete Reduktionsmethode entspricht de-facto der \gls{grm}. So übernimmt diese primär auch deren Schwächen. Es existiert mit der quantitativen Reduktionsmethode eine Methode, welche ein umfassenderes Bild des Geländes betrachtet.~\cite{qrm}
 Leider lassen die Quellen keine vollständige Reproduktion zu.
 
 Das Modell leidet grundsätzlich unter einem Zielkonflikt. In der aktuellen Implementation kann das Modell theoretisch entscheiden, einen zu 100\% tödlichen Abschnitt zu durchqueren, wenn die Wegersparnis gross genug ist. In der Praxis ist dies jedoch selten der Fall und wurde während der Evaluation nie beobachtet.
 
-Ist ein Grat im \acrshort{dhm} genügend breit verzeichnet, wird dieser momentan mit einem Risikowert nahe von $0.00$ ausgewiesen --- ungeachtet der tatsächlichen Begehbarkeit. Hier gilt das Prinzip <<Garbage in --- garbage out>> --- die Datengrundlage lässt keine schlüssige Aussage über die Begehbarkeit von Graten zu.
+Ist ein Grat im \acrshort{dhm} genügend breit verzeichnet, wird dieser momentan mit einem Risikowert nahe von $0.00$ ausgewiesen --- ungeachtet der tatsächlichen Begehbarkeit. Hier gilt das Prinzip <<garbage in --- garbage out>> --- die Datengrundlage lässt keine schlüssige Aussage über die Begehbarkeit von Graten zu.
 
-SwissTLM\textsuperscript{3D} lässt keinen Schluss auf die Breite sowie die Durchquerbarkeit eines Fliessgewässers zu. 
-(bzw.\ ob dieses im Winter zufriert)
+Weiter lässt SwissTLM\textsuperscript{3D} keinen Schluss auf die Breite sowie die Durchquerbarkeit eines Fliessgewässers, bzw.\ ob dieses im Winter zufriert, zu.
 
 \subsection{Mögliche Verbesserungen}\label{sec:improvements}
 
-Das Potenzial des Computers wird bei der Erstellung von Risikokarten bisher nur unzureichend genutzt --- eine komplexere Reduktionsmethode als die \gls{grm} ist daher wünschenswert. Vielversprechende Alternativen sind beispielsweise die \gls{qrm}, die derzeit auf der Plattform skitourenguru.com eingesetzt wird, sowie SLABS, ein bisher nur theoretisch erprobtes, verbessertes probabilistisches Verfahren zur Lawinenrisikobewertung~\cite{qrm}\cite{slabs}. Diese Umstellung lässt sich einfach durchführen, da in der Entwicklung dieser beiden erwähnten probabilistischen, computergestützten Risikobeurteilungsmethoden der benötigte Quellcode bereits verfasst wurde --- eine Veröffentlichung dessen wäre im Rahmen der Publikation der Werke wünschenswert gewesen.
+Das Potenzial des Computers wird bei der Erstellung von Risikokarten bisher nur unzureichend genutzt --- eine komplexere Reduktionsmethode als die \gls{grm} ist daher wünschenswert. Vielversprechende Alternativen sind beispielsweise die \gls{qrm}, die derzeit auf der Plattform skitourenguru.com eingesetzt wird, sowie SLABS, ein bisher nur theoretisch erprobtes, verbessertes probabilistisches Verfahren zur Lawinenrisikobewertung~\cite{qrm}\cite{slabs}. Diese Umstellung lässt sich einfach durchführen, da in der Entwicklung dieser beiden erwähnten computergestützten Risikobeurteilungsmethoden der benötigte Quellcode bereits verfasst wurde --- eine Veröffentlichung dessen wäre im Rahmen der Publikation der Werke wünschenswert gewesen.
 
 Es gilt ausserdem, eine andere Kombinationsmethode von Anstrengung und Risiko zu prüfen. Aus Zeitgründen wurde in dieser Arbeit darauf verzichtet. Momentan wird eine einfach Summe verwendet, eine Multiplikation oder maximales Element könnten den bestehenden Sachverhalt besser abbilden. Kein Mensch springt über eine Klippe ab, wenn dadurch Wegzeit gespart werden kann (Abseilen wird als Seltenheit auf Skitouren hier einmal ausgelassen).
 
 Eine andere denkbare Erweiterung ist ein Richtungsattribut. Die Gewichtung von negativer bzw.\ positiver Vertikaldistanz könne einfach ergänzt werden. Diese Parameter bestehen bereits, sind jedoch fix auf einen Aufstieg eingestellt. So wird das Durchqueren unnötiger Mulden beispielsweise vermieden. Ebenfalls sind die Anforderungen an Abfahrtsgelände anders als diese an Aufstiegsgelände. In der Praxis wird in der Abfahrt meist steileres Gelände bevorzugt.
 
-Erinnert man sich daran, wie wenig der Computer tatsächlich von Topografie versteht, ist es eigentlich erstaunlich wie gut die produzierten Routen sind. Viel mehr lässt sich, abgesehen von den oberen Verbesserungen, aus diesem simplen Modell jedoch nicht mehr herausholen. Eine nächste Version müsste verschiedene Landformen klassifizieren und entsprechend reagieren können. Lokalwissen, wie die Begehbarkeit von Graten, könnte in einem neuen Datensatz gesammelt werden. Diese Information liesse sich beispielsweise aus GPS-Tracks der Skitourencommunity ableiten. Bemühungen diese Datengrundlagen laufend zu sammeln und zu erweitern laufen bei der Skitourenguru GmbH bereits, leider wird der Datensatz aber proprietär gehalten. Das erfassen dieser Daten sprengt den Rahmen einer Maturaarbeit erheblich. Damit liessen sich die Probleme betreffend Gratkletterei und spontanen Schwimmaktionen lösen. Alternativ ist eine manuelle Selektion in der Nutzeroberfläche denkbar.
+Erinnert man sich daran, wie wenig der Computer tatsächlich von Topografie versteht, ist es eigentlich erstaunlich wie gut die produzierten Routen sind. Viel mehr lässt sich, abgesehen von den oberen Verbesserungen, aus diesem simplen Modell jedoch nicht mehr herausholen. Eine nächste Version müsste verschiedene Landformen klassifizieren und entsprechend reagieren können. Lokalwissen, wie die Begehbarkeit von Graten, könnte in einem neuen Datensatz gesammelt werden. Diese Information liesse sich beispielsweise aus GPS-Tracks der Skitourencommunity ableiten. Bemühungen diese Datengrundlagen laufend zu sammeln und zu erweitern laufen bei der Skitourenguru GmbH bereits, leider wird der Datensatz aber proprietär gehalten. Das Erfassen dieser Daten sprengt den Rahmen einer Maturaarbeit erheblich. Damit liessen sich die Probleme betreffend Gratkletterei und spontanen Schwimmaktionen jedoch lösen.  Eine manuelle Selektion in der Nutzeroberfläche wäre als mögliche Erweiterung denkbar.
 
 \clearpage
 \subsection{Anwendungsbereich}
 
-Aus diesen Beobachtungen lassen sich Interpretationsrichtlinien ableiten;
-im Schema 3$\times$3 siedelt sich das Modell als ausgangslage der Stufe \textbf{Regional} an --- gleich wie ein Tourenführer. Grundsätzlich sollte mit jeder Route, egal welchen Ursprungs, kritisch umgegangen werden~\cite{sacbergspwinter}. Die endgültige Spuranlage, die Stelle von Spitzkehren oder ob ein Einzelhang wirklich durchquert wird liegt in der Entscheidungsgewalt des jeweiligen Tourengängers. So es wäre Sinnvoller, gem.\ \citeauthor{eisenhuttourknopfdruck} <<Korridore>> vorherzusagen, anstelle von Ideallinien~\cite{eisenhuttourknopfdruck}. So kann die Unsicherheit des Modells besser vermittelt sowie ein kritischer Umgang mit dessen Ausgabe gefördert werden. Alternativrouten sollten in jedem Fall in Betracht gezogen werden. Falls eine Route sich im Gelände als unplausibel herausstellt kann eine andere, im Voraus festgelegte Richtung eingeschlagen werden kann.
-
-\improvement{3x3 Grafik}
+Aus diesen Beobachtungen lassen sich Interpretationsrichtlinien ableiten:
+Im Schema 3$\times$3 siedelt sich das Modell als Ausgangslage der Stufe \textbf{Regional} an --- gleich wie ein Tourenführer. Grundsätzlich sollte mit jeder Route, egal welchen Ursprungs, kritisch umgegangen werden~\cite{sacbergspwinter}. Die endgültige Spuranlage, die Stelle von Spitzkehren oder ob ein Einzelhang wirklich durchquert wird liegt in der Entscheidungsgewalt des jeweiligen Tourengängers. So wäre es sinnvoller, gemäss \citeauthor{eisenhuttourknopfdruck} <<Korridore>> anstelle von Ideallinien vorherzusagen~\cite{eisenhuttourknopfdruck}. So kann die Unsicherheit des Modells besser vermittelt sowie ein kritischer Umgang mit dessen Ausgabe gefördert werden. Alternativrouten sollten in jedem Fall in Betracht gezogen werden. Falls eine Route sich im Gelände als unplausibel herausstellt kann eine andere, im Voraus festgelegte Richtung eingeschlagen werden kann.
 
 %TODO: Grafik mit 3x3, neues Modell ergänzt
 % \begin{multicols}{2}
@@ -123,13 +131,13 @@ im Schema 3$\times$3 siedelt sich das Modell als ausgangslage der Stufe \textbf{
 \subsection{Versionsverwaltung, Backup und Archiv mit Git}
 
 In der Softwareentwicklung haben sich Softwareversionierungstools wie Git bereits bewährt. Mit diesen ist es möglich, laufende Veränderungen in Textdateien (bzw. Programmcode) zeitlich sortiert zu speichern. So kann auf verschiedenen Rechner an unterschiedlichen Versionen gearbeitet werden, welche anschliessend mit minimalem Aufwand wieder zusammengeführt (gemerged) werden können. Jede Änderung wird als <<Commit>> gespeichert --- diese können mit einem kleinen Kommentar versehen werden. Man ist ausserdem frei darin, auf einen vorherigen Commit zurückzuspringen, sollte man mit einer Änderung nicht mehr zufrieden sein. Kurz: Zeitreise für Softwareentwicklung.~\cite{chacon2014pro}
-In dieser Arbeit wurde jeglicher Programmcode sowie die Arbeit selbst in ein Git-Repository <<eingecheckt>>. Dieses wurde auf Github synchronisiert, um ein sicheres Speichern aller Daten zu ermöglichen und einen Arbeitsverlust zu verhindern --- was sich als absolut empfehlenswert herausgestellt hat. Speziell die Kombionation von Git und \LaTeX\ hat sich für das Verfassen einer Arbeit als mächtiger Arbeitsprozess bewährt.
+In dieser Arbeit wurde jeglicher Programmcode sowie die Arbeit selbst in ein Git-Repository <<eingecheckt>>. Dieses wurde auf GitHub synchronisiert, um ein sicheres, cloudbasiert Speichern aller Daten zu ermöglichen und einen Arbeitsverlust zu verhindern --- was sich als absolut empfehlenswert herausgestellt hat. Speziell die Kombionation von Git und \LaTeX\ hat sich für das Verfassen einer Arbeit als mächtige Arbeitsweise bewährt.
 
 \subsection{Verworfene Variante}
 
-Die erste Variante, mit der Risikokarten hätten erstellt werden sollen, stellte sich als unpraktisch heraus. Aufgrund einer Quelle wurde eine 3D-Lawinensimulation implementiert, bzw.\ ein Versuch in deren Richtung unternommen\ \cite{athmaps}. Die Physiksimulation könnte jedoch nicht korrekt implementiert werden --- mangels des nötigen mathematischen Geschicks\footnote{Numerische Verfahren zur Lösung von partiellen Differentialgleichungen entziehen sich der Expertise des Autoren, Speziell Runge-Kutta-Heun konnte auch in mehreren Tagen ohne externe Hilfe nicht erarbeitet werden. Ein Auszug der Versuche findet sich im Anhang}. Mit diesem hier nur kurz ausgeführten Unternehmen liesse sich bereits eine ganze Arbeit füllen, hier wurde der Versuch jedoch nach ca.\ einer Woche abgebrochen. In Kommunikation mit dem Entwickler wurde mir eine kostenlose Lizenz für den kommerziellen Lawinensimulator \code{RAMMS::Avalanche} zur Verfügung gestellt.
+Die erste Variante, mit der Risikokarten hätten erstellt werden sollen, stellte sich als unpraktisch heraus. Aufgrund einer Quelle wurde eine 3D-Lawinensimulation implementiert, bzw.\ ein Versuch in deren Richtung unternommen\ \cite{athmaps}. Die Physiksimulation könnte jedoch nicht korrekt implementiert werden --- mangels des nötigen mathematischen Geschicks\footnote{Numerische Verfahren zur Lösung von partiellen Differentialgleichungen entziehen sich der Expertise des Autoren, Speziell Runge-Kutta-Heun konnte auch in mehreren Tagen ohne externe Hilfe nicht erarbeitet werden. Ein Auszug der Versuche findet sich im Anhang}. Mit diesem hier nur kurz ausgeführten Unterfangen liesse sich bereits eine ganze Arbeit füllen, hier wurde der Versuch jedoch nach ca.\ einer Woche abgebrochen. In Kommunikation mit dem Entwickler wurde mir eine kostenlose Lizenz für den kommerziellen Lawinensimulator \code{RAMMS::Avalanche} zur Verfügung gestellt.
 
-Zwischenzeitliche wurde eine Lawinensimulation mittels RAMMS::Avalanche in Betracht gezogen. Aufgrund der hohen Rechenanforderung musste die einfachere Variante, die der \gls{grm} ähnelt, ausgewählt werden. Der eigentliche Zweck der Software entspricht auch nicht der hier verlangten Anwendung, eigentlich werden mit der Software Gefahrengutachten für Infrastrukturprojekte erstellt. Dabei werden meist grosse Lawinen- bzw. Steinschlagereignisse mit langer Wiederkehrperioden\footnote{10 bis 1000 Jahre} simuliert. 
+Zwischenzeitliche wurde eine Lawinensimulation mittels RAMMS::Avalanche in Betracht gezogen. Aufgrund der hohen Rechenanforderung musste die einfachere Variante, die der \gls{grm} ähnelt, ausgewählt werden. Der eigentliche Zweck der Software entspricht auch nicht der hier verlangten Anwendung, eigentlich werden mit der Software Gefahrengutachten für Infrastrukturprojekte erstellt. Dabei werden meist grosse Lawinen- bzw. Steinschlagereignisse mit langer Wiederkehrperioden\footnote{10 bis 300 Jahre} simuliert. 
 
 
 
@@ -140,16 +148,16 @@ Zwischenzeitliche wurde eine Lawinensimulation mittels RAMMS::Avalanche in Betra
 Der Versuch mittels minimalen externen Werkzeugen zu arbeiten stellte sich schnell als mühsam heraus, trotzdem wurde erstaunlich lange daran festgehalten. Hier hätte noch schneller gewechselt werden können, grosse Fortschritte sind vor allem mit dem Wechsel von rohem Python auf QGIS gekommen. QGIS ist speziell geeignet, da es ein quelloffenes und erweiterbares Werkzeug ist. So konnte nicht vorhandene Funktionalität einfach durch ein selbst geschriebenes Plugin ergänzt werden.
 
 \subsection{Verfassen mit \LaTeX}
-Bereits in der Projektarbeit des Autors hat sich gezeigt, das Microsoft Word ein denkbar ungeignetes Werkzeug zum Verfassen von Arbeiten ist. Nach kurzem einarbeiten in grundsätzlichen Befehle, vielen Google-Anfragen und anfänglichen Kopfschmerzen zeigte \LaTeX\ schnell wesshalb es in der wissenschaftlichen Gesellschaft so beliebt ist. Eine stärkere Empfehlung im Handbuch Projekte wäre seitens der Schule wünschenswert.
+Bereits in der Projektarbeit des Autors hat sich gezeigt, das Microsoft Word ein denkbar ungeeignetes Werkzeug zum Verfassen von Arbeiten ist. Nach kurzem Einarbeiten in die grundsätzlichen Befehle, vielen Google-Anfragen und anfänglichen Kopfschmerzen zeigte \LaTeX\ schnell, weshalb es in der wissenschaftlichen Gesellschaft so beliebt ist. Eine stärkere Empfehlung im Handbuch Projekte seitens der Schule wäre wünschenswert.
 
 \subsection{Evaluation}
 
-In der ersten Fassung des Projektvertrages sollte die Evaluation anhand von Expertenmeinungen stattfinden. Dies wurde im  Verlauf der Arbeit verworfen, da eine hohe Expertise in der Bedienung des Modells nötig ist, um brauchbare Parameter auszuwählen. Die Zeit die für erwerben der nötigen \gls{gis}-Kenntnisse, auswählen von Routen und evaluieren konnte Freiwilligen nicht zugemutet werden. Nach Vorschlag der Betreuungsperson wurde schliesslich die Variante mit Literaturrouten gewählt.
+In der ersten Fassung des Projektvertrages sollte die Evaluation anhand von Expertenmeinungen stattfinden. Dies wurde im  Verlauf der Arbeit verworfen, da eine hohe Expertise in der Bedienung des Modells nötig ist, um brauchbare Parameter auszuwählen. Die Zeit, die für das Erwerben der nötigen \gls{gis}-Kenntnisse, Auswählen von Routen und Evaluieren, konnte Freiwilligen nicht zugemutet werden. Nach Vorschlag der Betreuungsperson wurde schliesslich die Variante des Vergleichens mit Literaturrouten gewählt.
 
-\subsection{3D-Karte \& Webapp}
+\subsection{3D-Karte \& Web-App}
 
-Dank des hohen Standards der bei der Entwicklung von MapLibre~GL~JS durch die Beitragenden eingehalten wird, konnte innert wenigen Minuten eine erste Version der 3D-Karte erstellt werden~\cite{maplibregljs}. Swisstopo liefert ihre Grundlagenkarte ebenfalls bereits in einem Format, das bereits kompatibel ist. Das Grundgerüst der Webapp wurde in Vue.js implementiert, was ich während meinem NAWiMAT-Praktikum erlernt habe. Diese Wahl stellte sich als sehr günstig heraus, auch wenn eine minimale Adaptionsschicht zwischen Vue und MapLibre zusätzlich implementiert werden musste.
+Dank des hohen Standards, der bei der Entwicklung von MapLibre~GL~JS durch die Beitragenden eingehalten wird, konnte innert kürzester Zeit eine erste Version der 3-D-Karte erstellt werden~\cite{maplibregljs}. Swisstopo liefert ihre Grundlagenkarte <<Base-VT>> ebenfalls in einem Format, das bereits kompatibel ist. Das Grundgerüst der Web-App wurde in Vue.js implementiert, was ich während meinem NAWIMAT-Praktikum erlernt habe. Diese Wahl stellte sich als sehr günstig heraus, auch wenn eine minimale Adaptionsschicht zwischen Vue und MapLibre zusätzlich implementiert werden musste.
 
-Die grössten Schwierigkeiten stellten sich beim umwandeln der Höhendaten. Diese mussten von GeoTIFF in ein sog.\ RGB-\acrshort{dem} umgewandelt werden. Von Höhe als direktem Rasterwert zu einem RGB-Bild, in welchem die Höhe in Farbwerte umgewandelt wird. Durch das verändern der Bildgrösse, treffen die neuen Pixel nicht genau auf die alten. Für Bilddaten würde man nun bilinear interpolieren, d.h.\ die Farbwerte der 4 umliegenden Pixel je nach Distanz gewichtet verrechnen. Probiert man dies mit RGB-\acrshort{dem}-Bildern, verfälscht man die Höhen an Kanten bei denen zum ersten mal blaue Pixel relevant werden (Es entstehen falsche, hohe Spitzen). Die Lösung für dieses eigentlich triviale Problem bestand darin, QGIS mittels \acrshort{cli}-Flag mitzuteilen nur das nächste Pixel anstelle der nächsten 4 zu verwenden.
+Die größten Schwierigkeiten stellten sich beim Umwandeln der Höhendaten. Diese mussten von GeoTIFF in ein sogenanntes RGB-\acrshort{dem} umgewandelt werden. Von Höhe als direktem Rasterwert zu einem RGB-Bild, in welchem die Höhe als Farbwert kodiert ist. Durch das Verändern der Bildgrösse treffen die neuen Pixel nicht genau auf die alten. Für Bilddaten würde man nun bilinear interpolieren, d.h. die Farbwerte der vier umliegenden Pixel je nach Distanz gewichtet verrechnen. Probiert man dies mit RGB-\acrshort{dem}-Bildern, verfälscht man die Höhen an Kanten, bei denen zum ersten Mal blaue Pixel relevant werden (es entstehen falsche, hohe Spitzen). Die Lösung für dieses eigentlich triviale Problem bestand darin, QGIS mittels \acrshort{cli}-Flag mitzuteilen, nur das nächste Pixel anstelle der nächsten vier zu verwenden. Leider ist dies nicht dokumentiert und musste durch Ausprobieren herausgefunden werden.
 
 % \end{multicols}
