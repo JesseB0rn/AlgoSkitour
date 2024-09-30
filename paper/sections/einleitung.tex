@@ -205,9 +205,15 @@ Berge, Wälder, Flüsse und Seen sind ebenfalls ein wichtiger Kartenbestandteil.
 \acrlong{gis}e (\acrshort{gis}) sind leistungsstarke Werkzeuge, die zur Analyse, Darstellung und Interpretation von geografischen Daten verwendet werden. Mit einem solchen Werkzeug können etwa Landkarten verfasst, ökologische Veränderungen überwacht oder zoologische Migrationsmuster analysiert werden.
 In dieser Arbeit wurde das quelloffene Werkzeug QGIS extensiv verwendet; zudem wurde eine eigene Analyse-Erweiterung entwickelt~\cite{qgis}. QGIS wurde gegenüber anderen kommerziellen \gls{gis}-Lösungen gewählt, da diese oft teuer verrechnet werden.
 
+\subsection{Einführung in die Graphentheorie}
+
+Ein Graph beschreibt wie eine Menge von Knotenpunkten (Verticies) $V$, welche durch die Kanten (Edges) $E$ verbunden sind. Ein Graph kann gerichtet oder ungerichtet sein. Ein gerichteter Graph beschreibt eine Beziehung zwischen zwei Knoten, welche nur in eine Richtung verläuft. Ein ungerichteter Graph beschreibt eine Beziehung, welche in beide Richtungen verläuft. Ein Graph kann zudem gewichtet sein, wobei die Kanten mit einem Wert bzw. Kosten versehen sind. Ein gewichteter Graph wird oft zur Modellierung von Netzwerken verwendet. Beispielsweise können Schienen- oder Strassennetzwerke so modelliert werden. 
+Da wir in dieser Arbeit mit einem diskreten Gitter arbeiten, arbeiten wir mit einem ungerichteten, gewichteten Graphen. Die Knoten entsprechen den Gitterpunkten, die Kanten den möglichen Bewegungen zwischen den Punkten und die Gewichte den Kosten der Bewegung. Wir verbinden alle Gitterzellen mit ihren acht Nachbarn, analog aller für einen König möglichen Züge auf einem Schachbrett.
+
+
 \subsection{Algorithmus von Dijkstra und A*}
 
-Die Suche nach einem Pfad mit minimalen Kosten lässt sich formal als Graphen-Problem\footnote{Ein Graph beschreibt in der Informatik ein Netzwerk aus Knoten, welche durch Kanten verbunden sind} darstellen und lösen. Dabei wird jeder Gitterpunkt zu einem Knotenpunkt in einem Graph, welcher mittels acht ungerichteten Kanten mit seinen Nachbarn verbunden ist. So kann das Problem bereits mit dem Algorithmus von Dijkstra gelöst werden~\cite{dijkstra1959note}.
+Die Suche nach einem Pfad mit minimalen Kosten lässt sich formal als Graphen-Problem darstellen und lösen. Dabei wird jeder Gitterpunkt zu einem Knotenpunkt in einem Graph, welcher mittels acht ungerichteten Kanten mit seinen Nachbarn verbunden ist. So kann das Problem bereits mit dem Algorithmus von Dijkstra gelöst werden~\cite{dijkstra1959note}.
 
 Es wird eine leere Vorrangwarteschlange\footnote{Eine Liste an Elementen, welche bereits beim Einfügen anhand eines Wertes sortiert werden} initialisiert, welcher sofort der dem Ursprungspunkt entsprechend Knoten mit Kosten 0 hinzugefügt wird. Die laufenden Kosten aller anderen Knoten werden auf $+ \infty$ gesetzt. Es werden nun  folgende zwei Schritte fortlaufend ausgeführt, bis der Knoten, welcher der Zielzelle entspricht, erweitert wurde.~\cite{dijkstra1959note}
 \begin{itemize}
@@ -226,7 +232,6 @@ Als Heuristik wird im weiteren Verlauf der Arbeit die Taxi- bzw. Chebyshev-Dista
 Nebst den risikoabhängigen Durchgangskosten, werden auch Bewegungskosten berücksichtigt. Diese beschreiben die Zeit und Anstrengung die benötigt wird, um einen Meter Weg zurückzulegen. Eine weit verbreitete und akzeptierte Schätzungsmethode ist die sog. Naismith'sche Regel~\cite{naismithsrule}.
 Beim Skitouren wird dabei je \qty{4000}{m} Horizontaldistanz und je \qty{400}{hm} Vertikaldistanz eine Stunde Wegzeit gerechnet~\cite{sacbergspwinter}\cite{naismithsrule}. (Für eine \qty{6000}{m} lange Tour mit \qty{800}{hm} Anstieg wird eine Aufstiegsdauer von $\frac{\qty{6000}{m}}{\qty{4000}{m}} + \frac{\qty{800}{hm}}{\qty{400}{hm}} = \qty{3}{h}\ \qty{30}{\min}$ gerechnet)
 
-\clearpage
 \subsection{Berechnung von topographischen Oberflächenfaktoren}
 Ziel ist die Berechnung der charakteristischen Geländeeigenschaften für die Zelle $e$.
 Von Interesse sind Aspekt, Neigung und Krümmung.
@@ -239,7 +244,7 @@ $a$~--~$h$ sind die Höhen der Gitterpunkte rund um unserer Zielzelle \textbf{e}
   \caption{$3 \times 3$-Ausschnitt von Höhen aus einem \acrshort{dem} und deren Benennung}
 \end{figure}
 
-In der Praxis wurden diese Berechnungen mit dem Werkzeug \code{gdaldem} ausgeführt, nach dem ein eigenes Programm keinen erheblichen Leistungsvorteil erzielt hatte. Die detaillierten Formeln zur Berechnung aller Eigenschaften finden sich im Anhang.
+In der Praxis wurden diese Berechnungen mit dem Werkzeug \code{gdaldem} ausgeführt, nach dem ein eigenes Programm keinen erheblichen Leistungsvorteil erzielt hatte. Die detaillierten Formeln zur Berechnung aller Eigenschaften finden sich im Anhang~\ref{app:formeln}.
 
 
 \vfill
