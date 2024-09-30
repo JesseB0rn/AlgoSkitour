@@ -30,13 +30,18 @@ Literarische Klassiker im Bereich der Lawinenkunde sind beispielsweise Werner Mu
 \subsection{Lawinentypen}
 
 Lawinen lassen sich anhand ihrer Auslösemechanismen, des Materials, welches sie transportieren, und der spezifischen Bedingungen, unter denen sie entstehen, klassifizieren. Die wichtigsten Lawinentypen --- Schneebrettlawinen, Lockerschneelawinen, Gleitschneelawinen (und Staublawinen) --- unterscheiden sich in ihrer Entstehung, Dynamik und den daraus resultierenden Gefahren~\cite{harveyrhynerschweizerlawinenkunde}. Eine genaue Kenntnis dieser Unterschiede ist notwendig für die Lawinenkunde und das alpine Risikomanagement.
-%TODO: Bilder Lawinentypen einfügen
-%TODO: Seitenumbrüche hier prüfen
-
+\skiplines{2}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{UeberischtLawinen_mark}
+  \caption{Die wichtigsten Lawinentypen~\cite{ortovoxlabsnow}}\label{fig:lawinentypen}
+\end{figure}
+\pagebreak
 \begin{enumerate}
-  \item Schneebrettlawinen~\cite{harveyrhynerschweizerlawinenkunde}\cite{sacbergspwinter}\cite{slfLawinentypen}:
+  \item Schneebrettlawinen~\cite{harveyrhynerschweizerlawinenkunde}\cite{sacbergspwinter}\cite{slfLawinentypen}\cite{ortovoxlabsnow}:
   \begin{itemize}
     \item Fordern 90\% der Lawinenopfer
+    \item 98\% Aller Lawinentoten sterben in Schneebrettlawinen
     \item Abriss entlang einer Kante, Schnee gleitet als ganzer Block <<Brett>> ab
     \item Brett gleitet auf einer darunterliegenden Schwachschicht in der Schneedecke ab
     \item Kann aufgrund von Mehrbelastung durch Wintersportler oder spontan abgehen
@@ -59,14 +64,11 @@ Lawinen lassen sich anhand ihrer Auslösemechanismen, des Materials, welches sie
     \item Ebenfalls linienförmige Abrisskante
     \item Die gesamte Schneedecke gleitet ab
     \item Kleine Bedeutung für Wintersportler –-- gehen oft spontan ab und gefährden vor allem Infrastruktur (Abgleiten erfolgt über mehrere Stunden oder Tage hinweg, zeigt sich gut durch sog. <<Fischmäuler>>)
-% TODO: Fischmaul bild
   \end{itemize}
 \end{enumerate}
-Für unsere Zwecke interessieren uns an erster Stelle \textbf{Schneebrettlawinen} und an zweiter \textbf{Lockerschneelawinen}, da diese Lawinentypen für die meisten Unfälle mit Personenschaden abseits der Schweizer Pisten verantwortlich sind~\cite{harveyrhynerschweizerlawinenkunde}. In $\qty{95}{\percent}$ aller Unfälle lösen Schneesportler dabei ihre Unglückslawine selbst aus~\cite{ortovoxlabsnow}. Aus diesem Grund wird im weiteren Verlauf dieser Arbeit einer möglichen Fernauslösung keine weitere Beachtung geschenkt. Damit wird vor allem verhindert, das flächendeckend auf Basis von zu langen/falsch eingeschätzten Ablagerungsbereichen ein zu hohes Risiko vorhergesagt wird~\cite{athmaps}.
+Für unsere Zwecke interessieren uns an erster Stelle \textbf{Schneebrettlawinen} und an zweiter \textbf{Lockerschneelawinen}, da diese Lawinentypen für die meisten Unfälle mit Personenschaden abseits der Schweizer Pisten verantwortlich sind~\cite{harveyrhynerschweizerlawinenkunde}. In $\qty{95}{\percent}$ aller Unfälle lösen Schneesportler dabei ihre Unglückslawine selbst aus~\cite{ortovoxlabsnow}. Aus diesem Grund wird im weiteren Verlauf dieser Arbeit einer möglichen Fernauslösung keine weitere Beachtung geschenkt. Damit wird vor allem verhindert, das flächendeckend auf Basis von zu langen/falsch eingeschätzten Ablagerungsbereichen ein zu hohes Risiko vorhergesagt wird~\cite{athmaps}. In Abb. \ref{fig:lawinentypen} sind die wichtigsten Lawinentypen nochmals grafisch dargestellt (+ 4. Staublawinen, welche vermehrt im Himalaya auftreten).
 
-%TODO: Grafik Lawinensituation einfuegen
-
-% \pagebreak
+\pagebreak
 \subsection{Typische Lawinenprobleme}\label{lawinenprobleme}
 
 In der Lawinenkunde werden bestimmte Lawinenprobleme definiert, um die komplexen Zusammenhänge einfacher verständlich zu machen und die Risikoanalyse zu erleichtern. Diese typischen Lawinenprobleme umfassen verschiedene Szenarien, die besonders häufig auftreten und die Lawinengefahr massgeblich beeinflussen. Ein tiefes Verständnis dieser Probleme ist von Nöten, um in gefährdetem Gelände sicher unterwegs zu sein und präzise Entscheidungen in Bezug auf Lawinensicherheit zu treffen. Es werden vier Lawinenprobleme unterschieden:
@@ -82,7 +84,7 @@ In der Lawinenkunde werden bestimmte Lawinenprobleme definiert, um die komplexen
   \begin{itemize}
     \item Wind trägt Neuschnee in Windschattenlagen
     \item Triebschnee verbindet sich leicht mit sich selbst, jedoch nicht mit darunterliegenden Schichten; ideale Voraussetzungen für ein Schneebrett
-    \item Gefahr durch Schneeverfrachtungen (z.B. Wechten) %TODO: Bild Wechte
+    \item Gefahr durch Schneeverfrachtungen (z.B. Wechten)
     \item Setzt sich innert zwei bis drei Tagen
   \end{itemize}
   \item Nassschneeproblem~\cite{harveyrhynerschweizerlawinenkunde}\cite{achtunglawine}:
@@ -121,14 +123,13 @@ Im Durchschnitt ist das Risiko bei <<mässig>> fünf Mal so hoch wie bei <<gerin
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=7.5cm]{gefahrenstufen}
+  \includegraphics[width=7cm]{gefahrenstufen}
   \caption{Die 5 Europäsischen Lawinengefahrstufen in einem Graph}\label{fig:llbdanger}
 \end{figure}
-\clearpage
 Um die Einteilung dieser fünf Kategorien weiter zu verfeinern, wurden in der Schweiz zusätzlich Teilabstufen mittels $+$, $-$ und $=$ eingeführt (So lautet die Warnstufe im Bericht nun z.B.\ $3+$, wenn die tatsächliche Gefahr bereits nahe an einer $4$ bzw.\ $4-$ liegt)~\cite{sacbergspwinter}.
 Unterschiedliche Interpretation der standartisierten europäischen Skala sorgen leider dafür, das Differenzen zwischen Schweizerischen und ausländischen Vorhersagen bestehen. Dies stellt besonders in Grenzregionen ein Problem dar. Im Weiteren dieser Arbeit wird dem jedoch keine Beachtung geschenkt.
 
-
+\pagebreak
 \subsection{Lawinenbildende Faktoren}
 
 Lawinen sind das Resultat eines unglücklichen Zusammenspiels drei wesentlicher Faktoren: 
@@ -137,7 +138,7 @@ Lawinen sind das Resultat eines unglücklichen Zusammenspiels drei wesentlicher 
 Weder die Verhältnissen noch das Gelände lässt sich direkt von Wintersportlern beeinflussen. Nur durch die Wahl eines anderen Datums (nur in Ausnahmefällen sinnvoll, z.B.\ bei einer Expedition), oder durch clever Spuranlage lassen sich diese Faktoren mildern. 
 Ist beides keine Option, muss eine alternative Tour ausgewählt werden.
 Den bei weitem grössten Einfluss hat die maximale Hangneigung --- daher konzentrieren sich die meisten gängigen Reduktionsmethoden wie die \gls{grm} und der Avulator\footnote{Gängiger Entscheidungsrahmen in Kanada} vor allem darauf~\cite{arpddatasetdocs}\cite{harveyrhynerschweizerlawinenkunde}.
-\clearpage
+
 \subsection{Schema 3~\texttimes~3}
 Der Goldstandard der heutigen Tourenplanung ist Werner Munters $3\times3$-Schema. Dabei werden in drei <<Zoom>>-Stufen drei Faktoren ausgewertet:
 % \vfill
@@ -145,40 +146,21 @@ Der Goldstandard der heutigen Tourenplanung ist Werner Munters $3\times3$-Schema
 
 \begin{table}[hb] 
   \centering
-  \begin{tabular}{|p{0.14\linewidth} | p{0.22\linewidth} | p{0.22\linewidth} | p{0.22\linewidth} |}
+  \renewcommand{\arraystretch}{2}
+  \begin{tabular}{|p{0.13\linewidth} | p{0.25\linewidth} | p{0.25\linewidth} | p{0.27\linewidth} |}
     \hhline{|----|}
    &  \textbf{Verhältnisse} & \textbf{Gelände} & \textbf{Mensch} \\
-   \hhline{t:----:t}
-  \textbf{Regional} &  1.~Lawinenlagebericht \gls{llb}, 2.~Wetterprognose, 3.~Auskünfte von Einheimischen/Hüttenwart &  1.~$1:25000$-Karte, 2.~Tourenführer, 3.~Eigene Geländekentnisse & 1.~Wer ist dabei?, 2.~Ausbildung, 3.~Material, 4.~Mentale und phyische Kondition?  \\ \hhline{|----|}
-  \textbf{Lokal} & 1.~Sicht?, 2.~Bewölkung, Wind, Niederschlag, Temperatur?, 3.~Schneeverfrachtungen, Neuschneemenge, 4.~Stimmt der \gls{llb}? & 1.~Stimmt meine Vorstellung (Steilheit, Exposition)? 2.~Spuren anderer Gruppen & 1.~Ausrüstungskontrolle (Gruppencheck LVS), 2.~Andere Gruppen unterwegs? \\ \hhline{|----|}
-  \textbf{Zonal} & 1.~Neuschneemenge, 2.~Triebschnee, 3.~Mögliche Abrisszonen, 4.~Sonneneinstrahlung & 1.~Wer / was ist über/unter der Gruppe?, 2.~Steilste Stelle?, 3.~Exposition, 4.~Typisches Lawinengelände, 5.~Hangform, 6.~Höhe, 7.~Oft befahren? & 1.~Können \& Kondition, 2.~Vorischtsmassnahmen, 3.~Sichere Sammelstellen \\
-  \hhline{b:----:b}
+   \hhline{|----|}
+  \textbf{Regional} &  1.~Lawinenlagebericht \par 2.~Wetterprognose \par 3.~Auskünfte von Einheimischen/ Hüttenwart &  1.~$1:25000$-Karte \par 2.~Tourenführer \par 3.~Eigene Geländekentnisse & 1.~Wer ist dabei? \par 2.~Ausbildung \par 3.~Material \par 4.~Mentale und phyische Kondition?  \\ \hhline{|----|}
+  \textbf{Lokal} & 1.~Sicht? \par 2.~Bewölkung, Wind, Niederschlag, Temperatur? \par 3.~Schneeverfrachtungen, Neuschneemenge \par 4.~Stimmt der \gls{llb}? & 1.~Stimmt meine Vorstellung (Steilheit, Exposition)? \par 2.~Spuren anderer Gruppen & 1.~Ausrüstungskontrolle (Gruppencheck \acrshort{lvs}, Harscheisen dabei?) \par 2.~Andere Gruppen unterwegs? \\ \hhline{|----|}
+  \textbf{Zonal} & 1.~Neuschneemenge \par 2.~Triebschnee \par 3.~Mögliche Abrisszonen \par 4.~Sonneneinstrahlung & 1.~Wer / was ist über/unter der Gruppe? \par 2.~Steilste Stelle? \par 3.~Exposition, 4.~Typisches Lawinengelände \par 5.~Hangform \par 6.~Höhe \par 7.~Oft befahren? & 1.~Können \& Kondition \par 2.~Vorischtsmassnahmen \par 3.~Sichere Sammelstellen \\
+   \hhline{|----|}
   \end{tabular}
-  \caption{}\label{tab:3x3table}
+  \renewcommand{\arraystretch}{1}
+  \caption{Das Schema 3$\times$3~\cite{munter}}\label{tab:3x3table}
 \end{table}
 
-%TODO: Tabellenon-breaking spaces
-
-% \textbf{Regional} 
-% Von zuhause aus~\cite{munter}:
-% \begin{itemize}
-%   \item Verhältnisse: 1. Lawinenlagebericht \gls{llb}, 2. Wetterprognose, 3. Auskünfte von Einheimischen/Hüttenwart
-%   \item Gelände: 1. $1:25000$-Karte, 2. Tourenführer, 3. Eigene Geländekentnisse
-%   \item Menschen: 1. Wer ist dabei?, 2. Ausbildung, 3. Material, 4. Mentale und phyische Kondition? 
-% \end{itemize}
-% \textbf{Lokal} Im Gebiet, auf Sichtdistanz~\cite{munter}\cite{redbull3x3}:
-% \begin{itemize}
-%   \item Verhältnisse / Schneedecke / Wetter: 1. Sicht?, 2. Bewölkung, Wind, Niederschlag, Temperatur?, 3. Schneeverfrachtungen, Neuschneemenge, 4. Stimmt der \gls{llb}?\
-%   \item Gelände: 1. Stimmt meine Vorstellung (Steilheit, Exposition)? 2. Spuren anderer Gruppen
-%   \item Menschen: 1. Ausrüstungskontrolle (Gruppencheck LVS), 2. Andere Gruppen unterwegs?
-% \end{itemize}
-% \textbf{Zonal} Im Einzelhang~\cite{munter}\cite{redbull3x3}:
-% \begin{itemize}
-%   \item Verhältnisse: 1. Neuschneemenge, 2. Triebschnee, 3. Mögliche Abrisszonen, 4. Sonneneinstrahlung
-%   \item Gelände: 1. Wer / was ist über/unter der Gruppe?, 2. Steilste Stelle?, 3. Exposition, 4. Typisches Lawinengelände, 5. Hangform, 6. Höhe, 7. Oft befahren?
-%   \item Menschen: 1. Können \& Kondition, 2. Vorischtsmassnahmen, 3. Sichere Sammelstellen
-% \end{itemize}
-
+\pagebreak
 \subsection{Grafische Reduktionsmethode \& Relevante Geländefaktoren}
 
 Die momentan am meisten verwendete Reduktionsmethode ist die sogenannte\ \acrfull{grm}.\ Bei dieser wird --- je nach prognostizierter Ausprägung eines Lawinenproblems --- nur die lokale Hangneigung zur Entscheidungsfindung eingesetzt~\cite{sacbergspwinter}. In der Planungsphase wird die Hangneigung aus einer $1:25000$er-Karte mittels Neigungsmesser herausgelesen. Dies liefert jedoch nur die durchschnittliche Neigung des Geländes zwischen den Höhenlinien --- einen möglichen steileren Hangabschnitt sieht man also nicht.
@@ -186,7 +168,7 @@ Unterwegs kann entweder mittels Smartphone, Skistöcker oder Pendel die Hangneig
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=7.5cm]{grm}
+  \includegraphics[width=14cm]{grm}
   \caption{\gls{grm}-Karte~\cite{achtunglawine}}\label{fig:grm}
 \end{figure}
 
