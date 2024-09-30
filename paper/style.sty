@@ -21,10 +21,20 @@
 % \usepackage[left=2.25cm, right=2.25cm, top=3.00cm, bottom=3.50cm]{geometry}
 % oben 3 cm; unten 2.8 cm; links 3 cm; rechts 2 cm
 \usepackage[left=3cm, right=2cm, top=3.00cm, bottom=2.8cm]{geometry}
-\usepackage[headsepline, footsepline]{scrlayer-scrpage}
+\usepackage[headsepline, footsepline, autooneside=false,% use left and right marks with a onesided document
+  automark]{scrlayer-scrpage}
+
+\usepackage[
+  autooneside=false,% use left and right marks with a onesided document
+  automark% set \leftmark and \rightmark automatically by \section and \subsection
+]{scrlayer-scrpage}
+\clearpairofpagestyles
+\ihead{\leftmark}% section on the inner (oneside: right) side
+\ofoot{\pagemark}
+\addtokomafont{pagehead}{\upshape}% header upshape instead italic
+
 \renewcommand*{\headfont}{\normalfont}
 \usepackage{csquotes}
-
 \usepackage{hhline}
 
 \usepackage[style=iso-numeric]{biblatex} 
