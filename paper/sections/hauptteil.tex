@@ -27,10 +27,7 @@ Zum anderen sind die zugehörigen \acrshort{gis}-Modelle, welche im Hintergrund 
 
 Für einige Regionen bzw. Gipfel (Länta, Steingletscher) war nur eine von beiden Gefahrenkarten brauchbar -- so ist es kaum sinnvoll, quer durch den Steinsee zu waten, da dieser nur selten zugefroren ist. Erfahrungswerte mit beiden Modellversionen zeigen, dass der Benutzer in den meisten Fällen beide Versionen begutachten werden sollte.
 
-Nachfolgend wird eine Auswahl der Touren kurz diskutiert.
-
-Die besten Routen waren jene vom Steingletscher aus auf die Tierberglihütte SAC, sowie auf das Sustenhorn, dies unter der Bedingung, dass die korrekte Gefahrenkarte verwendet wird; die andere Karte produziert unbrauchbare Resultate. Es kann eine hohe Übereinstimmung mit den Literatur-Routen, welche der SAC im Tourenportal auflistet, festgestellt werden~\cite{mmzentralch} (siehe Abb.\ \ref{fig:tierbergli}).
-
+Nachfolgend wird eine Auswahl der Touren kurz diskutiert: Die besten Routen waren jene vom Steingletscher aus auf die Tierberglihütte SAC, sowie auf das Sustenhorn, dies unter der Bedingung, dass die korrekte Gefahrenkarte verwendet wird; die andere Karte produziert unbrauchbare Resultate. Es kann eine hohe Übereinstimmung mit den Literatur-Routen, welche der SAC im Tourenportal auflistet, festgestellt werden~\cite{mmzentralch} (siehe Abb.\ \ref{fig:tierbergli}).
 % \end{multicols}
 \begin{figure*}[ht]
   \centering
@@ -126,7 +123,7 @@ In dieser Arbeit wurde jeglicher Programmcode sowie die Arbeit selbst in ein Git
 
 \subsection{Verworfene Variante}
 
-Die erste Variante, mit der Risikokarten hätten erstellt werden sollen, stellte sich als unpraktisch heraus. Aufgrund einer Quelle wurde eine 3D-Lawinensimulation implementiert, bzw.\ ein Versuch in diese Richtung unternommen\ \cite{athmaps}. Die Physiksimulation könnte jedoch nicht korrekt implementiert werden, mangels des nötigen mathematischen Geschicks\footnote{Numerische Verfahren zur Lösung von partiellen Differentialgleichungen entziehen sich der Expertise des Autoren, Speziell Runge-Kutta-Heun konnte trotz mehrtägiger Bemühungen ohne externe Hilfe nicht erarbeitet werden. Ein Auszug der Versuche findet sich im Anhang}. Mit diesem hier nur kurz ausgeführten Unterfangen liesse sich bereits eine ganze Arbeit füllen. Hier wurde der Versuch jedoch nach ca.\ einer Woche abgebrochen. In Kommunikation mit dem Entwickler wurde mir eine kostenlose Lizenz für den kommerziellen Lawinensimulator \code{RAMMS::Avalanche} zur Verfügung gestellt.
+Die erste Variante, mit der Risikokarten hätten erstellt werden sollen, stellte sich als unpraktisch heraus. Aufgrund einer Quelle wurde eine 3D-Lawinensimulation implementiert, bzw.\ ein Versuch in diese Richtung unternommen\ \cite{athmaps}. Die Physiksimulation könnte jedoch nicht korrekt implementiert werden, mangels des nötigen mathematischen Geschicks\footnote{Numerische Verfahren zur Lösung von partiellen Differentialgleichungen entziehen sich der Expertise des Autoren, Speziell Runge-Kutta-Heun konnte trotz mehrtägiger Bemühungen ohne externe Hilfe nicht erarbeitet werden.}. Mit diesem hier nur kurz ausgeführten Unterfangen liesse sich bereits eine ganze Arbeit füllen. Hier wurde der Versuch jedoch nach ca.\ einer Woche abgebrochen. In Kommunikation mit dem Entwickler wurde mir eine kostenlose Lizenz für den kommerziellen Lawinensimulator \code{RAMMS::Avalanche} zur Verfügung gestellt.
 
 Zwischenzeitliche wurde eine Lawinensimulation mittels RAMMS::Avalanche in Betracht gezogen. Aufgrund der hohen Rechenanforderung musste die einfachere Variante, die der \gls{grm} ähnelt, ausgewählt werden. Der eigentliche Zweck der Software entspricht auch nicht der hier verlangten Anwendung. Eigentlich werden mit der Software Gefahrengutachten für Infrastrukturprojekte erstellt. Dabei werden meist grosse Lawinen- bzw. Steinschlagereignisse mit langen Wiederkehrperioden von 10 bis 300 Jahren simuliert.
 
@@ -138,7 +135,7 @@ Zwischenzeitliche wurde eine Lawinensimulation mittels RAMMS::Avalanche in Betra
 
 Der Versuch mittels minimaler externer Werkzeuge zu arbeiten stellte sich schnell als mühsam heraus. Trotzdem wurde erstaunlich lange daran festgehalten. Hier hätte schneller gewechselt werden können. 
 Grosse Fortschritte resultierten vor allem durch den Wechsel von rohem Python auf QGIS.\ QGIS ist speziell geeignet, da es ein quelloffenes und erweiterbares Werkzeug ist. So konnte nicht vorhandene Funktionalität einfach durch ein selbst geschriebenes Plugin ergänzt werden.
-
+\pagebreak
 \subsection{Verfassen mit LaTeX}
 Bereits in der Projektarbeit des Autors hat sich gezeigt, dass Microsoft Word ein denkbar ungeeignetes Werkzeug zum Verfassen von Arbeiten ist. Nach kurzem Einarbeiten in die grundsätzlichen Befehle, vielen Google-Anfragen und anfänglichen Kopfschmerzen zeigte \LaTeX\ schnell, weshalb es so weit verbreitet ist. Eine stärkere Empfehlung im <<Handbuch Projekte>> seitens der Schule wäre wünschenswert.
 
