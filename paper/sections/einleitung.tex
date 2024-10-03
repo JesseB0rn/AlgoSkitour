@@ -122,7 +122,7 @@ Im Durchschnitt ist das Risiko bei <<mässig>> fünfmal grösser als bei <<gerin
   \includegraphics[width=7cm]{gefahrenstufen}
   \caption{Die 5 europäsischen Lawinengefahrstufen in einem Graph}\label{fig:llbdanger}
 \end{figure}
-Um die Einteilung dieser fünf Kategorien weiter zu verfeinern, wurden in der Schweiz zusätzlich Teilabstufen mittels $+$, $-$ und $=$ eingeführt (So lautet die Warnstufe im Bericht nun z.B.\ $3+$, wenn die tatsächliche Gefahr bereits nahe an einer $4$ bzw.\ $4-$ liegt).~\cite{sacbergspwinter}
+Um die Einteilung dieser fünf Kategorien weiter zu verfeinern, wurden in der Schweiz zusätzlich Teilabstufen durch $+$, $-$ und $=$ eingeführt (So lautet die Warnstufe im Bericht nun z.B.\ $3+$, wenn die tatsächliche Gefahr bereits nahe an einer $4$ bzw.\ $4-$ liegt).~\cite{sacbergspwinter}
 Unterschiedliche Interpretationen der standartisierten europäischen Skala sorgen leider dafür, dass Differenzen zwischen schweizerischen und ausländischen Vorhersagen bestehen. Dies stellt besonders in Grenzregionen ein Problem dar. Nachfolgend wird dies jedoch nicht weiter thematisiert.
 
 \pagebreak
@@ -160,7 +160,7 @@ Der Goldstandard der heutigen Tourenplanung ist Werner Munters $3\times3$-Schema
 \subsection{Grafische Reduktionsmethode \& relevante Geländefaktoren}
 
 Die momentan am meisten verwendete Reduktionsmethode ist die sogenannte grafische Reduktionsmethode.\ Bei dieser wird -- je nach prognostizierter Ausprägung eines Lawinenproblems -- nur die lokale Hangneigung zur Entscheidungsfindung eingesetzt~\cite{sacbergspwinter}. In der Planungsphase wird die Hangneigung aus einer $1:25000$er-Karte mittels Neigungsmesser herausgelesen. Dies liefert jedoch nur die durchschnittliche Neigung des Geländes zwischen den Höhenlinien -- einen möglichen steileren Hangabschnitt sieht man also nicht.
-Unterwegs kann entweder mittels Smartphone, Skistöcken oder Pendel die Hangneigung ermittelt werden. Es kann nun in der Grafik (siehe Abb.\ \ref{fig:grm}) herausgelesen werden, ob das zu überprüfende Gelände problemlos, nur mit Vorsichtsmassnahmen wie Entlastungsabständen oder gar nicht betreten werden darf.
+Unterwegs kann entweder unter Zuhilfenahme von Smartphone, Skistöcken oder Pendel die Hangneigung ermittelt werden. Es kann nun in der Grafik (siehe Abb.\ \ref{fig:grm}) herausgelesen werden, ob das zu überprüfende Gelände problemlos, nur mit Vorsichtsmassnahmen wie Entlastungsabständen oder gar nicht betreten werden darf.
 %TODO: Anhang mit Hangneigungsbestimmung Stocks
 \begin{figure}[H]
   \centering
@@ -209,7 +209,7 @@ Da in dieser Arbeit mit einem diskreten Gitter gearbeitet wird, wird ein ungeric
 
 \subsection{Algorithmus von Dijkstra und A*}
 
-Die Suche nach einem Pfad mit minimalen Kosten lässt sich formal als Graphen-Problem darstellen und lösen. Dabei wird jeder Gitterpunkt zu einem Knotenpunkt in einem Graph, welcher mittels acht ungerichteter Kanten mit seinen Nachbarn verbunden ist. So kann das Problem bereits mit dem Algorithmus von Dijkstra gelöst werden.~\cite{dijkstra1959note}
+Die Suche nach einem Pfad mit minimalen Kosten lässt sich formal als Graphen-Problem darstellen und lösen. Dabei wird jeder Gitterpunkt zu einem Knotenpunkt in einem Graph, welcher durch acht ungerichteter Kanten mit seinen Nachbarn verbunden ist. So kann das Problem bereits mit dem Algorithmus von Dijkstra gelöst werden.~\cite{dijkstra1959note}
 
 Es wird eine leere Vorrangwarteschlange\footnote{Eine Liste von Elementen, die bereits beim Einfügen anhand eines Wertes sortiert werden.} initialisiert, welcher sofort der dem Ursprungspunkt entsprechenden Knoten mit Kosten 0 hinzugefügt wird. Die laufenden Kosten aller anderen Knoten werden auf $+ \infty$ gesetzt. Es werden nun fortlaufend folgende zwei Schritte ausgeführt, bis der Knoten, welcher der Zielzelle entspricht, erweitert wurde.~\cite{dijkstra1959note}
 \begin{itemize}
@@ -258,7 +258,7 @@ Wie bereits in Kap.\ \ref{sec:dem} erwähnt, wird SwissAlti\textsuperscript{3D} 
 
 \subsection{Erstellung von Risikokarten}
 
-Als Grundlage für alle weiteren Schritte werden Risikokarten benötigt; ursprünglich hätten tatsächliche Lawinenabgänge simuliert werden sollen. Mittels RAMMS::Avalanche\footnote{Lawinensimulationsprogramm entwickelt am SLF} wurden zuerst Initialisierungspolygone, also Flächen, welche durch Schneesportler ausgelöst werden könnten, gesucht und dann mittels einer Standardlawinensituation (50cm Neuschnee, Lockerschneeproblematik) ausgelöst und simuliert. Dies stellte sich aufgrund der hohen Rechenanforderungen und der damit verbunden Budget- \& Zeitanforderungen als nicht praktikabel heraus.
+Als Grundlage für alle weiteren Schritte werden Risikokarten benötigt; ursprünglich hätten tatsächliche Lawinenabgänge simuliert werden sollen. In RAMMS::Avalanche\footnote{Lawinensimulationsprogramm entwickelt am SLF} wurden zuerst Initialisierungspolygone, also Flächen, welche durch Schneesportler ausgelöst werden könnten, gesucht und dann mittels einer Standardlawinensituation (50cm Neuschnee, Lockerschneeproblematik) ausgelöst und simuliert. Dies stellte sich aufgrund der hohen Rechenanforderungen und der damit verbunden Budget- \& Zeitanforderungen als nicht praktikabel heraus.
 
 Stattdessen soll nur die Hangneigung $\rho$ betrachtet werden, da diese Geländeeigenschaft den höchsten Korrelationsfaktor mit der Anzahl von Lawinenereignissen bildet~\cite{arpddatasetdocs}. Dies ist in der \gls{grm} bereits gebräuchlich. Auf die Analyse der Geländekrümmung wird verzichtet, da diese auf die tatsächliche Route praktisch keinen Einfluss hat.\\
 Der Risikowert einer einzelnen Zelle wird gemäss~\citeauthor{sacbergspwinterp99}~\cite{sacbergspwinterp99} folgendermassen berechnet:
@@ -290,7 +290,7 @@ In QGIS werden nun alle Gewässerflächen um einen Radius von \qty{7.5}{m} <<gep
 \pagebreak
 \subsection{QGIS-Plugin LeastCostWalk}
 
-Um den Algorithmus von Dijkstra nun auch auszuführen, musste eine neue Erweiterung für QGIS in Python implementiert werden. Ein Auszug des Quellcodes befindet sich im Anhang. Gegenüber bestehenden Least-Cost-Plugins verfügt meine Implementierung über die Funktionalität, Wegzeit/Bewegungskosten gegen Reibungs- bzw. Risikokosten abzuwägen. Dies geschieht mittels 5 Parametern 
+Um den Algorithmus von Dijkstra nun auch auszuführen, musste eine neue Erweiterung für QGIS in Python implementiert werden. Ein Auszug des Quellcodes befindet sich im Anhang. Gegenüber bestehenden Least-Cost-Plugins verfügt meine Implementierung über die Funktionalität, Wegzeit/Bewegungskosten gegen Reibungs- bzw. Risikokosten abzuwägen. Dies geschieht anhand 5 Parametern 
 
 \begin{itemize}
   \item $k_{risk}$, wie schwer die Risikokosten ins Gewicht fallen,
@@ -317,7 +317,7 @@ Um ein einfaches Bereitstellen zu ermöglichen und auf diese Weise die horizonta
 % \clearpage
 \subsection{3D-Karte im Webbrowser}
 
-Als Erweiterung zum reinen \gls{gis}-Modell wurde eine Webanwendung mittels Vue.js und MapLibre GL JS realisiert~\cite{vuedevman}\cite{maplibregljs}. Als Basislayer für die Karte wurde das Layer <<Vector Base Map>> von swisstopo verwendet, welches durch die Höhendaten von SwissAlti\textsuperscript{3D} in eine dreidimensionale Form gebracht wurde~\cite{basevtprod}\cite{alti3dprod}. Nutzer können sich mittels eines Google-Accounts anmelden und ihre Routen so persönlich abspeichern und wieder aufrufen. Zusätzlich steht basierend auf den in SwissTLM verfügbaren Lokalnamen eine Suchfunktion zur Verfügung.
+Als Erweiterung zum reinen \gls{gis}-Modell wurde eine Webanwendung in Vue.js und MapLibre GL JS realisiert~\cite{vuedevman}\cite{maplibregljs}. Als Basislayer für die Karte wurde das Layer <<Vector Base Map>> von swisstopo verwendet, welches durch die Höhendaten von SwissAlti\textsuperscript{3D} in eine dreidimensionale Form gebracht wurde~\cite{basevtprod}\cite{alti3dprod}. Nutzer können sich mittels eines Google-Accounts anmelden und ihre Routen so persönlich abspeichern und wieder aufrufen. Zusätzlich steht basierend auf den in SwissTLM verfügbaren Lokalnamen eine Suchfunktion zur Verfügung.
 Die Planung einer neuen Tour kann durch die Auswahl von Start- \& Zielort sowie der gewünschten Modellvariante in Auftrag gegeben werden -- innert ca.\ \qty{20}{s} ist das Resultat verfügbar und wird dem Nutzer direkt angezeigt.
 
 % \end{multicols}
