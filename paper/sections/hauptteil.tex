@@ -23,9 +23,9 @@ Zum anderen sind die zugehörigen \acrshort{gis}-Modelle, welche im Hintergrund 
 
 \subsection{Modellevaluation}
 
-14 typische Frühlings-Skitouren \& -Skihochtouren wurden aus dem SAC Tourenportal ausgewählt und durch ein kurzes Python-Skript heruntergeladen. Anschliessend wurden die Modellversionen mit und ohne eingebrannten Gewässern für die Start- und Zielpunkte der einzelnen Routensegmente ausgeführt. Start- und Zielpunkte wurden dabei von Hand platziert. Für alle 28 Tests wurden die gleichen Hyperparameter verwendet: $k_{risk}={50.0};\ c_{steepascend}={5.0};\ c_{steepdescend}={5.0};\ c_{flat}={0.25};\ c_{ascend}={2.5};\ c_{descend}={2.5}$
+14 typische Frühlings-Skitouren \& -Skihochtouren wurden aus dem SAC Tourenportal ausgewählt und durch ein kurzes Python-Skript heruntergeladen. Anschliessend wurden die Modellversionen mit und ohne eingebrannten Gewässern für die Start- und Zielpunkte der einzelnen Routensegmente ausgeführt. Start- und Zielpunkte wurden dabei von Hand platziert. Für alle 28 Tests wurden die gleichen Hyperparameter verwendet: \\$k_{risk}={50.0};\ c_{steepascend}={5.0};\ c_{steepdescend}={5.0};\ c_{flat}={0.25};\ c_{ascend}={2.5};\ c_{descend}={2.5}$
 
-Für einige Regionen bzw. Gipfel (Länta, Steingletscher) war nur eine von beiden Gefahrenkarten brauchbar -- so ist es kaum sinnvoll, quer durch den Steinsee zu waten, da dieser nur selten zugefroren ist. Erfahrungswerte mit beiden Modellversionen zeigen, dass der Benutzer in den meisten Fällen beide Versionen begutachten werden sollte.
+Für einige Regionen bzw. Gipfel (Länta, Steingletscher) war nur eine von beiden Gefahrenkarten brauchbar -- so ist es kaum sinnvoll, quer durch den Steinsee zu waten, da dieser nur selten zugefroren ist. Erfahrungswerte mit beiden Modellversionen zeigen, dass der Benutzer in den meisten Fällen beide Versionen begutachten sollte.
 
 Nachfolgend wird eine Auswahl der Touren kurz diskutiert: Die besten Routen waren jene vom Steingletscher aus auf die Tierberglihütte SAC, sowie auf das Sustenhorn, dies unter der Bedingung, dass die korrekte Gefahrenkarte verwendet wird; die andere Karte produziert unbrauchbare Resultate. Es kann eine hohe Übereinstimmung mit den Literatur-Routen, welche der SAC im Tourenportal auflistet, festgestellt werden~\cite{mmzentralch} (siehe Abb.\ \ref{fig:tierbergli}).
 % \end{multicols}
@@ -119,7 +119,7 @@ Im Schema 3$\times$3 siedelt sich das Modell als Ausgangslage der Stufe \textbf{
 \subsection{Versionsverwaltung, Backup und Archiv mit Git}
 
 In der Softwareentwicklung haben sich Softwareversionierungstools wie \code{git} bereits bewährt. Mit diesen ist es möglich, laufende Veränderungen in Textdateien (bzw. Programmcode) zeitlich sortiert zu speichern. So kann auf verschiedenen Rechnern an unterschiedlichen Versionen gearbeitet werden, welche anschliessend mit minimalem Aufwand wieder zusammengeführt (gemerged) werden können. Jede Änderung wird als <<Commit>> gespeichert -- diese können mit einem kleinen Kommentar versehen werden. Man ist ausserdem frei darin, auf einen vorherigen Commit zurückzuspringen, sollte man mit einer Änderung nicht mehr zufrieden sein. Kurz: Zeitreise für Softwareentwicklung.~\cite{chacon2014pro}
-In dieser Arbeit wurde jeglicher Programmcode sowie die Arbeit selbst in ein Git-Repository <<eingecheckt>>. Dieses wurde auf GitHub synchronisiert, um ein sicheres, cloudbasiertes Speichern aller Daten zu ermöglichen und einen Arbeitsverlust zu verhindern -- was sich als absolut empfehlenswert herausgestellt hat. Speziell die Kombionation von Git und \LaTeX\ hat sich für das Verfassen einer Arbeit als mächtige Arbeitsweise bewährt.
+In dieser Arbeit wurde jeglicher Programmcode sowie die Arbeit selbst in ein Git-Repository <<eingecheckt>>. Dieses wurde auf GitHub synchronisiert, um ein sicheres, cloudbasiertes Speichern aller Daten zu ermöglichen und einen Arbeitsverlust zu verhindern -- was sich als absolut empfehlenswert herausgestellt hat. Speziell die Kombionation von Git und LaTeX hat sich für das Verfassen einer Arbeit als mächtige Arbeitsweise bewährt.
 
 \subsection{Verworfene Variante}
 
@@ -127,17 +127,13 @@ Die erste Variante, mit der Risikokarten hätten erstellt werden sollen, stellte
 
 Zwischenzeitliche wurde eine Lawinensimulation mittels RAMMS::Avalanche in Betracht gezogen. Aufgrund der hohen Rechenanforderung musste die einfachere Variante, die der \gls{grm} ähnelt, ausgewählt werden. Der eigentliche Zweck der Software entspricht auch nicht der hier verlangten Anwendung. Eigentlich werden mit der Software Gefahrengutachten für Infrastrukturprojekte erstellt. Dabei werden meist grosse Lawinen- bzw. Steinschlagereignisse mit langen Wiederkehrperioden von 10 bis 300 Jahren simuliert.
 
-
-
-
-
 \subsection{GIS}
 
 Der Versuch mittels minimaler externer Werkzeuge zu arbeiten stellte sich schnell als mühsam heraus. Trotzdem wurde erstaunlich lange daran festgehalten. Hier hätte schneller gewechselt werden können. 
 Grosse Fortschritte resultierten vor allem durch den Wechsel von rohem Python auf QGIS.\ QGIS ist speziell geeignet, da es ein quelloffenes und erweiterbares Werkzeug ist. So konnte nicht vorhandene Funktionalität einfach durch ein selbst geschriebenes Plugin ergänzt werden.
 \pagebreak
 \subsection{Verfassen mit LaTeX}
-Bereits in der Projektarbeit des Autors hat sich gezeigt, dass Microsoft Word ein denkbar ungeeignetes Werkzeug zum Verfassen von Arbeiten ist. Nach kurzem Einarbeiten in die grundsätzlichen Befehle, vielen Google-Anfragen und anfänglichen Kopfschmerzen zeigte \LaTeX\ schnell, weshalb es so weit verbreitet ist. Eine stärkere Empfehlung im <<Handbuch Projekte>> seitens der Schule wäre wünschenswert.
+Bereits in der Projektarbeit des Autors hat sich gezeigt, dass Microsoft Word ein denkbar ungeeignetes Werkzeug zum Verfassen von Arbeiten ist. Nach kurzem Einarbeiten in die grundsätzlichen Befehle, vielen Google-Anfragen und anfänglichen Kopfschmerzen zeigte LaTeX schnell, weshalb es so weit verbreitet ist. Eine stärkere Empfehlung im <<Handbuch Projekte>> seitens der Schule wäre wünschenswert.
 
 \subsection{Evaluation}
 
