@@ -187,18 +187,18 @@ Dieses wird als GeoTIFF ausgeliefert. GeoTIFF sind verlustfrei komprimierte Bild
 
 Aus einem solchen Höhenmodell lässt sich die Hangneigung viel präziser und hochauflösender herauslesen, als dies von Hand aus einer $1:25000$er-Karte möglich ist.
 
-\subsection{Digitale Landschaftmodelle}
+\subsection{Digitale Landschaftsmodelle}
 
 Berge, Wälder, Flüsse und Seen sind ebenfalls ein wichtiger Kartenbestandteil. Auf Skitour gilt es zum Beispiel Schwimmpassagen zu vermeiden. Swisstopo liefert mit SwissTLM\textsuperscript{3D} einen Datensatz, welcher alle auf einer Landeskarte ersichtlichen Objekte enthält. Im weiteren Verlauf interessieren uns hier vor allem stehende und fliessende Gewässer, gewässerüberquerende Brücken, sowie Wald- und Wildruhezonen.
 
-\subsection{GIS}\label{sec:gis}
+\subsection{Geoinformationssysteme (GIS)}\label{sec:gis}
 
-\acrlong{gis}e (\acrshort{gis}) sind leistungsstarke Werkzeuge, die zur Analyse, Darstellung und Interpretation von geografischen Daten verwendet werden. Mit einem solchen Werkzeug können etwa Landkarten verfasst, ökologische Veränderungen überwacht oder zoologische Migrationsmuster analysiert werden.
+\acrshort{gis} sind leistungsstarke Werkzeuge, die zur Analyse, Darstellung und Interpretation von geografischen Daten verwendet werden. Mit einem solchen Werkzeug können etwa geografische Karten verfasst, ökologische Veränderungen überwacht oder zoologische Migrationsmuster analysiert werden.
 In dieser Arbeit wurde das quelloffene Werkzeug QGIS extensiv verwendet; zudem wurde eine eigene Analyse-Erweiterung entwickelt~\cite{qgis}. QGIS wurde gegenüber anderen kommerziellen \acrshort{gis}-Lösungen gewählt, da diese oft teuer verrechnet werden.
 
 \subsection{Einführung in die Graphentheorie}
 
-Ein Graph beschreibt wie eine Menge von Knotenpunkten (Verticies) $V$ durch die Kanten (Edges) $E$ verbunden sind. Ein Graph kann gerichtet oder ungerichtet sein: Ein gerichteter Graph beschreibt eine Beziehung zwischen zwei Knoten, wobei diese Beziehung nur in eine Richtung verläuft. Ein ungerichteter Graph beschreibt eine Beziehung, welche in beide Richtungen verläuft. Ein Graph kann zudem gewichtet sein, wobei die Kanten mit einem Wert bzw. Kosten versehen sind. Ein gewichteter Graph wird oft zur Modellierung von Netzwerken verwendet, beispielsweise können Schienen- oder Strassennetzwerke so modelliert werden. In diesem Fall entsprechen die Knoten den Haltestellen bzw. Kreuzungen, die Kanten den Verbindungen zwischen diesen und die Kosten den Fahrzeiten oder Distanzen. 
+Ein Graph beschreibt wie eine Menge von Knotenpunkten (Verticies) $V$ durch die Kanten (Edges) $E$ verbunden sind. Ein Graph kann gerichtet oder ungerichtet sein: Ein gerichteter Graph beschreibt eine Beziehung zwischen zwei Knoten, wobei diese Beziehung nur in eine Richtung verläuft. Ein ungerichteter Graph beschreibt eine Beziehung, welche in beide Richtungen verläuft. Ein Graph kann zudem gewichtet sein, wobei die Kanten mit einem Wert bzw. Kosten versehen sind. Ein gewichteter Graph wird oft zur Modellierung von Netzwerken verwendet, beispielsweise können Schienen- oder Strassennetzwerke so modelliert werden. In diesem Fall entsprechen die Knoten den Haltestellen bzw. Kreuzungen, die Kanten den Verbindungen zwischen diesen und die Kosten den Fahrzeiten oder Distanzen.
 Da in dieser Arbeit mit einem diskreten Gitter gearbeitet wird, wird ein ungerichteter, gewichteter Graph verwendet. Die Knoten entsprechen den Gitterpunkten, die Kanten den möglichen Bewegungen zwischen den Punkten und die Gewichte den Kosten der Bewegung. Wir verbinden alle Gitterzellen mit ihren acht Nachbarn, analog zu allen Zügen, die für den König auf einem Schachbrett möglich sind.
 
 
