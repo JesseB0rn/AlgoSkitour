@@ -5,18 +5,18 @@ Das Produkt dieser Arbeit ist zum einen die Web-App, welche in allen modernen We
 
 Zum anderen sind die zugehörigen \acrshort{gis}-Modelle, welche im Hintergrund für alle Berechnungen benötigt werden, ebenfalls Teil des Resultats. Abb.\ \ref{fig:walkmodel} ist ein Beispiel eines solchen Modells. Konkret ist das hier gezeigte Modell für die endgültige Pfadberechnung auf dem Server verantwortlich.
 
-% \begin{figure}[H]
-%   \centering
-%   \includegraphics[width=0.8\linewidth]{Modell_Preproc.png}
-%   \caption{Endgültiges Modell zur Verarbeitung von Risikokarten}\label{fig:preprocmodel}
-% \end{figure}
-
-\skiplines{3}
+% \skiplines{3}
 \begin{figure}[H]
   \centering
   \includegraphics[width=\linewidth]{Modell_Walk.png}
   \caption{Endgültiges Modell zur Berechnung von Touren}\label{fig:walkmodel}
 \end{figure}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=4cm]{qrlink}
+  \caption{QR-Code mit Link zur Web-Applikation}\label{fig:qrlink}
+\end{figure}
+
 
 \clearpage
 \section{Diskussion}
@@ -27,7 +27,7 @@ Zum anderen sind die zugehörigen \acrshort{gis}-Modelle, welche im Hintergrund 
 
 Für einige Regionen bzw. Gipfel (Länta, Steingletscher) war nur eine von beiden Gefahrenkarten brauchbar -- so ist es kaum sinnvoll, quer durch den Steinsee zu waten, da dieser nur selten zugefroren ist. Erfahrungswerte mit beiden Modellversionen zeigen, dass der Benutzer in den meisten Fällen beide Versionen begutachten sollte.
 
-Nachfolgend wird eine Auswahl der Touren kurz diskutiert: Die besten Routen waren jene vom Steingletscher aus auf die Tierberglihütte SAC, sowie auf das Sustenhorn, dies unter der Bedingung, dass die korrekte Gefahrenkarte verwendet wird; die andere Karte produziert unbrauchbare Resultate. Es kann eine hohe Übereinstimmung mit den Literatur-Routen, welche der SAC im Tourenportal auflistet, festgestellt werden~\cite{mmzentralch} (siehe Abb.\ \ref{fig:tierbergli}).
+Nachfolgend wird eine Auswahl der Touren kurz diskutiert: Die besten Routen waren jene vom Steingletscher aus auf die Tierberglihütte SAC, sowie auf das Sustenhorn, dies unter der Bedingung, dass die korrekte Gefahrenkarte verwendet wird; die andere Risikokarte produziert unbrauchbare Resultate. Es lässt sich eine hohe Übereinstimmung mit den Literatur-Routen, welche der SAC im Tourenportal auflistet feststellen~\cite{mmzentralch} (siehe Abb.\ \ref{fig:tierbergli}).
 % \end{multicols}
 \begin{figure*}[ht]
   \centering
@@ -37,7 +37,7 @@ Nachfolgend wird eine Auswahl der Touren kurz diskutiert: Die besten Routen ware
 
 % \begin{multicols}{2}
 
-Ebenso erreicht die Tour auf den Clariden in der Eigenevaluation eine Bestnote. Hier trumpft jedoch die nicht mit Gewässern ergänzte Karte (siehe Abb.\ \ref{fig:clariden}). Die nicht ganz offensichtliche Gratpassagen werden vom Modell sehr gut abgebildet, der Bach wird an einem sinnvollen Ort überquert. Die Übereinstimmung mit der SAC-legitimierten Route ist ebenfalls hervorragend~\cite{twslstgallappzll}.
+Ebenso erreicht die Tour auf den Clariden in der Eigenevaluation eine Bestnote. Hier trumpft jedoch die nicht mit Gewässern ergänzte Karte (siehe Abb.\ \ref{fig:clariden}). Die nicht ganz offensichtlichen Gratpassagen werden vom Modell sehr gut abgebildet, der Bach wird an einem sinnvollen Ort überquert. Die Übereinstimmung mit der SAC-legitimierten Route ist ebenfalls hervorragend~\cite{twslstgallappzll}.
 
 % % \end{multicols}
 \begin{figure*}[ht]
@@ -80,7 +80,7 @@ Die Route auf den Piz Palü ist aufgrund der Nähe zu einer Spaltenzone (siehe A
 
 % % \begin{multicols}{2}
 Auch bei den Touren auf den Galenstock sowie den Dammastock werden eher einer Hochtour entsprechende Spurwahlen getroffen, wobei die Resultate des gewässerunterstützten Modells ungültig sind. 
-In der Praxis sind diese Touren mit Skiern mangels einer attraktiven Abfahrt vom Skidepot aus keine Trendtouren-Kandidaten. Hier zeigt sich, dass das Modell nicht zwischen Ski- und Fussaufstieg unterscheidet. Es könnte sinnvoll sein, das Modell um einen Mechanismus zur Schätzung eines Skidepots bzw.\ von Tragepassagen zu ergänzen. Eine solche Funktionalität ist in\ \citeauthor{footandcautionsection} beschrieben und hat sich als praktikabel erwiesen~\cite{footandcautionsection}. Im gleichen Zug wäre eine automatische Schätzung der Schwierigkeit in der Skitourenskala des \acrshort{sac}s denkbar. 
+In der Praxis sind diese Touren mit Skiern mangels einer attraktiven Abfahrt vom Skidepot aus keine Trendtouren-Kandidaten. Hier zeigt sich, dass das Modell nicht zwischen Ski- und Fussaufstieg unterscheidet. Es könnte sinnvoll sein, das Modell um einen Mechanismus zur Schätzung eines Skidepots bzw.\ von Tragepassagen zu ergänzen. Eine solche Funktionalität ist in\ \citeauthor{footandcautionsection} beschrieben und hat sich als praktikabel erwiesen~\cite{footandcautionsection}. Im gleichen Zug wäre eine automatische Schätzung der Schwierigkeit in der Skitourenskala des \acrshort{sac} denkbar. 
 Alle Routen werden im Anhang\ \ref{app:evalroutes} zusätzlich gross abgebildet.
 
 % \end{multicols}
@@ -94,7 +94,7 @@ Das Modell leidet grundsätzlich unter einem Zielkonflikt. In der aktuellen Impl
 
 Ist ein Grat im \acrshort{dhm} genügend breit verzeichnet, wird dieser momentan mit einem Risikowert nahe von $0.00$ ausgewiesen, ungeachtet der tatsächlichen Begehbarkeit. Hier gilt das Prinzip <<garbage in, garbage out>>. Die Datengrundlage lässt keine schlüssige Aussage über die Begehbarkeit von Graten zu.
 
-Weiter erlaubt SwissTLM\textsuperscript{3D} keinen Aussage zur Breite und Durchquerbarkeit eines Fliessgewässers, bzw.\ zur Frage, ob dieses im Winter zufriert.
+Weiter erlaubt SwissTLM\textsuperscript{3D} keine Aussage zur Breite und Durchquerbarkeit eines Fliessgewässers, bzw.\ zur Frage, ob dieses im Winter zufriert.
 
 \subsection{Mögliche Verbesserungen}\label{sec:improvements}
 
@@ -125,7 +125,7 @@ In dieser Arbeit wurde jeglicher Programmcode sowie die Arbeit selbst in ein Git
 
 Die erste Variante, mit der Risikokarten hätten erstellt werden sollen, stellte sich als unpraktisch heraus. Aufgrund einer Quelle wurde eine 3D-Lawinensimulation implementiert, bzw.\ ein Versuch in diese Richtung unternommen\ \cite{athmaps}. Die Physiksimulation könnte jedoch nicht korrekt implementiert werden, mangels des nötigen mathematischen Geschicks\footnote{Numerische Verfahren zur Lösung von partiellen Differentialgleichungen entziehen sich der Expertise des Autoren, Speziell Runge-Kutta-Heun konnte trotz mehrtägiger Bemühungen ohne externe Hilfe nicht erarbeitet werden.}. Mit diesem hier nur kurz ausgeführten Unterfangen liesse sich bereits eine ganze Arbeit füllen. Hier wurde der Versuch jedoch nach ca.\ einer Woche abgebrochen. In Kommunikation mit dem Entwickler wurde mir eine kostenlose Lizenz für den kommerziellen Lawinensimulator \code{RAMMS::Avalanche} zur Verfügung gestellt.
 
-Zwischenzeitliche wurde eine Lawinensimulation mittels RAMMS::Avalanche in Betracht gezogen. Aufgrund der hohen Rechenanforderung musste die einfachere Variante, die der \gls{grm} ähnelt, ausgewählt werden. Der eigentliche Zweck der Software entspricht auch nicht der hier verlangten Anwendung. Eigentlich werden mit der Software Gefahrengutachten für Infrastrukturprojekte erstellt. Dabei werden meist grosse Lawinen- bzw. Steinschlagereignisse mit langen Wiederkehrperioden von 10 bis 300 Jahren simuliert.
+Zwischenzeitliche wurde eine Lawinensimulation mittels \code{RAMMS::Avalanche} in Betracht gezogen. Aufgrund der hohen Rechenanforderung musste die einfachere Variante, die der \gls{grm} ähnelt, ausgewählt werden. Der eigentliche Zweck der Software entspricht auch nicht der hier verlangten Anwendung. Eigentlich werden mit der Software Gefahrengutachten für Infrastrukturprojekte erstellt. Dabei werden meist grosse Lawinen- bzw. Steinschlagereignisse mit langen Wiederkehrperioden von 10 bis 300 Jahren simuliert.
 
 \subsection{GIS}
 
