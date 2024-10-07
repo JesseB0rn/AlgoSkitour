@@ -313,12 +313,14 @@ Zu Beginn der Arbeit war ein Ziel, möglichst unabhängig von Software-Bibliothe
 \subsection{Herunterladen des Höhenmodells}
 
 Wie bereits in Kap.\ \ref{sec:dem} erwähnt, wird SwissAlti\textsuperscript{3D} in $\qty{1}{km} \times \qty{1}{km}$ grossen Kacheln ausgeliefert, welche einzeln heruntergeladen und anschliessend wieder vereint werden müssen~\cite{alti3dprod}. Auf dem Datenportal von swisstopo kann für jeden Kanton eine Liste mit den URLs der Kacheln, welche in dem Kanton liegen, heruntergeladen werden. Mittels eines Python-Skriptes wurden so über Nacht knapp \qty{30}{GB} Höhendaten der Kantone BE, GL, GR, NW, OW, SZ, UR und VS heruntergeladen. Durch \code{gdal\_warp}, \code{rasterio} und \code{gdal2tiles}\footnote{Diverse GIS-Werkzeuge} wird als Erstes eine Kopie in einem für die Webkarte lesbaren Datenformat erstellt. Statt Höhenwerte direkt aus dem Pixelraster zu lesen, werden diese auf die drei RGB-Farbkanäle verteilt. So schlüsselt der rote Farbwert nun einzelne Höhenmeter, der blaue Kanal 256 hm und der grüne $256^2$ hm auf. Beispiele beider Encodierungsmethoden sind in Abb.\ \ref{fig:dem} zu sehen.
+\vfill
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=\linewidth]{dem}
   \caption{Höhenmodell der Schweizer Alpenkantone in je einem RGBDEM-Tileset und einem schwarz-weissen GeoTIFF. Die dunklen Flecken links sind Höhen über 3100 m. ü. M.}\label{fig:dem}
 \end{figure}
+\vfill
 
 \pagebreak
 \subsection{Erstellung von Risikokarten}
@@ -335,12 +337,13 @@ r(\rho) = \sqrt{\frac{1}{1 + e^{\frac{s-\rho}{3.0}}}}
 Je nach prognostizierter Gefahrenstufe des \gls{llb} wird $s$ zwischen 20 und 35 linear interpoliert. Im Fall der Gefahrenstufe 3= kommt $s$ dabei bei 28.0 zu liegen (siehe Abb.~\ref{fig:graph} für die resultierende Risikofunktion).
 
 Mittels eines Python-Skripts und des Pakets \code{rasterio} wurde diese Berechnung am gesamten Gitter ausgeführt.
-
+\vfill
 \begin{figure}[H]
   \centering
   \includegraphics[width=10cm]{graph_cellfriction}
   \caption{Graph der modellierten Risikofunktion $r(\rho)$ für $0 \leq \rho \leq 90$ \\bei prognostizierter Gefahrenstufe 3=}\label{fig:graph}
 \end{figure}
+\vfill
 
 \pagebreak
 \subsection{Parallele Berechnungen}
@@ -354,6 +357,7 @@ SwissTLM\textsuperscript{3D} liefert den Verlauf von Strassen und Gewässern. Zu
 
 In QGIS werden nun alle Gewässerflächen um einen Radius von \qty{7.5}{m} <<gepuffert>>, also umrahmt. Die resultierenden Gewässerpolygone werden gerastert und mit einem Risikowert von $9 \times 10^{9}$ in die rohe Risikokarte eingebrannt. Anschliessend wird dasselbe mit den Brücken wiederholt; hier wird jedoch das Risiko auf $0.0$ gesetzt. Somit sind Gewässer für den Algorithmus ein absolutes Tabu und werden nur bei Brücken überquert. Auf das Abwägen ob eine Überquerung möglich ist, wurde aus praktischen Gründen verzichtet. In solchen Fällen kann eine Tour anhand der rohen Risikokarte geplant werden. Die Situation ist in Abb. \ref{fig:watercrossing} dargestellt.
 
+\vfill
 \begin{figure}[H]
   \centering
   \includegraphics[width=12cm]{watercrossing}
