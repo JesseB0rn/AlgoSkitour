@@ -23,11 +23,50 @@ Zum anderen sind die zugehörigen \acrshort{gis}-Modelle, welche im Hintergrund 
 
 \subsection{Modellevaluation}
 
-14 typische Frühlings-Skitouren \& -Skihochtouren wurden aus dem SAC Tourenportal ausgewählt und durch ein kurzes Python-Skript heruntergeladen. Anschliessend wurden die Modellversionen mit und ohne eingebrannten Gewässern für die Start- und Zielpunkte der einzelnen Routensegmente ausgeführt. Start- und Zielpunkte wurden dabei von Hand platziert. Für alle 28 Tests wurden die gleichen Hyperparameter verwendet: \\$k_{risk}={50.0};\ c_{steepascend}={5.0};\ c_{steepdescend}={5.0};\ c_{flat}={0.25};\ c_{ascend}={2.5};\ c_{descend}={2.5}$
+11 typische Frühlings-Skitouren \& -Skihochtouren wurden aus dem SAC Tourenportal ausgewählt und durch ein kurzes Python-Skript heruntergeladen. Anschliessend wurden die Modellversionen mit und ohne eingebrannten Gewässern für die Start- und Zielpunkte der einzelnen Routensegmente ausgeführt. Start- und Zielpunkte wurden dabei von Hand platziert. Für alle 28 Tests wurden die gleichen Hyperparameter verwendet: \\$k_{risk}={50.0};\ c_{steepascend}={5.0};\ c_{steepdescend}={5.0};\ c_{flat}={0.25};\ c_{ascend}={2.5};\ c_{descend}={2.5}$
+
+\begin{table}[H]
+  \centering
+  % \renewcommand{\arraystretch}{2}
+
+  \renewcommand{\arraystretch}{1.25}
+  \begin{tabular}{ l l c | c c c |}
+
+    \hhline{=====}
+    \textbf{Ziel} & \textbf{Start} & \textbf{Schwierigkeit\footnote{SAC Skitourenskala: L; WS; ZS; S; SS; ES}} & $\overline{D}$ & $\text{max} (D)$\\
+    \hhline{===|==}
+    Clariden&Klausenpass&ZS&77.54645252&260.399\\
+    Clariden$_T$&&&37.65918761&128.077\\
+    Dammastock&Furkapass&WS-&152.9723851&668.315\\
+    Dammstock$_T$&&&155.778&574.891\\
+    Galentock&Furkapass&WS-&542.413&2098\\
+    Galenstock$_T$&&&520&1285.28\\
+    Piz Bernina&Chamanna da Boval SAC&ZS&359.118&541.44\\
+    Piz Bernina$_T$&&&12.014&31.99\\
+    Piz Palü&Diavolezza&ZS&120.774&574.687\\
+    Piz Palü$_T$&&&672.771&1403.467\\
+    Rheinwaldhorn$_T$&Läntahütte SAC&ZS&71.542&272.384\\
+    Signalkuppe&Monte Rosa-Hütte&WS+&262.614&682.49\\
+    Signalkuppe$_T$&&&262.614&682.49\\
+    Steghorn$_T$&Lämmerenhütte SAC&L&54.239&155.452\\
+    Strahlhorn&Gelmerhütte SAC&WS-&579.872&1670.735\\
+    Strahlhorn$_T$&&&567.375&1670.735\\
+    Sustenhorn&Steingletscher&ZS&69.521&389.708\\
+    Sustenhorn$_T$&&&175.732&642.648\\
+    Tierbergli&Steingletscher&WS+&42.959&231.275\\
+    Tiebergli$_T$&&&184.665&642.648\\
+    \hhline{===|==}
+  \end{tabular}
+
+  \renewcommand{\arraystretch}{1}
+  \caption{Links: In der Analyse verwendete Tourenziele\\Rechts: Quantitative Analyse. Routen welche mit <<$_T$>> bezeichnet werden, wurden anhand der Gefahrenkarte ohne Gewässer berechnet}\label{tab:evalroutes}
+\end{table}
 
 Für einige Regionen bzw. Gipfel (Länta, Steingletscher) war nur eine von beiden Gefahrenkarten brauchbar -- so ist es kaum sinnvoll, quer durch den Steinsee zu waten, da dieser nur selten zugefroren ist. Erfahrungswerte mit beiden Modellversionen zeigen, dass der Benutzer in den meisten Fällen beide Versionen begutachten sollte.
 
-Nachfolgend wird eine Auswahl der Touren kurz diskutiert: Die besten Routen waren jene vom Steingletscher aus auf die Tierberglihütte SAC, sowie auf das Sustenhorn, dies unter der Bedingung, dass die korrekte Gefahrenkarte verwendet wird; die andere Risikokarte produziert unbrauchbare Resultate. Es lässt sich eine hohe Übereinstimmung mit den Literatur-Routen, welche der SAC im Tourenportal auflistet feststellen~\cite{mmzentralch} (siehe Abb.\ \ref{fig:tierbergli}).
+Für die quantitativen Resultate wurde für jeden Punkt entlang der auszuwertenden Route die Distanz zur nächsten SAC-Route berechnet. Die Distanzen wurden anschliessend gemittelt und der maximale Wert bestimmt. Die Resultate sind in Tab.\ \ref{tab:evalroutes} zusammengefasst. Die Resultate sind ohne eine maximale noch zu tolerierende Abweichung von der SAC-Route als nicht aussagekräftig zu betrachten. Es wird nicht weiter darauf eingegangen, da die Resultate in der Praxis nicht verwendbar sind. Die Referenzdeviationen liessen sich beispielsweise anhand von GPS-Tracks von Feldbegehungen bestimmen.
+
+Nachfolgend wird eine Auswahl der Touren kurz diskutiert: Die qualitativ besten Routen waren jene vom Steingletscher aus auf die Tierberglihütte SAC, sowie auf das Sustenhorn, dies unter der Bedingung, dass die korrekte Gefahrenkarte verwendet wird; die andere Risikokarte produziert unbrauchbare Resultate. Es lässt sich eine hohe Übereinstimmung mit den Literatur-Routen, welche der SAC im Tourenportal auflistet feststellen~\cite{mmzentralch} (siehe Abb.\ \ref{fig:tierbergli}).
 % \end{multicols}
 \begin{figure*}[ht]
   \centering
@@ -75,7 +114,7 @@ Die Route auf den Piz Palü ist aufgrund der Nähe zu einer Spaltenzone (siehe A
 \begin{figure*}[ht]
   \centering
   \includegraphics[page=1,width=.9\linewidth]{./../evaluation/PDFs/Länta - Rheinwaldhorn_Adula.pdf}
-  \caption{Geplante Tour von der Läntahütte auf das Rheinwaldhorn\\Basislayer: swisstopo}\label{fig:pizpalu}
+  \caption{Geplante Tour von der Läntahütte SAC auf das Rheinwaldhorn\\Basislayer: swisstopo}\label{fig:pizpalu}
 \end{figure*}
 
 % % \begin{multicols}{2}
