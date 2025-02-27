@@ -185,3 +185,12 @@ Dank des hohen Standards, der bei der Entwicklung von MapLibre~GL~JS durch die B
 Die grössten Schwierigkeiten stellten sich beim Umwandeln der Höhendaten. Diese mussten von GeoTIFF in ein sogenanntes RGB-\acrshort{dem} umgewandelt werden, von der Höhe als direktem Rasterwert zu einem RGB-Bild, in welchem die Höhe als Farbwert kodiert ist. Durch das Verändern der Bildgrösse treffen die neuen Pixel nicht genau auf die alten Pixel. Für Bilddaten würde man nun bilinear interpolieren, d.h. die Farbwerte der vier umliegenden Pixel je nach Distanz gewichtet verrechnen. Probiert man dies mit RGB-\acrshort{dem}-Bildern, verfälscht man die Höhen an Kanten, bei denen zum ersten Mal blaue Pixel relevant werden (es entstehen falsche, hohe Spitzen). Die Lösung für dieses eigentlich triviale Problem bestand darin, QGIS anhand einer \acrshort{cli}-Flag mitzuteilen, nur das nächste Pixel anstelle der nächsten vier zu verwenden. Leider ist dies nicht dokumentiert und musste durch Ausprobieren herausgefunden werden.
 
 % \end{multicols}
+\newpage
+\section{Erweiterungen seit Abgabe}
+
+Diese Arbeit wurde am 26.11.24 intern an der Alten Kanti und am 18.1.25 am Halbfinale von SJF präsentiert. Seitdem wurden einige Verbesserungen vorgenommen. Die wichtigsten sind hier aufgeführt:
+\begin{itemize}
+  \item Die Routenfindung wurde anhand der gleichen grundlegenden Methoden in eine eigene Native-App portiert. So konnte die Risikoberechnung um den Faktor 20 beschleunigt werden. Die Online-App konnte jedoch wegen eines Mangels an genügend Rechenleistung nicht auf diesen Stand gehoben werden und verbleibt beim alten Backend.
+  \item Es wurde erprobt, inwiefern die Routenfindung direkt im Webbrowser des Nutzers durchgeführt werden kann. Nebst der nötigen Rechenleistung ist das Hauptproblem hierbei die Grösse der Daten, was zu langen Ladezeiten führt. Die Datenmenge konnte jedoch durch eine Komprimierung der Höhendaten im Format HF2/HFZ reduziert werden, was die Berechnung im Browser ermöglicht.
+\end{itemize}
+
