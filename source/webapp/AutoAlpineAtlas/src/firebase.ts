@@ -17,7 +17,7 @@ export const db = getFirestore(firebaseApp);
 export const toursRef = collection(db, "tours");
 export const toursUserRef = (userid: string) => query(toursRef, where("owner", "==", userid != "" ? userid : "---"));
 
-export type EState = "waiting" | "processing" | "processed";
+export type EState = "waiting" | "processing" | "processed" | "failed";
 
 export interface ITour {
   state: EState;
